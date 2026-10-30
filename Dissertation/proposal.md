@@ -132,13 +132,13 @@ learning applications.
 
 ## **5. Research Timeline** 
 
-This research will follow an **accelerated timeline**, reflecting prior
-progress and the goal of submitting the first research paper by **August
-2026**, with full completion targeted for **December 2026**.
+This research will follow a revised timeline, with the first research paper
+targeted for submission by **February 2027** and dissertation completion,
+defense, and submission targeted for **May 2027**, in time for graduation.
 
 ### **Phase 1 — Scope Finalization & Literature Review**
 
-**May – June 2026**
+**October – November 2026**
 
 - Refine research scope
 
@@ -148,7 +148,7 @@ progress and the goal of submitting the first research paper by **August
 
 ### **Phase 2 — Prototype Development**
 
-**June – July 2026**
+**November – December 2026**
 
 - Implement dependency analysis
 
@@ -162,7 +162,7 @@ progress and the goal of submitting the first research paper by **August
 
 ### **Phase 3 — Binary Analysis**
 
-**July 2026**
+**December 2026 – January 2027**
 
 - Analyze TensorFlow, Keras, NumPy binaries
 
@@ -172,7 +172,7 @@ progress and the goal of submitting the first research paper by **August
 
 ### **Phase 4 — Paper Preparation**
 
-**Late July – August 2026**
+**January – February 2027**
 
 - Evaluate findings
 
@@ -180,7 +180,7 @@ progress and the goal of submitting the first research paper by **August
 
 ### **Phase 5 — Framework Expansion**
 
-**August – October 2026**
+**February – March 2027**
 
 - Develop cross-layer interaction modeling
 
@@ -188,7 +188,7 @@ progress and the goal of submitting the first research paper by **August
 
 ### **Phase 6 — Full System Evaluation**
 
-**October – November 2026**
+**March – April 2027**
 
 - Test across multiple ML applications
 
@@ -196,7 +196,7 @@ progress and the goal of submitting the first research paper by **August
 
 ### **Phase 7 — Dissertation Completion**
 
-**November – December 2026**
+**April – May 2027**
 
 - Final writing
 

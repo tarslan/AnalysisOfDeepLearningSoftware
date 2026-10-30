@@ -3,7 +3,7 @@
 Tony Arslan  
 University of Nebraska  
 Advisor: Dr. Witawas Srisa-an  
-Date: August 2026
+Date: October 2026
 
 ## Abstract
 
@@ -579,11 +579,11 @@ This layered conceptual model therefore provides the foundation for UMSAF by ena
 
 ## 7. Research Timeline
 
-This research follows an **accelerated timeline**, reflecting substantial preliminary research and development already completed and the objective of completing the proposed Unified Multilayer Security Analysis Framework (UMSAF), empirical evaluation, and dissertation preparation by **December 2026**.
+This research follows a revised timeline, with the first research paper targeted for submission by **February 2027** and completion of the proposed Unified Multilayer Security Analysis Framework (UMSAF), empirical evaluation, dissertation defense, and final submission targeted for **May 2027**, in time for graduation.
 
 ### Phase 1 — Scope Finalization and Literature Review
 
-**May – June 2026**
+**October – November 2026**
 
 * Refine and finalize the research scope
 * Expand the literature review on ML/DL software security
@@ -593,7 +593,7 @@ This research follows an **accelerated timeline**, reflecting substantial prelim
 
 ### Phase 2 — Preliminary Prototype and Dependency Analysis
 
-**June – July 2026**
+**November – December 2026**
 
 * Develop the preliminary ML/DL experimental environment
 * Implement dependency and software composition analysis
@@ -604,7 +604,7 @@ This research follows an **accelerated timeline**, reflecting substantial prelim
 
 ### Phase 3 — Native Binary and Reverse Engineering Analysis
 
-**July – August 2026**
+**December 2026 – January 2027**
 
 * Analyze native C/C++ components associated with TensorFlow, Keras, NumPy, and related dependencies
 * Apply static binary analysis and reverse engineering techniques using tools such as Ghidra
@@ -613,7 +613,7 @@ This research follows an **accelerated timeline**, reflecting substantial prelim
 
 ### Phase 4 — Preliminary Evaluation and First Research Paper
 
-**August – September 2026**
+**January – February 2027**
 
 * Analyze preliminary experimental findings
 * Evaluate dependency, vulnerability, and native binary analysis results
@@ -622,7 +622,7 @@ This research follows an **accelerated timeline**, reflecting substantial prelim
 
 ### Phase 5 — UMSAF Framework Expansion and Cross-Layer Integration
 
-**September – October 2026**
+**February – March 2027**
 
 * Integrate dependency, vulnerability, and binary analysis capabilities
 * Implement serialized model and computational graph inspection
@@ -633,7 +633,7 @@ This research follows an **accelerated timeline**, reflecting substantial prelim
 
 ### Phase 6 — Empirical Evaluation and Validation
 
-**October – November 2026**
+**March – April 2027**
 
 * Evaluate UMSAF using controlled and representative ML/DL workloads
 * Evaluate the TensorFlow/Keras CIFAR-10 CNN as a controlled deep learning workload
@@ -645,7 +645,7 @@ This research follows an **accelerated timeline**, reflecting substantial prelim
 
 ### Phase 7 — Dissertation Completion
 
-**November – December 2026**
+**April – May 2027**
 
 * Integrate experimental findings into the dissertation
 * Complete analysis and discussion of results
