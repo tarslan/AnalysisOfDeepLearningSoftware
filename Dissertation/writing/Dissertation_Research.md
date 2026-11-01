@@ -5,6 +5,8 @@ University of Nebraska
 Advisor: Dr. Witawas Srisa-an  
 Date: October 2026
 
+**Research status and document authority (October 31, 2026):** This is the authoritative research manuscript, not a completed-results dissertation. The six-step preliminary pipeline has April 2026 evidence; model inspection, runtime tracing, targeted reverse engineering, cross-layer integration, and final evaluation remain planned. [Work-Progress-Status.md](../Work-Progress-Status.md) records current evidence, [RESEARCH_TODO.md](../../RESEARCH_TODO.md) defines execution dependencies, and [Dissertation_Completion_Schedule.md](Dissertation_Completion_Schedule.md) owns the weekly calendar. Dated/Old manuscripts and DOCX/TXT copies are historical drafts or exports, not alternative research requirements.
+
 ## Abstract
 
 Modern **machine learning (ML) and deep learning (DL) software ecosystems** extend far beyond high-level application source code and encompass serialized model artifacts, computational graphs, third-party dependencies, native binaries, runtime environments, hardware acceleration layers, and complex software supply chains. Frameworks and libraries such as TensorFlow, Keras, and NumPy rely extensively on native C/C++ components that execute beneath high-level Python abstractions. Consequently, vulnerabilities and security-relevant behaviors originating within native binaries, serialized models, dependency chains, and runtime execution layers may remain undetected when security analysis is limited to individual layers of the software stack.
@@ -13,7 +15,7 @@ Prior research has identified limitations in existing security analysis techniqu
 
 This research proposes a **Unified Multilayer Security Analysis Framework (UMSAF)** for ML/DL software ecosystems that integrates software composition analysis, Software Bill of Materials (SBOM) generation, vulnerability intelligence, binary reverse engineering, serialized model inspection, runtime behavior analysis, cross-layer interaction modeling, and integrated risk assessment. UMSAF is designed to provide **end-to-end visibility from high-level Python application code through third-party dependencies, serialized model artifacts, native C/C++ components, and runtime execution**. By correlating security evidence across these layers, the framework aims to identify vulnerabilities, hidden execution paths, malicious model behaviors, software supply-chain risks, and cross-layer security interactions that may remain undetected when individual layers are analyzed in isolation.
 
-The proposed framework will further incorporate **machine learning–based risk classification and prioritization techniques** using features derived from dependency graphs, vulnerability metadata, binary structures, API interactions, and runtime behaviors. Binary reverse engineering tools such as Ghidra will be used to inspect native components associated with TensorFlow, Keras, NumPy, and related dependencies, providing deeper visibility into compiled components underlying Python-based ML/DL applications.
+The proposed framework will incorporate interpretable rule-based risk scoring and assess whether defensible labeled data supports **machine learning–based risk classification and prioritization techniques**, using features derived from dependency graphs, vulnerability metadata, binary structures, API interactions, and runtime behaviors. ML experiments are conditional on data adequacy, not assumed improvements or a substitute for the required rule-based/severity comparison. Binary reverse engineering tools such as Ghidra will be used to inspect selected native components associated with TensorFlow, Keras, NumPy, and related dependencies.
 
 The framework will be developed and evaluated using a **design science and empirical evaluation methodology** involving representative ML/DL applications, controlled experimental workloads, and known vulnerability datasets. The preliminary experimental workload includes a **deep learning–based image classification application implemented as a Convolutional Neural Network (CNN) with TensorFlow/Keras using the CIFAR-10 dataset**. This controlled workload provides a reproducible environment for examining dependencies, native components, serialized model artifacts, runtime behavior, and cross-layer interactions within a representative deep learning software stack.
 
@@ -579,81 +581,76 @@ This layered conceptual model therefore provides the foundation for UMSAF by ena
 
 ## 7. Research Timeline
 
-This research follows a revised timeline, with the first research paper targeted for submission by **February 2027** and completion of the proposed Unified Multilayer Security Analysis Framework (UMSAF), empirical evaluation, dissertation defense, and final submission targeted for **May 2027**, in time for graduation.
+This research targets **May 2027 graduation**, with the dissertation, two review rounds and revisions, defense, final deposit, and **two paper submissions completed by March 31, 2027**. The working calendar below follows [Dissertation_Completion_Schedule.md](Dissertation_Completion_Schedule.md); official institutional deadlines, reviewer availability, and venue dates remain to be confirmed. Earlier official deadlines take precedence.
 
-### Phase 1 — Scope Finalization and Literature Review
+The maximum commitment is **10 hours/week** (one hour each weekday and five weekend hours). With the schedule's two provisional lighter weeks, approximately **203 hours** are available through March 31, including reserve. Retaining the full research scope is high-risk within that capacity; feasibility must be reassessed at the schedule's evidence-based checkpoints rather than assuming success or silently dropping requirements. Paper targets are submissions, not guaranteed acceptance or publication.
 
-**October – November 2026**
+### Phase 1 — Research Contract and Baseline Refresh
 
-* Refine and finalize the research scope
-* Expand the literature review on ML/DL software security
-* Define the UMSAF conceptual architecture and threat model
-* Establish research questions and research objectives
-* Finalize the preliminary experimental design
+**November 2-22, 2026**
 
-### Phase 2 — Preliminary Prototype and Dependency Analysis
+* Confirm retained RQ1-RQ7/H1-H7, claims, metrics, ground truth, and experimental protocol
+* Select and rebuild the Windows baseline; record a verified environment manifest
+* Add baseline tests, rerun Steps 1-6, and reconcile April results and skipped capabilities
+* Confirm deadlines, reviewer availability, and two distinct paper contributions/venues
+* Reassess remaining effort using actual hours by November 22
 
-**November – December 2026**
+### Phase 2 — Missing Evidence Producers
 
-* Develop the preliminary ML/DL experimental environment
-* Implement dependency and software composition analysis
-* Generate Software Bills of Materials (SBOMs)
-* Integrate CVE, OSV, and NVD vulnerability intelligence
-* Implement package and artifact integrity verification
-* Identify and extract native binary components from Python packages
+**November 23-December 27, 2026**
 
-### Phase 3 — Native Binary and Reverse Engineering Analysis
+* Implement and test serialized-model inspection and controlled model scenarios
+* Capture reproducible Windows runtime observations for control/hardened workloads
+* Perform targeted PE reverse engineering with saved Ghidra evidence
+* Map selected Python APIs, framework/native components, and runtime evidence with confidence labels
+* Write methods and paper sections incrementally; validate all producers before integration
 
-**December 2026 – January 2027**
+### Phase 3 — Integrated UMSAF Artifact
 
-* Analyze native C/C++ components associated with TensorFlow, Keras, NumPy, and related dependencies
-* Apply static binary analysis and reverse engineering techniques using tools such as Ghidra
-* Map high-level framework functionality to underlying native components
-* Identify and characterize security-relevant native-code structures and known vulnerabilities
+**December 28, 2026-January 17, 2027**
 
-### Phase 4 — Preliminary Evaluation and First Research Paper
+* Validate common evidence/component schemas and the cross-layer evidence graph
+* Implement confidence-aware propagation analysis and negative-control tests
+* Implement interpretable risk scoring, severity-only comparison, and sensitivity analysis
+* Complete the data-adequacy decision and ML evaluation if justified
+* Validate integrated reports, provenance, and new-module regression tests
 
-**January – February 2027**
+### Phase 4 — Empirical Evaluation and Results
 
-* Analyze preliminary experimental findings
-* Evaluate dependency, vulnerability, and native binary analysis results
-* Refine the experimental methodology based on preliminary findings
-* Prepare and submit the first research paper
+**January 18-31, 2027**
 
-### Phase 5 — UMSAF Framework Expansion and Cross-Layer Integration
+* Run repeated controlled workloads and verified security cases
+* Compare UMSAF with isolated-analysis baselines using equivalent evidence/resources
+* Calculate predefined metrics and complete scalability/cross-configuration analysis
+* Evaluate H1-H7 using saved evidence, including negative/inconclusive results
+* Freeze results and conduct the validity/reproducibility audit by January 31
 
-**February – March 2027**
+### Phase 5 — Complete Draft, Archive, and First Review
 
-* Integrate dependency, vulnerability, and binary analysis capabilities
-* Implement serialized model and computational graph inspection
-* Develop runtime behavior analysis capabilities
-* Develop cross-layer interaction and vulnerability propagation modeling
-* Implement integrated risk classification and vulnerability prioritization
-* Refine the UMSAF prototype into an integrated analysis framework
+**February 1-28, 2027**
 
-### Phase 6 — Empirical Evaluation and Validation
+* Assemble the incrementally written dissertation and reproducibility archive by **February 7**
+* Review 1: **February 8-21**; address feedback **February 22-28**
+* Submit Paper 1 by **February 19**, after paper-specific review and venue checks
+* Send the revised complete dissertation for Review 2 by **February 28**
 
-**March – April 2027**
+### Phase 6 — Second Review, Second Paper, and Defense Readiness
 
-* Evaluate UMSAF using controlled and representative ML/DL workloads
-* Evaluate the TensorFlow/Keras CIFAR-10 CNN as a controlled deep learning workload
-* Validate findings against known vulnerabilities and controlled security scenarios
-* Compare integrated UMSAF findings with isolated security analysis approaches
-* Evaluate cross-layer security visibility and vulnerability correlation
-* Analyze and document experimental results
-* Assess framework limitations and threats to validity
+**March 1-21, 2027**
 
-### Phase 7 — Dissertation Completion
+* Review 2: **March 1-14**; address feedback **March 15-21**
+* Complete Paper 2 draft by **March 7** and submit by **March 19**
+* Obtain required approvals, finalize slides, and rehearse within the weekly limit
 
-**April – May 2027**
+### Phase 7 — Defense, Corrections, and Final Deposit
 
-* Integrate experimental findings into the dissertation
-* Complete analysis and discussion of results
-* Finalize conclusions and research contributions
-* Complete dissertation revisions and formatting
-* Prepare for dissertation defense
-* Submit the final dissertation
+**March 22-31, 2027**
 
+* Target defense **March 22-26**, subject to official scheduling/approval
+* Address defense corrections and aim for final deposit by **March 26**
+* Reserve **March 29-31** for minor corrections and confirmation, not unfinished research
+* Confirm final deposit, two submission receipts, and graduation requirements by **March 31**
+* April-May are graduation follow-through, not planned research or dissertation-completion time
 
 # 8. Related Work
 
@@ -1075,6 +1072,8 @@ The absence of a unified methodology integrating these forms of security evidenc
 
 ## 9.1 Overview
 
+**Evidence boundary:** The recorded April 20, 2026 run contains dependency analysis, pip-audit/OSV scanning, CycloneDX generation, RECORD checks/PyPI expected-digest lookups, static findings and a derived containment policy, and PE extraction/fingerprinting. PyPI `verified` indicates expected-digest metadata retrieval, not an archive-digest comparison or authenticated provenance. The run does not contain implemented model inspection, runtime traces, Ghidra reverse-engineering results, API/native execution mappings, integrated propagation/risk reports, or final baseline comparisons. Sections 9.6-9.9 describe intended extensions and conceptual paths unless a specific saved artifact is cited. A saved model is not model-inspection evidence; a DLL import is not proof of runtime execution; a generated policy is not enforced containment.
+
 To evaluate the feasibility of the proposed **Unified Multilayer Security Analysis Framework (UMSAF)**, a preliminary study was conducted using a **deep learning–based image classification application implemented as a Convolutional Neural Network (CNN) with TensorFlow/Keras**. Although deep learning (DL) is a subset of machine learning (ML), the experimental workload is more precisely classified as deep learning because the model uses multiple trainable neural-network layers, including convolutional, pooling, and fully connected layers, to learn hierarchical image features directly from pixel data through training and backpropagation.
 
 The dissertation therefore retains **machine learning and deep learning software security** as the broader research domain while identifying the specific preliminary experimental workload as a **deep learning CNN workload**.
@@ -1310,7 +1309,7 @@ Relevant vulnerability sources include:
 
 The purpose of this analysis is not merely to enumerate known vulnerabilities. Instead, UMSAF seeks to associate vulnerability information with the software components and layers in which affected packages or binaries participate.
 
-Preliminary dependency scanning indicates that vulnerability information may be associated with transitive components that are not explicitly referenced by the CNN application source code. This illustrates an important security-visibility challenge: an application developer may interact primarily with high-level TensorFlow/Keras APIs while the resulting software environment contains a substantially larger dependency and native-component attack surface.
+The recorded April 2026 pip-audit/OSV snapshot reported zero findings. It does not demonstrate a detected transitive vulnerability or absence of vulnerabilities. The planned evaluation will use verified advisory-linked cases to determine how vulnerability information relates to transitive components; NVD enrichment and other omitted checks require explicit implementation/decision records.
 
 The full empirical evaluation will extend this process by correlating vulnerability intelligence with dependency relationships, binary components, model artifacts, and runtime evidence where appropriate.
 
@@ -1346,7 +1345,7 @@ This finding supports the inclusion of a dedicated **Native Binary Layer** withi
 
 Selected native binary components can be subjected to reverse engineering to investigate implementation characteristics that are not visible through high-level Python application analysis.
 
-The preliminary reverse engineering process focuses on characteristics such as:
+The planned targeted reverse engineering process will examine characteristics such as:
 
 * binary structure
 * imported and exported functions
@@ -1360,7 +1359,7 @@ The preliminary reverse engineering process focuses on characteristics such as:
 
 Ghidra provides a primary reverse engineering environment for examining selected native components, supplemented by `pefile`, strings, Windows dependency-inspection utilities, and other platform-appropriate binary-analysis tools. The primary analysis concerns PE-format binaries; ELF-oriented tools such as `readelf` may be used only in future comparative Linux experiments.
 
-The objective is not to reverse engineer the complete TensorFlow codebase. Such an undertaking would be unnecessarily broad for the purpose of this dissertation. Instead, reverse engineering is used selectively to investigate native components and execution paths that are relevant to security findings identified through dependency, vulnerability, model, or runtime analysis.
+The objective is not to reverse engineer the complete TensorFlow codebase. Such an undertaking would be unnecessarily broad for the purpose of this dissertation. Instead, reverse engineering will be used selectively to investigate native components and execution paths relevant to dependency, vulnerability, model, or runtime evidence. The existing PE fingerprints/imports/exports are not Ghidra function/control-flow evidence.
 
 Preliminary inspection demonstrates the feasibility of extracting and examining native components underlying the high-level ML/DL framework environment.
 
@@ -1475,7 +1474,7 @@ Similarly, serialization introduces another interaction path:
 
 These paths should not be interpreted as alternative UMSAF architectures. Instead, they represent specific interaction and execution paths occurring within the broader seven-layer model.
 
-The preliminary analysis demonstrates the feasibility of mapping relationships among high-level Python functionality, framework components, dependencies, serialized artifacts, and native implementations.
+The preliminary dependency and PE inventories provide inputs for future mapping. The conceptual paths above are not validated API-to-native execution mappings; Task 15 must produce source-linked evidence and confidence labels before such mappings can be reported as observed.
 
 The full UMSAF evaluation will extend this capability by correlating evidence from dependency analysis, vulnerability intelligence, binary inspection, serialized model analysis, reverse engineering, and runtime observation to investigate how security-relevant characteristics and vulnerabilities may interact or propagate across software layers.
 
@@ -1507,15 +1506,15 @@ The experimental CNN produces a serialized `.keras` model artifact as part of it
 
 This demonstrates that ML/DL security analysis should consider model artifacts and their computational structures in addition to source code, packages, and binaries.
 
-### 5. Runtime Analysis Provides Complementary Evidence
+### 5. Runtime Analysis Is a Planned Complementary Evidence Source
 
 Structural analysis alone cannot fully characterize runtime interactions among Python APIs, framework components, native libraries, runtime environments, and hardware resources.
 
-Runtime observation therefore provides complementary evidence for understanding actual execution behavior.
+Runtime observation is expected to provide complementary evidence; its value must be tested with saved traces in the final evaluation.
 
-### 6. Cross-Layer Analysis Is Feasible
+### 6. Cross-Layer Integration Remains To Be Demonstrated
 
-The preliminary study demonstrates that evidence can be collected from multiple portions of the ML/DL software ecosystem, including application code, dependencies, framework components, native binaries, serialized artifacts, and runtime execution.
+The preliminary pipeline collected application, dependency, vulnerability, SBOM, integrity, and binary-inventory evidence. A serialized model exists, but model inspection, runtime observation, and integration of these producers have not yet been demonstrated.
 
 This establishes the technical foundation for developing mechanisms that correlate those findings across the formal UMSAF layers.
 
@@ -1523,25 +1522,24 @@ This establishes the technical foundation for developing mechanisms that correla
 
 Dependency scanning, SBOM analysis, vulnerability intelligence, binary inspection, reverse engineering, serialized-model analysis, and runtime observation provide different forms of security evidence.
 
-The preliminary study reinforces the research premise that greater security visibility may be achieved by correlating these forms of evidence rather than evaluating them independently.
+These techniques motivate the research premise that correlation may improve visibility; the preliminary run does not yet establish that improvement.
 
 ## 9.11 Implications for UMSAF
 
 The preliminary study establishes an initial feasibility basis for the continued design, implementation, and empirical evaluation of UMSAF.
 
-Specifically, the study demonstrates or establishes the technical feasibility of:
+Specifically, the recorded pipeline provides evidence for:
 
 * identifying direct and transitive dependencies
 * generating SBOM information
 * correlating dependencies with vulnerability intelligence
 * identifying and extracting native binary components
-* applying binary inspection and reverse engineering techniques to selected native components
+* recording PE structure, imports, exports, and hashes (not completed targeted reverse engineering)
 * identifying serialized model artifacts as a distinct analysis surface
-* establishing mechanisms for runtime behavior analysis
-* mapping interactions among high-level Python APIs, framework components, native implementations, and runtime environments
-* and collecting security evidence that can subsequently be correlated across multiple software layers.
+* deriving a proposed containment policy (not runtime tracing or enforcement)
+* and collecting preliminary inputs for future cross-layer correlation.
 
-These preliminary findings do not, by themselves, establish the overall effectiveness of UMSAF. Rather, they provide evidence that the individual analytical capabilities required by the proposed framework can be implemented and integrated within a controlled ML/DL experimental environment.
+These preliminary findings do not establish overall UMSAF effectiveness or implementation/integration of all required capabilities. Tasks 11-28 must produce and validate the missing evidence before those claims can be made.
 
 The subsequent research will extend these preliminary capabilities into an integrated framework and empirically evaluate whether cross-layer correlation provides more comprehensive security visibility, vulnerability characterization, traceability, and risk identification than isolated security-analysis approaches.
 
@@ -1845,7 +1843,7 @@ A vulnerability-oriented mapping may additionally represent:
 
 The **Integrated Risk Scoring and ML-Based Classification Engine** aggregates security findings generated throughout UMSAF and supports risk assessment and vulnerability prioritization.
 
-The component combines interpretable rule-based security factors with machine learning–based classification or prioritization techniques that will be developed and empirically evaluated as part of the research.
+The component will implement interpretable rule-based scoring and a severity-only comparison. ML-based classification/prioritization will be implemented and evaluated only if Task 20 establishes defensible labels and leakage-resistant splits; otherwise the data-adequacy decision and limitations must be reported. This conditional branch does not remove the required H6 evaluation of integrated evidence versus severity-only prioritization.
 
 #### Candidate Features
 
@@ -1872,7 +1870,7 @@ Potential features include:
 * normalize security evidence
 * calculate rule-based risk scores
 * derive cross-layer security features
-* train and evaluate ML-based risk-classification or prioritization models
+* assess data adequacy and, if justified, train and evaluate ML-based risk-classification or prioritization models
 * identify high-risk components
 * prioritize vulnerabilities for further investigation
 * and provide supporting evidence for assigned risk levels.
@@ -1882,7 +1880,7 @@ Potential features include:
 * integrated risk scores
 * vulnerability prioritization
 * component risk rankings
-* ML-based classification results
+* ML-based classification results if justified, otherwise a documented data-adequacy decision
 * and supporting risk evidence.
 
 ## 10.4 Data Flow and Analysis Process
@@ -1967,7 +1965,7 @@ This capability addresses security characteristics and vulnerabilities that may 
 
 ### 10.5.7 ML-Based Risk Classification and Vulnerability Prioritization
 
-UMSAF incorporates machine learning–based mechanisms to investigate whether multidimensional security evidence can improve vulnerability classification and prioritization.
+UMSAF will assess whether suitable labeled data supports machine learning–based experiments on multidimensional security evidence. If it does not, the research will document that decision and retain the required rule-based/severity-only comparison; ML is not an unconditional implemented capability.
 
 The proposed approach uses features derived from dependency relationships, vulnerability intelligence, binary characteristics, serialized-model structures, API interactions, runtime observations, and cross-layer propagation information.
 
@@ -2085,7 +2083,7 @@ UMSAF is expected to generate a collection of intermediate and integrated securi
     Provides component-level and vulnerability-level risk assessments based on evidence collected across UMSAF.
 
 12. **ML-Based Risk Classification Results**
-    Documents the results and evaluation of machine learning–based risk classification or vulnerability prioritization mechanisms.
+    Documents ML evaluation when data adequacy justifies it, otherwise records the decision, supporting evidence, and limitations. H6 still requires evaluation of integrated risk prioritization.
 
 13. **Integrated UMSAF Security Report**
     Consolidates findings from the individual analytical modules into a unified cross-layer security assessment with supporting evidence and recommendations.
@@ -4136,7 +4134,7 @@ The central premise of UMSAF is that the security significance of an individual 
 
 UMSAF therefore aims to move beyond isolated security findings by correlating evidence across software layers and distinguishing among **component presence, structural relationships, runtime reachability, observed execution, cross-layer correlation, and potential vulnerability propagation**. Where propagation relationships are investigated, the framework further distinguishes among directly observed, strongly correlated, potential, and unconfirmed relationships to maintain appropriate evidentiary boundaries and avoid treating plausible execution paths as verified security impacts.
 
-The preliminary study establishes an **initial feasibility basis** for this approach by examining the dependency structure, native components, serialized artifacts, runtime characteristics, and cross-layer relationships of a controlled ML/DL software environment. The preliminary experimental workload includes a **deep learning–based image classification application implemented as a Convolutional Neural Network (CNN) with TensorFlow/Keras using the CIFAR-10 dataset**. This workload provides a controlled and reproducible environment for developing and evaluating UMSAF capabilities without assuming that the findings generalize to all ML/DL applications, frameworks, model architectures, or deployment environments.
+The preliminary pipeline provides dependency, SBOM, vulnerability-snapshot, integrity-check, static, and PE-inventory evidence for a **deep learning CNN implemented with TensorFlow/Keras using CIFAR-10**. A model artifact exists, but model inspection, runtime tracing, targeted reverse engineering, and cross-layer integration remain planned. The environment must be rebuilt and its evidence refreshed before final evaluation; the preliminary run does not establish generalizability or integrated UMSAF effectiveness.
 
 The dissertation adopts a **design science and empirical evaluation methodology** structured around four major phases:
 
@@ -4146,7 +4144,7 @@ Through this methodology, UMSAF will be implemented as a research artifact and e
 
 The empirical evaluation does not assume that UMSAF will outperform every individual security-analysis technique or that every vulnerability will propagate across multiple software layers. Instead, the research will determine **whether, where, and to what extent integrated cross-layer security analysis provides additional security evidence, context, and traceability beyond isolated analysis approaches**. Cases in which cross-layer correlation provides limited or no additional analytical benefit will also contribute to understanding the capabilities and boundaries of the proposed framework.
 
-A further objective of the research is to investigate whether integrated evidence from dependencies, vulnerability intelligence, native binaries, serialized artifacts, runtime execution, and cross-layer relationships can support more contextually informed **risk classification and vulnerability prioritization**. Machine learning–based prioritization will be evaluated alongside simpler rule-based or vulnerability-severity-based approaches rather than being assumed to provide superior results.
+A further objective of the research is to investigate whether integrated evidence from dependencies, vulnerability intelligence, native binaries, serialized artifacts, runtime execution, and cross-layer relationships can support more contextually informed **risk classification and vulnerability prioritization**. Machine learning–based prioritization will be evaluated alongside rule-based and vulnerability-severity-based approaches only when the documented data-adequacy decision supports defensible ML experiments; no superior result is assumed.
 
 Ultimately, this dissertation positions ML/DL security as a **holistic software ecosystem assurance problem** rather than solely as a problem of adversarial robustness, source-code security, vulnerable dependencies, model security, native binary analysis, or runtime monitoring. Each of these areas provides an important but partial perspective. UMSAF seeks to integrate these perspectives into a common analytical framework capable of examining the relationships among application code, software supply chains, ML/DL frameworks, serialized models, native binaries, runtime environments, hardware acceleration, and supporting infrastructure.
 

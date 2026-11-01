@@ -1,5 +1,7 @@
 # **Multilayer Security Analysis of Machine Learning Software Ecosystems Through Dependency Intelligence, Binary Reverse Engineering, and Cross-Layer Threat Modeling**
 
+> **Historical draft, not an active plan.** Retained dates, platform assumptions, research questions, and claims below are superseded by [Dissertation_Research.md](Dissertation_Research.md), [RESEARCH_TODO.md](../../RESEARCH_TODO.md), and [Dissertation_Completion_Schedule.md](Dissertation_Completion_Schedule.md). Do not use this draft as completed-research evidence or a current deadline source.
+
 Tony Arslan  
 University of Nebraska  
 Advisor: Dr. Witawas Srisa-an  

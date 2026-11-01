@@ -1,8 +1,16 @@
 # UMSAF Dissertation Research Execution To-Do List
 
-**Refreshed:** 2026-09-14
+**Refreshed:** 2026-10-31
 
-This document converts the dissertation objectives, methodology, hypotheses, and current repository state into a sequential execution plan. Complete one task at a time. Do not mark a task complete until its evidence has been saved and its validation check has passed.
+This document converts the dissertation objectives, methodology, hypotheses, and current repository state into a dependency-aware execution plan. Start work only when its prerequisites pass; independent tasks and incremental writing may overlap. Do not mark a task complete until its evidence has been saved and its validation check has passed.
+
+## Planning Authority and Milestones
+
+- [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md) is the authoritative research source for the seven layers, RQ1-RQ7, H1-H7, and methodology. Older dated/Old manuscripts and DOCX/TXT copies are historical or exports, not competing plans.
+- [Dissertation_Completion_Schedule.md](Dissertation/writing/Dissertation_Completion_Schedule.md) owns the weekly calendar and capacity: at most 10 hours/week, two dissertation review rounds, two paper submissions, and completion by **March 31, 2027** for **May 2027** graduation.
+- [Work-Progress-Status.md](Dissertation/Work-Progress-Status.md) records verified progress, not scheduled completion. None of the unfinished implementation/evaluation tasks becomes complete through this documentation reconciliation.
+- Targets: evaluation by **January 31**; complete dissertation draft by **February 7**; Review 1 **February 8-21**, revisions **February 22-28**; Review 2 **March 1-14**, revisions **March 15-21**; Paper 1 submission **February 19**; Paper 2 submission **March 19**; defense **March 22-26**; final deposit by **March 31**. All dates are in 2027.
+- Review turnaround, venue deadlines, defense availability, and official institutional deadlines remain to be confirmed. Earlier official deadlines prevail. The full retained scope is high-risk within the schedule's approximately 203 available hours; use its feasibility gates rather than silently dropping requirements.
 
 ## How to Use This Plan
 
@@ -19,12 +27,12 @@ The repository contains a completed preliminary Windows pipeline run, not a comp
 - 129 packages in [artifacts/dep_tree.json](artifacts/dep_tree.json), from [src/step1_dep_tree.py](src/step1_dep_tree.py).
 - 0 findings from the recorded pip-audit and OSV run in [artifacts/vuln_scan_summary.json](artifacts/vuln_scan_summary.json).
 - A 124-component CycloneDX SBOM in [artifacts/sbom.cdx.json](artifacts/sbom.cdx.json); SPDX was skipped.
-- 127/127 RECORD and PyPI checks passing in [artifacts/integrity_summary.json](artifacts/integrity_summary.json); PEP 740 attestations were not found and Sigstore verification was not performed.
+- Reported 127/127 RECORD checks and PyPI expected-digest lookups in [artifacts/integrity_summary.json](artifacts/integrity_summary.json). The code's PyPI `verified` status means a digest was available, not that a retrieved wheel was compared against it; no authenticated provenance is established. PEP 740 attestations were not found by the probe and Sigstore verification was not performed.
 - Static findings and a runtime policy in [artifacts/static_report.json](artifacts/static_report.json) and [artifacts/runtime_policy.json](artifacts/runtime_policy.json); Semgrep was skipped.
 - 409 Windows PE binaries fingerprinted in [artifacts/binaries_report.json](artifacts/binaries_report.json), from [src/step6_binary_extraction.py](src/step6_binary_extraction.py).
 - No files in [tests](tests), and no implemented model-inspection, runtime-tracing, cross-layer-correlation, propagation-analysis, or risk-classification modules.
 
-Documentation status also requires attention before final results are reported: [README.md](README.md), [WHAT_WE_BUILT.md](WHAT_WE_BUILT.md), and [PIPELINE_SESSION_SUMMARY.md](PIPELINE_SESSION_SUMMARY.md) describe the six-step prototype as complete or production-ready, but they do not constitute evidence that the full UMSAF artifact in Dissertation Sections 10-12 has been implemented or evaluated. Treat those documents as preliminary-pipeline records until they are reconciled.
+The active documentation now distinguishes the preliminary six-step run from the unfinished UMSAF artifact. [WHAT_WE_BUILT.md](WHAT_WE_BUILT.md) and [PIPELINE_SESSION_SUMMARY.md](PIPELINE_SESSION_SUMMARY.md) retain April 2026 results only; they are not final evaluation evidence. Task 10 still requires reconciliation against refreshed reports and a validated capability matrix.
 
 The dissertation methodology has been standardized on the Windows primary configuration: Windows x86_64, CPython 3.12.10, TensorFlow 2.21.0, and PE analysis. Ubuntu/Linux and ELF analysis are retained only as possible future comparative work. The current artifacts therefore represent the primary platform rather than a provisional substitute.
 
@@ -33,10 +41,10 @@ The dissertation methodology has been standardized on the Windows primary config
 ### Task 1 - Freeze the research scope and claims
 
 - **Do:** Confirm that the primary contribution is UMSAF for software-ecosystem security, not model accuracy, adversarial robustness, privacy, or formal neural-network verification. Confirm the seven layers, RQ1-RQ7, H1-H7, and the CIFAR-10 CNN as the primary workload.
-- **Use:** [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md), especially Sections 3-6, 10, and 11; [Dissertation_Research_Updated_20260831.md](Dissertation/writing/Dissertation_Research_Updated_20260831.md); [proposal.md](Dissertation/proposal.md).
+- **Use:** [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md), especially Sections 3-6, 10, and 11; [Dissertation_Completion_Schedule.md](Dissertation/writing/Dissertation_Completion_Schedule.md); [proposal.md](Dissertation/proposal.md) as a supporting proposal, not an alternative scope.
 - **Prerequisite:** None.
 - **Expected evidence:** A one-page scope and claims register mapping each objective, research question, hypothesis, and expected contribution to at least one planned experiment and one metric.
-- **Validate:** Every dissertation objective has an experiment or is explicitly classified as out of scope. Remove unsupported claims such as "production-ready" from research conclusions unless separately demonstrated.
+- **Validate:** Every retained dissertation objective has an experiment and a metric or qualitative evidence protocol. Record conditional capabilities explicitly; scope changes require advisor agreement, not an automatic exclusion to meet the calendar. Remove unsupported claims such as "production-ready" from research conclusions unless separately demonstrated.
 
 ### Task 2 - Resolve the experimental platform and version baseline
 
@@ -44,7 +52,7 @@ The dissertation methodology has been standardized on the Windows primary config
 - **Use:** [pyproject.toml](pyproject.toml), [requirements.in](requirements.in), [requirements-lock.txt](requirements-lock.txt), [README.md](README.md), Section 9.2.1 of [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md).
 - **Prerequisite:** Task 1.
 - **Expected evidence:** `environment_manifest_<id>.json` containing interpreter path/version, Windows version, platform tag, package versions, lockfile hash, tool versions, hardware, environment variables, and data-source timestamps; a short scope note stating that results are Windows/PE-specific.
-- **Validate:** Create a fresh Windows environment from the selected lockfile with `--require-hashes`; run `python -m pip check`; confirm that the recorded interpreter, platform, TensorFlow version, and PE tooling match the manifest.
+- **Validate:** Check the selected lockfile and platform requirements against the target manifest. Distinguish the selected configuration from an observed installation; Task 5 supplies the fresh-install log, `pip check`, and verified installed-version manifest.
 
 ### Task 3 - Define data management, experiment IDs, and evidence rules
 
@@ -82,9 +90,11 @@ The dissertation methodology has been standardized on the Windows primary config
 
 ### Task 7 - Add automated regression tests for the pipeline
 
+This task has two validation milestones, not a dependency on modules that do not exist yet. **7a** covers existing baseline capabilities before Task 8; **7b** adds model, schema, graph, propagation, and scoring tests with Tasks 11-21. Task 7 is fully complete only when both milestones pass.
+
 - **Do:** Create focused tests for AST import extraction, lockfile parsing, dependency normalization, report schema, artifact hashing, model inspection, and risk-score calculations. Add fixtures for clean and intentionally modified artifacts.
 - **Use:** Empty [tests](tests), [src/step1_dep_tree.py](src/step1_dep_tree.py), [src/step2_vuln_scan.py](src/step2_vuln_scan.py), [src/step3_sbom.py](src/step3_sbom.py), [src/step4_integrity.py](src/step4_integrity.py), [src/step5_static_analysis.py](src/step5_static_analysis.py), [src/step6_binary_extraction.py](src/step6_binary_extraction.py).
-- **Prerequisite:** Tasks 3-6.
+- **Prerequisite:** Tasks 3-6 for 7a; the relevant new module for each 7b test. Tasks 11-21 require 7a and their own passing tests, not completion of all 7b tests before implementation.
 - **Expected evidence:** Passing pytest output, coverage report for new modules, and test fixtures stored outside generated artifacts.
 - **Validate:** Run the suite on a clean checkout and confirm that tests fail when a fixture is tampered with or a required report field is removed.
 
@@ -92,17 +102,17 @@ The dissertation methodology has been standardized on the Windows primary config
 
 - **Do:** Execute the pipeline against the frozen baseline; compare new results with the April artifacts. Record changed package counts, vulnerability results, SBOM component counts, integrity outcomes, static findings, and binary inventory.
 - **Use:** `python src/step1_dep_tree.py` through `python src/step6_binary_extraction.py`; all files under [src](src), [configs](configs), and [artifacts](artifacts).
-- **Prerequisite:** Tasks 5-7.
+- **Prerequisite:** Tasks 5, 6, and Task 7 milestone 7a.
 - **Expected evidence:** Dated raw reports, a baseline comparison table, command log, and discrepancy explanations.
 - **Validate:** Check JSON parsing, report timestamps, lockfile references, zero unexpected analysis errors, and consistency between summary reports and detailed reports. Treat a clean scan as "no findings in this snapshot," not proof of absence.
 
 ### Task 9 - Complete omitted baseline capabilities
 
-- **Do:** Decide whether SPDX, Semgrep, Sigstore/PEP 740 verification, NVD enrichment, and binary-signature validation are required by the evaluation. Implement or explicitly document each as included, optional, or excluded with rationale.
+- **Do:** Correct integrity-report interpretation and implement an actual archive-to-PyPI digest comparison if wheel-integrity verification is claimed; distinguish RECORD self-consistency, expected-digest retrieval, artifact comparison, and authenticated provenance. Decide whether SPDX, Semgrep, Sigstore/PEP 740 verification, NVD enrichment, and binary-signature validation are required by the evaluation. Implement or explicitly document each as included, optional, or excluded with rationale.
 - **Use:** [configs/bandit.yaml](configs/bandit.yaml), [configs/pip-audit.toml](configs/pip-audit.toml), [src/step5_static_analysis.py](src/step5_static_analysis.py), [src/step4_integrity.py](src/step4_integrity.py), current skipped statuses in [artifacts/static_report.json](artifacts/static_report.json) and [artifacts/integrity_summary.json](artifacts/integrity_summary.json).
 - **Prerequisite:** Task 8.
 - **Expected evidence:** Tool-version records, completed reports or justified exclusion notes, and a limitation statement for unavailable provenance/signing data.
-- **Validate:** Re-run each included tool and confirm the report status is `completed`; do not report skipped checks as clean results.
+- **Validate:** Re-run each included tool and confirm the required operation actually occurs; a success-shaped status alone is insufficient. Test digest comparison with a modified archive if implemented. Do not report skipped checks as clean results or missing attestations as proof that none exist upstream.
 
 ### Task 10 - Reconcile preliminary-pipeline documentation
 
@@ -118,7 +128,7 @@ The dissertation methodology has been standardized on the Windows primary config
 
 - **Do:** Build a model-analysis module that identifies `.keras` artifacts, records file hashes and size, reads safe metadata/configuration, enumerates layers and operations, records framework/version information, detects unexpected structure, and supports comparison of clean versus modified artifacts. Treat model loading as untrusted and isolate it.
 - **Use:** [basic_cifar10_cnn.keras](basic_cifar10_cnn.keras), [image_recognition_basic.py](image_recognition_basic.py), Section 10.3.5 and Section 11.7 Step 7 of [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md).
-- **Prerequisite:** Tasks 3, 6, and 7.
+- **Prerequisite:** Tasks 3, 6, and Task 7 milestone 7a; add and pass model tests under 7b before completing this task.
 - **Expected evidence:** `model_analysis.json`, operator/layer inventory, metadata extract, clean-model hash, modified-model comparison, and a safety note describing what was and was not executed during inspection.
 - **Validate:** The analyzer must produce stable output for the same artifact, detect a deliberate metadata/structure change, reject a hash mismatch, and avoid executing untrusted model content in the analysis process.
 
@@ -175,8 +185,8 @@ The dissertation methodology has been standardized on the Windows primary config
 ### Task 18 - Implement propagation analysis with confidence levels
 
 - **Do:** Detect candidate paths such as vulnerable dependency -> affected binary -> framework operation -> runtime event and manipulated model -> framework operation -> native/runtime event. Separate directly observed, strongly correlated, potential, and unconfirmed paths.
-- **Use:** Task 16 graph; vulnerability records; model, binary, and runtime reports; Section 11.12 of [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md).
-- **Prerequisite:** Task 16.
+- **Use:** Task 17 graph; vulnerability records; model, binary, and runtime reports; Section 11.12 of [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md).
+- **Prerequisite:** Task 17.
 - **Expected evidence:** `propagation_report.json`, path evidence lists, confidence rationale, and examples of isolated vulnerabilities that do not propagate.
 - **Validate:** Negative controls must not produce a directly observed propagation path; removing one required edge must lower or invalidate the path confidence.
 
@@ -200,7 +210,7 @@ The dissertation methodology has been standardized on the Windows primary config
 
 - **Do:** Produce one report that links application inputs, dependency/SBOM evidence, vulnerability data, integrity, binaries, reverse engineering, model analysis, runtime observations, cross-layer paths, risk scores, limitations, and recommendations.
 - **Use:** All outputs from Tasks 8-20; Section 10.7 of [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md).
-- **Prerequisite:** Tasks 16-20.
+- **Prerequisite:** Tasks 16-19 and the validated Task 20 outcome (ML evaluation or justified data-adequacy decision); Task 7 milestone 7b.
 - **Expected evidence:** `umsaf_report_<experiment_id>.json`, human-readable report, and a report-to-source evidence index.
 - **Validate:** Every reported finding resolves to at least one source artifact and timestamp; summary counts equal detailed counts; unsupported conclusions are explicitly labeled.
 
@@ -242,7 +252,7 @@ The dissertation methodology has been standardized on the Windows primary config
 
 - **Do:** Evaluate each hypothesis against predefined evidence and thresholds, classify it as supported, partially supported, or not supported, and record counterexamples and tradeoffs.
 - **Use:** Tasks 22-24, H1-H7 in Section 11.11 of [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md), and the scope register from Task 1.
-- **Prerequisite:** Task 25.
+- **Prerequisite:** Tasks 25 and 27, so conclusions include the required scalability/cross-configuration evidence.
 - **Expected evidence:** Hypothesis decision table with claim, operational measure, result, uncertainty, threats, and conclusion; no hypothesis should be accepted solely because the framework produced more findings.
 - **Validate:** An independent review of each conclusion must be able to trace it to raw evidence and the predefined metric or qualitative protocol.
 
@@ -250,7 +260,7 @@ The dissertation methodology has been standardized on the Windows primary config
 
 - **Do:** Increase ecosystem complexity by package count, binary count, model size, workload count, or selected Windows framework configuration. Additional ML/DL frameworks are optional and should be included only if they answer a defined research question and have a reproducible Windows baseline. Linux/ELF comparison is future work, not a prerequisite for completion.
 - **Use:** Multiple Windows configurations, [artifacts](artifacts), Task 25 measurement code, and Section 11.5.8 of [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md).
-- **Prerequisite:** Tasks 2, 25, and 26.
+- **Prerequisite:** Tasks 2 and 25. Feed the completed scaling results into Task 26; do not require final hypotheses before collecting this evidence.
 - **Expected evidence:** Scaling matrix, runtime/memory/storage measurements, failure modes, Windows-configuration comparison table, and explanation of non-comparable observations.
 - **Validate:** Repeat selected points, confirm resource measurements use the same protocol, and identify analysis stages that dominate cost.
 
@@ -274,7 +284,7 @@ The dissertation methodology has been standardized on the Windows primary config
 
 ### Task 30 - Reconcile dissertation versions and remove stale claims
 
-- **Do:** Choose the authoritative dissertation source. Reconcile [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md), the updated Markdown/DOCX/TXT versions, [Dissertation_Research_Old.md](Dissertation/writing/Dissertation_Research_Old.md), and [proposal.md](Dissertation/proposal.md). Remove contradictory platform/version statements, duplicate timelines, and claims that describe planned work as completed.
+- **Do:** Maintain [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md) as the authoritative source. Reconcile final claims and required exports with it; retain dated/Old manuscripts as historical documents, not active requirements. Keep [proposal.md](Dissertation/proposal.md) and the active plan/status/schedule aligned. Initial planning reconciliation does not complete the final evidence-backed reconciliation.
 - **Use:** All files under [Dissertation/writing](Dissertation/writing) and [Dissertation](Dissertation).
 - **Prerequisite:** Task 29.
 - **Expected evidence:** One authoritative Markdown source, a version/reconciliation note, updated DOCX/PDF if required, and a list of intentionally retained historical documents.
@@ -288,13 +298,13 @@ The dissertation methodology has been standardized on the Windows primary config
 - **Expected evidence:** Release/archive manifest with SHA-256 checksums, clean-checkout reproduction log, final dissertation, and final contribution/evidence matrix.
 - **Validate:** Rebuild the environment from the archive, rerun a representative end-to-end experiment, compare key outputs, run all tests, and verify that no credentials, unsafe live exploit material, or untracked required files are missing.
 
-### Task 32 - Final review, submission, and defense preparation
+### Task 32 - Two paper submissions, dissertation reviews, defense, and deposit
 
-- **Do:** Perform final technical, methodological, editorial, citation, and formatting review; prepare defense slides and a concise explanation of UMSAF architecture, evidence, metrics, limitations, and supported/unsupported hypotheses.
-- **Use:** Final dissertation, final archive, [README.md](README.md), and the claims-to-evidence matrix.
-- **Prerequisite:** Task 31.
-- **Expected evidence:** Submission-ready dissertation, defense deck, anticipated-question log, final checklist, and advisor review record.
-- **Validate:** Confirm that the submitted document, archive, and cited artifacts use the same version identifiers and that every research question has a direct answer grounded in the completed experiments.
+- **Do:** Develop two distinct manuscripts incrementally: Paper 1 on reproducible ecosystem/native/runtime characterization and Paper 2 on integrated UMSAF evaluation versus isolated baselines. Confirm novelty, venue fit, and overlap policies. Perform two dissertation review rounds with recorded responses, prepare and deliver the defense, address corrections, and complete final deposit.
+- **Use:** [Dissertation_Completion_Schedule.md](Dissertation/writing/Dissertation_Completion_Schedule.md), final dissertation/archive, [README.md](README.md), and the claims-to-evidence matrix.
+- **Prerequisite:** Task 1 for paper outlines/venue decisions; Tasks 8-15 and validated paper-specific results for Paper 1; Tasks 21-28 for Paper 2; Tasks 29-31 for the complete dissertation's formal review rounds. Defense/deposit require both review rounds, revisions, and institutional approvals. Preparatory writing and logistics may start earlier.
+- **Expected evidence:** Two submitted manuscripts and submission receipts, two dated dissertation review records and response matrices, submission-ready dissertation, defense deck, anticipated-question log, defense/correction record, and final-deposit confirmation.
+- **Validate:** Confirm matching document/archive/artifact versions, evidence-grounded answers to every RQ, and completion by March 31, 2027 subject to official deadlines. Paper submission is required; acceptance/publication is not guaranteed by this schedule.
 
 ## Completion Definition
 
@@ -302,8 +312,9 @@ The dissertation experiment program is complete only when:
 
 - The platform/version decision is explicit and reproducible.
 - The baseline pipeline has been rerun and its skipped capabilities are disclosed.
-- Model inspection, runtime observation, cross-layer correlation, propagation confidence, and risk prioritization have executable evidence or explicit justified exclusions.
+- Model inspection, runtime observation, targeted reverse engineering, cross-layer correlation, propagation confidence, and rule-based risk prioritization have executable validated evidence. Task 20's ML decision is documented; optional Task 9 checks are disclosed. Required capabilities cannot be excluded merely to meet the schedule.
 - UMSAF has been compared with isolated baselines using predefined metrics.
 - H1-H7 and RQ1-RQ7 have evidence-based conclusions, including negative results.
 - Threats to validity, platform boundaries, and data-source timestamps are documented.
 - The dissertation and reproducibility archive can be rebuilt and checked from a clean environment.
+- Two paper submission receipts, two dissertation review/revision records, defense completion/corrections, and final-deposit confirmation are saved by the working March 31, 2027 deadline, with official requirements verified.

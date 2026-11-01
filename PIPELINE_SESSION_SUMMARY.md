@@ -4,11 +4,13 @@
 **Project:** InventoryDependencyTree  
 **Target Program:** `image_recognition_basic.py` (CIFAR-10 CNN using TensorFlow/Keras/NumPy)
 
+**Historical evidence notice (reconciled October 31, 2026):** The date above is the recorded preliminary run, not a current evaluation timestamp. The authoritative research source is [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md); current progress is in [Work-Progress-Status.md](Dissertation/Work-Progress-Status.md). The [completion schedule](Dissertation/writing/Dissertation_Completion_Schedule.md) targets two submissions and reviewed/defended/deposited dissertation completion by March 31, 2027 for May graduation. Model inspection, runtime tracing, Ghidra analysis, cross-layer integration, and final evaluation remain unimplemented. This report does not assert production readiness.
+
 ---
 
 ## Overview
 
-This document summarizes a complete 6-step security analysis pipeline for ML programs, executed from **Step 0** (foundation/scaffolding) through **Step 6** (binary component extraction).
+This document summarizes a preliminary six-step pipeline run from foundation/scaffolding through binary extraction. Skipped tools, limited checks, and missing UMSAF capabilities prevent this from being a complete security evaluation.
 
 **Goal:** Establish a repeatable, automated security audit process for Python-based machine learning code and its dependencies.
 
@@ -66,7 +68,7 @@ This document summarizes a complete 6-step security analysis pipeline for ML pro
 
 **Tools & Methods:**
 - **Dual scanning:**
-  - **pip-audit** – local database (126 packages scanned)
+  - **pip-audit** – advisory scanning tool (126 packages reported scanned)
   - **OSV API** – remote, per-package queries (127 packages scanned)
 - **Strategy:** Fallback to OSV HTTP API when CLI unavailable
 - **Scope:** All 127 packages in lockfile against known CVE/advisory databases
@@ -83,7 +85,7 @@ This document summarizes a complete 6-step security analysis pipeline for ML pro
 
 **Script:** [src/step2_vuln_scan.py](src/step2_vuln_scan.py)
 
-**Note:** This lockfile snapshot is clean as of April 2026. Re-run regularly for emerging advisories.
+**Note:** This run reported zero findings in April 2026, not a vulnerability-free environment. Rebuild and refresh the baseline before final evaluation; reconcile differing graph/scan/SBOM populations.
 
 ---
 
@@ -118,20 +120,20 @@ This document summarizes a complete 6-step security analysis pipeline for ML pro
 
 **Three Layers of Verification:**
 
-#### Layer 1: RECORD Integrity (PEP 627)
+#### Layer 1: Installed RECORD Integrity
 - Re-hash every file listed in each package's `.dist-info/RECORD`
-- Compare against recorded SHA-256 digests
-- **Result:** 127/127 packages OK, 0 tampered files
+- Compare supported hashes against recorded digests
+- **Recorded result:** 127/127 packages reported OK. This is RECORD self-consistency, not proof that every installed file is trusted or unchanged from an authenticated distribution.
 
 #### Layer 2: PyPI Hash Cross-Check
 - Query `https://pypi.org/pypi/<name>/<version>/json` for each package
-- Verify package metadata against locally installed version
-- **Result:** 127/127 verified, 0 yanked, 0 missing
+- Retrieve expected distribution-digest metadata for the selected package/version
+- **Recorded result:** 127 `verified` statuses, 0 yanked, 0 missing. The code marks digest availability as verified without comparing a retrieved wheel; authenticated package provenance is not established.
 
 #### Layer 3: PEP 740 Attestations (Emerging)
 - Probe `https://pypi.org/integrity/<project>/<version>/<filename>` for Sigstore bundles
-- **Result:** 0 attestations found (adoption nascent; mostly PyPA internal packages have these)
-- **Status:** Standard accepted (2024), not yet widely deployed
+- **Recorded result:** 0 attestations found by the probe; Sigstore verification not performed
+- **Limit:** Probe results are not proof of upstream attestation availability/adoption
 
 #### PEP 458/480 (Long-term Repository Signing)
 - **PEP 458** (TUF on PyPI): Accepted, **not deployed**
@@ -143,11 +145,11 @@ This document summarizes a complete 6-step security analysis pipeline for ML pro
 
 **Script:** [src/step4_integrity.py](src/step4_integrity.py)
 
-**Verdict:** ✅ **PASS** – No tampered files, all packages verified, clean provenance trail.
+**Recorded verdict:** **PASS** for the implemented checks only. Do not interpret it as wheel-digest comparison, authenticated provenance, or a clean chain of custody.
 
 ---
 
-### Step 5: Static Code Analysis + Runtime Containment ✅
+### Step 5: Static Code Analysis + Proposed Runtime Policy ✅
 **Purpose:** Identify code-level security and ML-specific risks; derive runtime constraints.
 
 #### 5A: Bandit (SAST)
@@ -178,6 +180,7 @@ This document summarizes a complete 6-step security analysis pipeline for ML pro
 #### 5E: Runtime Containment Policy
 - Derived 7 containment controls + 6 ML-specific controls
 - **Risk level:** MEDIUM (no HIGH findings, 2 MEDIUM)
+- Generated policy only: enforcement and runtime observation have not been demonstrated.
 
 **Artifacts:**
 - [artifacts/static_report.json](artifacts/static_report.json) – all findings per tool
@@ -211,7 +214,7 @@ np.random.seed(42)
 |--------|-------|
 | **Total binaries** | 409 |
 | **Total size** | 1,410.94 MB |
-| **Packages with binaries** | 109 |
+| **Manifest groups reported as packages** | 109 (distribution attribution still to be validated) |
 | **System DLL dependencies** | 84 unique |
 | **Analysis errors** | 0 |
 
@@ -221,7 +224,7 @@ np.random.seed(42)
 |---------|----------|------|------|-----------------|
 | **OpenCV (cv2)** | 2 | 98.61 MB | x64 | 2,337 C++ symbols |
 | **TensorFlow** | 2 | 0.02 MB | x64 | Wrapping layer |
-| **NumPy** | — | — | — | Pure Python |
+| **NumPy** | — | — | — | No row attributed in this report; NumPy has compiled extensions, so absence is not proof of pure Python |
 | **Keras** | — | — | — | Pure Python |
 
 **OpenCV (cv2.pyd) Imports:**
@@ -256,9 +259,11 @@ np.random.seed(42)
 ## Installation & Setup
 
 ### Prerequisites
-- Python 3.12+ (installed and in PATH)
-- Virtual environment (`.venv/` already created)
-- Windows (tested on Windows 10/11 x64; Linux/macOS may require adaptations)
+- Selected primary baseline: CPython 3.12.10 on Windows x86_64
+- Fresh virtual environment from the hash-verified lockfile; do not reuse an unrelated environment
+- Exact installed versions and tools recorded in a verified environment manifest
+- Linux/ELF is future comparative work, not a dissertation prerequisite
+- Use [README.md](README.md) for current setup; preserve previous artifacts before rerunning
 
 ### Quick Start
 ```bash
@@ -298,8 +303,9 @@ All installed via `requirements.txt` / `requirements-lock.txt`.
 InventoryDependencyTree/
 ├── image_recognition_basic.py      # Target ML program (CIFAR-10 CNN)
 ├── pyproject.toml                  # Project metadata + tool configs
-├── requirements.txt                # All deps (pip freeze output)
-├── requirements-lock.txt           # Pinned versions (reproducible)
+├── requirements.in                 # Auditable direct dependency inputs
+├── requirements.txt                # Compatibility alias for the lockfile
+├── requirements-lock.txt           # Hash-verified Windows baseline
 ├── README.md                       # Full pipeline documentation
 ├── .gitignore                      # Exclude .venv, artifacts, cache
 │
@@ -336,15 +342,15 @@ InventoryDependencyTree/
 
 ## Key Findings & Recommendations
 
-### Security Posture: ✅ **GOOD**
+### Preliminary Check Results (Not an Overall Assurance Verdict)
 
 | Category | Status | Notes |
 |----------|--------|-------|
-| Known CVEs | ✅ PASS (0 found) | Keep lockfile updated; re-scan monthly |
-| Integrity | ✅ PASS (127/127 verified) | No post-install tampering detected |
+| Known advisories | 0 found in April snapshot | Rebuild/re-scan; not proof of absence |
+| Integrity | 127 RECORD/PyPI statuses reported | RECORD self-consistency and expected-digest retrieval only |
 | Static code | ⚠ WARN | 2 MEDIUM severity ML-specific issues; easy fixes |
-| Provenance | ⚠ INFO | No PEP 740 attestations yet (not deployed upstream) |
-| Binaries | ✅ GOOD | 409 binaries fingerprinted; 84 system DLLs catalogued |
+| Provenance | Incomplete | Probe found no attestations; no Sigstore verification |
+| Binaries | Inventory recorded | 409 fingerprints; 84 system DLL imports, not proven runtime loading |
 
 ### Top Remediation Actions
 
@@ -352,42 +358,33 @@ InventoryDependencyTree/
    - Affects: Training reproducibility, audit trails
    - Fix: `tf.random.set_seed(42)` + `np.random.seed(42)` at entry
 
-2. **ML-003 / ML-004: Model Integrity** (MEDIUM / HIGH)
+2. **ML-003: Saved Model Integrity** (MEDIUM in the recorded run)
    - Affects: Supply-chain security, model tampering detection
    - Fix: Hash all saved models; verify before loading
 
-3. **ML-006: GPU Memory Management** (MEDIUM)
+3. **ML-006: GPU Memory Management** (LOW in the recorded run)
    - Affects: Resource isolation, co-located workload fairness
    - Fix: Enable `set_memory_growth()` for all GPUs
 
 4. **Runtime Containment** (See runtime_policy.json)
    - Network: Restrict to `storage.googleapis.com` (CIFAR-10 cache)
    - Filesystem: Mount `artifacts/` RW-only; everything else read-only
-   - Process: Block exec (via seccomp)
+   - Process: Linux seccomp suggestions are not implemented Windows containment; select and validate Windows-appropriate isolation
    - Resource: Cap CPU threads, GPU memory
 
 ---
 
 ## Re-running the Pipeline
 
-To audit future changes to `image_recognition_basic.py` or update dependencies:
+Do not overwrite the frozen inputs or historical artifacts. Use the hash-verified setup and deliberate lock-regeneration procedure in [README.md](README.md), then save dated raw reports and compare populations/results under Tasks 3 and 8 in [RESEARCH_TODO.md](RESEARCH_TODO.md). No validated end-to-end runtime estimate exists yet.
 
-```bash
-# Update dependencies
-pip install -U -r requirements.txt
-pip freeze > requirements.txt
-
-# Re-generate lockfile
-pip install pip-tools
-pip-compile requirements.txt
-
-# Re-run full pipeline
-for step in 1 2 3 4 5 6; do
-  python src/step${step}_*.py
-done
-
-# Check for new findings
-diff artifacts/static_report.json.old artifacts/static_report.json
+```powershell
+python .\src\step1_dep_tree.py
+python .\src\step2_vuln_scan.py
+python .\src\step3_sbom.py
+python .\src\step4_integrity.py
+python .\src\step5_static_analysis.py
+python .\src\step6_binary_extraction.py
 ```
 
 ---
@@ -395,7 +392,7 @@ diff artifacts/static_report.json.old artifacts/static_report.json
 ## References & Further Reading
 
 - **CycloneDX:** https://cyclonedx.org/ (SBOM standard)
-- **PEP 627:** https://www.python.org/dev/peps/pep-0627/ (RECORD format)
+- **Recording installed projects:** https://packaging.python.org/en/latest/specifications/recording-installed-packages/ (RECORD specification; PEP 627 is not the RECORD-format specification)
 - **PEP 740:** https://www.python.org/dev/peps/pep-0740/ (Provenance attestations)
 - **Bandit:** https://bandit.readthedocs.io/
 - **Ruff:** https://docs.astral.sh/ruff/
@@ -408,9 +405,12 @@ diff artifacts/static_report.json.old artifacts/static_report.json
 ## Contact & Support
 
 **Project maintainer:** [Your Name/Email]  
-**Last updated:** 2026-04-20  
+**Recorded run:** 2026-04-20
+
+**Documentation reconciled:** 2026-10-31
+
 **Pipeline version:** 1.0  
-**Status:** Production-ready
+**Status:** Preliminary prototype; integrated research/evaluation incomplete
 
 ---
 

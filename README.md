@@ -1,6 +1,17 @@
 # ML/DL Program Security Pipeline
 
-A comprehensive security analysis pipeline for Python-based Machine Learning and Deep Learning programs.
+A preliminary research security-analysis pipeline for Python-based Machine Learning and Deep Learning programs.
+
+## Research Plan and Status
+
+The six scripts in [src/](src/) were run as a preliminary pipeline in April 2026. This is not a completed integrated UMSAF framework or final empirical evaluation.
+
+- [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md): authoritative research scope, seven layers, RQ1-RQ7/H1-H7, and methodology.
+- [RESEARCH_TODO.md](RESEARCH_TODO.md): 32 dependency-aware execution tasks.
+- [Dissertation_Completion_Schedule.md](Dissertation/writing/Dissertation_Completion_Schedule.md): weekly calendar and **10 hours/week** maximum.
+- [Work-Progress-Status.md](Dissertation/Work-Progress-Status.md): verified progress and missing evidence.
+
+Working targets are two paper submissions (**February 19 and March 19, 2027**) and dissertation reviews, defense, and final deposit by **March 31, 2027**, for **May 2027 graduation**. Official deadlines and reviewer/venue availability remain to be confirmed. The full retained scope is high-risk within approximately 203 available hours. Historical manuscripts/exports are not alternative active plans.
 
 ## Project Overview
 
@@ -8,17 +19,16 @@ This research project implements a repeatable "ML program security pipeline" tha
 
 1. **Dependency Tree Analysis** — Full transitive dependency graph resolution
 2. **Vulnerability Scanning** — CVE/OSV database checks for known vulnerabilities  
-3. **SBOM Generation** — CycloneDX + optional SPDX output
-4. **Integrity & Provenance Verification** — Hashes, index URLs, wheel signatures
-5. **Static Code Analysis** — Bandit/Ruff/Semgrep checks + runtime containment policies
-6. **Binary Component Extraction** — Native libraries from TensorFlow/Keras/NumPy for deeper analysis
+3. **SBOM Generation** — CycloneDX; SPDX skipped in the recorded run
+4. **Integrity & Provenance Checks** — RECORD hashes and PyPI expected-digest metadata; no completed wheel-digest comparison or Sigstore verification
+5. **Static Code Analysis** — Bandit/Ruff/custom ML checks; Semgrep skipped; containment policy generated, not enforced
+6. **Binary Component Extraction** — Windows PE inventory/fingerprints for deeper analysis, not proof of runtime execution
 
 ## Project Structure
 
 ```
 InventoryDependencyTree/
-├── src/                          # Main package source
-│   └── security_scanner/         # Core library (to be developed)
+├── src/                          # step1_dep_tree.py through step6_binary_extraction.py
 ├── configs/                      # Tool configuration files
 │   ├── bandit.yaml              # Static security scanning rules
 │   ├── pip-audit.toml           # Vulnerability scanner config
@@ -30,7 +40,7 @@ InventoryDependencyTree/
 │   ├── integrity_report.json    # Hashes & provenance
 │   ├── static_report.json       # Code analysis findings
 │   └── wheelhouse/              # Extracted binaries
-├── tests/                        # Test suite
+├── tests/                        # Reserved; regression tests still to be implemented
 ├── image_recognition_basic.py   # Example ML program (test target)
 ├── requirements.in               # Auditable, direct dependency inputs
 ├── requirements-lock.txt         # Hash-verified, resolved dependency closure
@@ -81,14 +91,20 @@ Dependency updates are deliberate changes to `requirements.in`. Regenerate the l
 .\.venv\Scripts\python.exe -m pip install --dry-run --require-hashes -r requirements-lock.txt
 ```
 
-## Next Steps
+## Running the Preliminary Pipeline
 
-1. **Step 1** — Dependency tree resolution (dep_tree.json)
-2. **Step 2** — Vulnerability scanning (pip-audit + OSV)
-3. **Step 3** — SBOM generation (CycloneDX)
-4. **Step 4** — Integrity & provenance checks
-5. **Step 5** — Static code analysis + runtime policy
-6. **Step 6** — Binary extraction (TF/Keras/NumPy native libs)
+After rebuilding the selected baseline, preserve previous artifacts before rerunning; the scripts write into the output directory. Task 3 defines immutable run/evidence rules, and Task 8 reconciles the refreshed reports with April results.
+
+```powershell
+python .\src\step1_dep_tree.py
+python .\src\step2_vuln_scan.py
+python .\src\step3_sbom.py
+python .\src\step4_integrity.py
+python .\src\step5_static_analysis.py
+python .\src\step6_binary_extraction.py
+```
+
+Next research work is the contract/baseline refresh, model/runtime/targeted-binary evidence producers, integration, and evaluation in [RESEARCH_TODO.md](RESEARCH_TODO.md), not reimplementation of already-existing steps.
 
 ## Configuration Files
 
@@ -103,8 +119,8 @@ Dependency updates are deliberate changes to `requirements.in`. Regenerate the l
 # Test with the included example
 python image_recognition_basic.py
 
-# (Future) Run full security pipeline on it
-python -m security_scanner image_recognition_basic.py --output-dir artifacts/
+# Run the six preliminary analysis scripts listed above.
+# An integrated security_scanner command is not implemented.
 ```
 
 ## License

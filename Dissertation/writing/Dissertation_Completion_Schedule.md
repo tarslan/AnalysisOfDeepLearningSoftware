@@ -10,6 +10,8 @@
 
 This plan uses the actual progress described in [Work-Progress-Status.md](../Work-Progress-Status.md), the research commitments in [Dissertation_Research.md](Dissertation_Research.md), and Tasks 1-32 in [RESEARCH_TODO.md](../../RESEARCH_TODO.md).
 
+This document owns the working calendar; the research manuscript owns scope/methodology, the task list owns execution dependencies, and the progress report owns verified status. Historical drafts and April pipeline reports are not competing schedules or final evaluation evidence.
+
 The six-step preliminary pipeline exists, but its evidence needs refreshing. Model inspection, runtime observation, targeted reverse engineering, cross-layer integration, propagation analysis, risk scoring, and empirical evaluation remain unfinished. The existing dissertation text is a substantial starting draft, not a final evidence-backed dissertation.
 
 **Keeping all current commitments at 10 hours/week is high-risk. This is a capacity-constrained target schedule, not evidence that the full scope is achievable.** The first three weeks must establish actual implementation speed and an advisor-approved feasibility assessment. A calendar cannot resolve a mismatch between workload and available hours.
@@ -29,7 +31,7 @@ Provisional assumptions to confirm by November 8:
 - November 23-29 and December 21-27 are lighter, five-hour weeks. These are allowances, not assumptions about personal holiday plans.
 - Target venues accept submissions at the scheduled times. Conference deadlines may require earlier submission or a different suitable venue.
 
-Do not treat May as extra research time: it is the graduation goal, not the working research deadline. The older timelines in [proposal.md](../proposal.md) and Section 7 of [Dissertation_Research.md](Dissertation_Research.md) leave completion until May; this schedule deliberately moves completion before April. Those documents should be synchronized after advisor confirmation of this plan.
+Do not treat May as extra research time: it is the graduation goal, not the working research deadline. [proposal.md](../proposal.md) and Section 7 of [Dissertation_Research.md](Dissertation_Research.md) now use this March completion target. This documentation alignment does not imply advisor/committee approval or confirmation of official deadlines.
 
 ## 2. Weekly routine and capacity
 
@@ -80,13 +82,13 @@ Prepare manuscript skeletons in November. Add methods and figures as evidence be
 
 ## 4. Weekly deliverables
 
-Task references below point to [RESEARCH_TODO.md](../../RESEARCH_TODO.md). Some tasks span multiple weeks: early drafts do not replace their final validation or prerequisites. The research weeks are ambitious timeboxes and must pass the checkpoints in Section 5.
+Task references below point to [RESEARCH_TODO.md](../../RESEARCH_TODO.md). Task 7 milestone **7a** validates existing baseline capabilities before Task 8; **7b** adds new-module tests during Tasks 11-21 and must pass before Task 21 is complete. Task 18 requires Task 17's validated graph, not merely Task 16's schema. Some tasks span multiple weeks: early drafts do not replace their final validation or prerequisites. The research weeks are ambitious timeboxes and must pass the checkpoints in Section 5.
 
 | Week | Dates | Primary deliverable and completion check |
 |---|---|---|
-| 1 | Nov 2-8 | Tasks 1-3: scope/claims register, environment manifest, and evidence protocol. Verify official deadlines; reserve review and defense windows. Map every RQ, hypothesis, and contribution to evidence and a metric. |
+| 1 | Nov 2-8 | Tasks 1-3: scope/claims register, selected-platform target manifest, and evidence protocol. Task 5 will validate the installed environment in week 2. Verify official deadlines; reserve review and defense windows. Map every RQ, hypothesis, and contribution to evidence and a metric. |
 | 2 | Nov 9-15 | Tasks 4-6: verified ground-truth case matrix, rebuilt baseline, and control/hardened workload runs with documented repeatability. Agree on both paper contributions and target venues. |
-| 3 | Nov 16-22 | Begin Task 7 tests for existing capabilities; complete Tasks 8-10 once their prerequisites pass: refreshed six-step evidence, discrepancy table, omitted-tool decisions/implementation, and corrected preliminary claims. Record actual hours and reassess feasibility. |
+| 3 | Nov 16-22 | Complete Task 7 milestone 7a; then complete Tasks 8-10 once their prerequisites pass: refreshed six-step evidence, discrepancy table, omitted-tool decisions/implementation, and reconciled preliminary documentation. Initial wording corrections do not replace refreshed-report validation. Record actual hours and reassess feasibility. |
 | 4 | Nov 23-29 (lighter) | Task 11: model-inspection implementation and fixtures, including safe metadata handling and modification detection. Continue Task 7 tests as new modules become available. If this does not fit four planned hours, record the carryover immediately. |
 | 5 | Nov 30-Dec 6 | Task 12: all protocol-defined model scenarios with hashes, expected/observed outcomes, and evidence labels. Complete model-related regression tests. Draft the corresponding methods subsection. |
 | 6 | Dec 7-13 | Task 13: reproducible Windows runtime capture for control/hardened workloads, raw traces, event summary, and binary-inventory mapping. Document instrumentation limits and variable events. |
@@ -96,7 +98,7 @@ Task references below point to [RESEARCH_TODO.md](../../RESEARCH_TODO.md). Some 
 | 10 | Jan 4-10 | Tasks 17-18: validated cross-layer graph and propagation paths; toy-path, missing-edge, and negative-control tests. Check that no unsupported path is labeled directly observed. |
 | 11 | Jan 11-17 | Tasks 19-21: explainable scoring with sensitivity checks, Task 20 data-adequacy decision, and an integrated evidence-indexed report. Finish Task 7 tests. Gate: integrated artifact ready for evaluation. |
 | 12 | Jan 18-24 | Tasks 22-24: repeated controlled workloads, verified security cases, and isolated-analysis baseline outputs with equivalent inputs/resource limits. Save normalized comparison records. |
-| 13 | Jan 25-31 | Tasks 25-28: reproducible metrics, H1-H7 decisions, scalability/cross-configuration analysis, and validity audit. Freeze main results; document negative and inconclusive results. Gate: evaluation complete. |
+| 13 | Jan 25-31 | Complete Tasks 25, 27, 26, then 28: reproducible metrics, scalability/cross-configuration evidence, H1-H7 decisions using those results, and validity audit. Freeze main results; document negative and inconclusive results. Gate: evaluation complete. |
 | 14 | Feb 1-7 | Tasks 29-31: finish the evidence-backed dissertation, reconcile active versions/claims, and package the reproducibility archive. Assemble the already-written sections into a complete review-ready draft. Finish full Paper 1 draft. Send dissertation for Review 1 by Feb 7. |
 | 15 | Feb 8-14 | Dissertation Review 1, week 1. Request Paper 1 feedback, check novelty/citations/venue requirements, and revise manuscript. Resolve only essential reproducibility issues. |
 | 16 | Feb 15-21 | Dissertation Review 1, week 2. Finalize and submit Paper 1 by Feb 19. Log feedback in a response matrix; begin Paper 2 assembly from the completed evaluation. Review 1 feedback due Feb 21. |
@@ -106,6 +108,8 @@ Task references below point to [RESEARCH_TODO.md](../../RESEARCH_TODO.md). Some 
 | 20 | Mar 15-21 | Address Review 2, obtain required approvals, and finalize the defense manuscript. Submit Paper 2 by Mar 19. Finish slides and rehearse within the weekly time limit. |
 | 21 | Mar 22-28 | Target defense Mar 22-26, subject to official approval. Address defense corrections, complete formatting/deposit checks, and finalize the evidence archive. Aim to finish deposit by Mar 26 rather than use every remaining day. |
 | Final partial week | Mar 29-31 | Three-hour contingency for minor corrections, deposit confirmation, and checking both paper submission receipts and all graduation requirements. Not a research or major-revision window. |
+
+Task 32 spans paper preparation, both formal dissertation review/revision rounds, defense, and deposit. Its preparatory work starts in November; final review cannot start before a complete evidence-backed dissertation/archive is ready. Two paper submission receipts and two review response records are required completion evidence, not optional additions.
 
 ### Scope preservation
 

@@ -1,15 +1,17 @@
 # What We Built: ML Security Pipeline – Plain Language Summary
 
+**Historical run:** April 20, 2026. **Interpretation reconciled:** October 31, 2026. This describes the preliminary six-step prototype, not a production-ready system or completed UMSAF evaluation. [Work-Progress-Status.md](Dissertation/Work-Progress-Status.md) owns current evidence status, [RESEARCH_TODO.md](RESEARCH_TODO.md) owns dependencies, and [Dissertation_Completion_Schedule.md](Dissertation/writing/Dissertation_Completion_Schedule.md) owns the March 31, 2027 completion target for May graduation and two paper submissions.
+
 ## The Goal
 
-We created a **fully automated security audit system** for machine learning programs. The goal was to analyze an AI/ML program (`image_recognition_basic.py`) and answer these questions:
+We created a **preliminary six-script security-analysis pipeline**. It analyzes `image_recognition_basic.py` and its installed environment to investigate these questions, subject to each tool's coverage and the recorded snapshot:
 
 1. ✅ What software dependencies does it use?
 2. ✅ Are any of those dependencies known to have security flaws?
-3. ✅ Can we prove those dependencies haven't been tampered with?
+3. Can installed-file hashes be checked and expected distribution digests retrieved?
 4. ✅ Does the code itself have any security risks?
 5. ✅ What runtime security controls should we put in place?
-6. ✅ What native/compiled code is running under the hood?
+6. What native/compiled files are present? (Actual runtime loading remains to be traced.)
 
 ---
 
@@ -29,10 +31,10 @@ We created a **fully automated security audit system** for machine learning prog
 **"Are any of these 129 packages known to have security problems?"**
 
 - Checked all packages against two databases:
-  - **pip-audit** (local security database)
+  - **pip-audit** (advisory scanning tool)
   - **OSV API** (online vulnerability database)
 - Both tools agreed on the same answer
-- **Result:** ✅ **Zero vulnerabilities found** – all packages are clean
+- **Result:** **Zero findings in the April 2026 snapshot**, not proof that all packages are vulnerability-free
 
 ---
 
@@ -53,22 +55,22 @@ We created a **fully automated security audit system** for machine learning prog
 Three layers of verification:
 
 1. **Layer 1 – File Hashing:** Re-checked the SHA-256 hash of every single installed file (13,000+ files total)
-   - ✅ **Result:** All match – nothing has been modified
+   - **Recorded result:** 127 packages reported OK against their RECORD entries. Self-consistency is not authenticated provenance or proof that every installed file is trusted.
 
-2. **Layer 2 – PyPI Cross-Check:** Compared installed packages against PyPI records
-   - ✅ **Result:** All 127 packages verified as authentic
+2. **Layer 2 – PyPI Expected-Digest Lookup:** Retrieved distribution digest metadata
+   - **Recorded result:** 127 `verified` statuses mean an expected digest was available. The code did not compare a retrieved wheel's digest; this does not authenticate the installed packages.
 
 3. **Layer 3 – Provenance Bundles:** Looked for cryptographic signatures (emerging standard)
-   - ⏳ **Result:** Not yet available (too new, not widely deployed yet)
+   - **Recorded result:** No attestations found by the probe; Sigstore verification not performed. This does not establish upstream availability or adoption.
 
-**Overall:** ✅ **PASS** – Chain of custody is intact
+**Overall:** The report emitted **PASS** for its checks. That status does not establish chain of custody, wheel verification, or authenticated provenance; Task 9 must validate any stronger claim.
 
 ---
 
 ### **Step 5: Static Code Analysis**
 **"Does the code itself have any security problems?"**
 
-Ran 4 different security scanners on `image_recognition_basic.py`:
+Recorded three completed analyses and one skipped tool for `image_recognition_basic.py`:
 
 1. **Bandit** (finds dangerous Python patterns)
    - ✅ Clean – no dangerous patterns found
@@ -80,13 +82,14 @@ Ran 4 different security scanners on `image_recognition_basic.py`:
    - Skipped (optional tool not installed)
 
 4. **ML-Specific Custom Checks** (our own rules for ML safety)
-   - ⚠️ 7 issues found, mostly medium priority:
+   - ⚠️ 7 findings: 2 MEDIUM, 4 LOW, and 1 INFO:
      - ❌ No random seed set → model training is not reproducible
      - ❌ Model saved without hash → file could be secretly replaced
      - ⚠️ GPU memory not capped → could crash shared hardware
      - ⚠️ No data size limits → could run out of RAM
 
 **Also Generated:** Runtime containment policy
+This is a proposed policy, not evidence of enforced containment or runtime tracing.
 - What network connections should be allowed? (only to Google for dataset download)
 - What filesystem access? (only to `artifacts/` folder)
 - What CPU/GPU limits? (cap memory and threads)
@@ -96,7 +99,7 @@ Ran 4 different security scanners on `image_recognition_basic.py`:
 ---
 
 ### **Step 6: Binary Component Extraction**
-**"What compiled native code is actually running?"**
+**"What compiled native files are present?"**
 
 - Found all native binary files (.pyd, .dll – compiled C/C++ code)
 - Fingerprinted each one with SHA-256 hash
@@ -104,28 +107,28 @@ Ran 4 different security scanners on `image_recognition_basic.py`:
 - **Results:**
   - **409 native binaries** found
   - **1,410 MB** of compiled code
-  - **84 system DLLs** needed (Windows libraries)
+  - **84 unique system DLL imports** (not demonstrated runtime loading)
   - **OpenCV alone:** 98.6 MB, exports 2,337 functions
 
 **Output:** `binaries_report.json` + per-package manifests in `wheelhouse/`
 
-**Why this matters:** Enables detecting if someone swaps out compiled code without you knowing.
+**Why this matters:** Saved fingerprints support later change comparisons. Package attribution and runtime reachability still require validation.
 
 ---
 
 ## Summary of Findings
 
-### ✅ Security Status: **GOOD**
+### Recorded Preliminary Findings (Not an Overall Security Assurance Verdict)
 
 | Check | Result | Severity |
 |-------|--------|----------|
-| Known vulnerabilities | **None found** | ✅ |
-| File integrity (tampering) | **All verified** | ✅ |
+| Known vulnerabilities | **0 in April snapshot** | Snapshot only |
+| File integrity | **127 RECORD checks reported OK; expected PyPI digests retrieved** | No authenticated provenance |
 | SBOM available | **Generated** | ✅ |
 | Code quality issues | 5 minor (logging) | ℹ️ |
-| ML safety issues | 7 (mostly medium) | ⚠️ |
-| Malicious code patterns | **None found** | ✅ |
-| Binary component tracking | **Complete** | ✅ |
+| ML safety issues | 7 (2 MEDIUM, 4 LOW, 1 INFO) | ⚠️ |
+| Bandit findings | **0 under configured rules** | Not proof of no malicious code |
+| Binary component tracking | **409 PE fingerprints recorded** | Attribution/reachability pending |
 
 ---
 
@@ -133,17 +136,17 @@ Ran 4 different security scanners on `image_recognition_basic.py`:
 
 ### 1. **Share a Security Report**
 - Email the SBOM to stakeholders
-- Say "We've verified all 127 packages"
-- Proves due diligence
+- Disclose the check definitions, skipped capabilities, and April snapshot date
+- Do not claim complete verification or authenticated provenance
 
 ### 2. **Reproduce Exactly**
 - The `requirements-lock.txt` pins all versions
-- Anyone can recreate **identical** setup
-- Good for research reproducibility
+- Rebuild only the declared Windows/CPython baseline using hash-verified installation
+- Save a manifest and verify outputs; byte-identical runtime/model outputs are not guaranteed
 
 ### 3. **Detect Tampering**
 - Re-run the pipeline anytime
-- If hashes change → something was modified
+- Explain hash changes against package versions and the selected baseline
 - Early warning system
 
 ### 4. **Monitor for New Vulnerabilities**
@@ -152,14 +155,14 @@ Ran 4 different security scanners on `image_recognition_basic.py`:
 - Automatic detection
 
 ### 5. **Secure Containerization**
-- Use `runtime_policy.json` to create Docker configs
+- Treat `runtime_policy.json` as input to a separately implemented and tested containment mechanism
 - Restrict network, filesystem, CPU, GPU
-- Hardened sandboxing
+- Enforcement has not been demonstrated; Linux container settings are not Windows runtime evidence
 
 ### 6. **Track Supply Chain**
 - Every binary has a fingerprint
-- Audit trail of what's running
-- Compliance ready
+- Inventory of present files, not an audit trail of actual runtime execution
+- No compliance certification or production-readiness claim
 
 ---
 
@@ -186,7 +189,9 @@ All results are in the `artifacts/` folder:
 
 ## How to Re-Run
 
-### Run everything again (takes ~3 minutes):
+Preserve earlier artifacts before rerunning; the current scripts write into the output directory. Follow the immutable evidence rules required by Task 3 and the baseline setup in [README.md](README.md). Historical timing is not a validated performance estimate.
+
+### Run the preliminary scripts:
 ```bash
 python src/step1_dep_tree.py
 python src/step2_vuln_scan.py
@@ -196,7 +201,7 @@ python src/step5_static_analysis.py
 python src/step6_binary_extraction.py
 ```
 
-### Or just update vulnerabilities (takes ~10 seconds):
+### Or refresh the vulnerability snapshot:
 ```bash
 python src/step2_vuln_scan.py
 ```
@@ -210,20 +215,21 @@ python src/step5_static_analysis.py  # Just re-analyze code
 
 ## Key Takeaway
 
-We've transformed a **black box** ("What's in this Python environment?") into a **transparent, auditable system** where:
+The preliminary run produced inspectable dependency, SBOM, static, integrity-check, and PE inventory records:
 
-- ✅ Every dependency is known and verified
-- ✅ Every file is fingerprinted and checksummed
-- ✅ Every vulnerability is tracked
-- ✅ Every risk is documented with fixes
-- ✅ Every binary is inventoried and hashable
-- ✅ Everything is reproducible and shareable
+- Dependency and SBOM populations differ and require reconciliation.
+- RECORD/hash checks have limits; expected PyPI digests are not actual wheel comparisons.
+- Vulnerability results are snapshot-specific.
+- Binary inventories do not establish runtime reachability.
+- Reproducibility must be demonstrated on a fresh recorded environment.
 
-This is now a **production-ready security pipeline** for ML program auditing.
+This is a **preliminary research prototype**. Model inspection, runtime tracing, targeted reverse engineering, integration, and empirical evaluation remain unfinished.
 
 ---
 
-## Next Steps (Optional Enhancements)
+## Research Follow-Up (Not All Optional)
+
+Task 9 determines which omitted tools are required by the evaluation. Installing a tool alone is not proof of an implemented or validated check. Follow deliberate baseline updates in [README.md](README.md), not ad hoc changes to the frozen environment. Tasks 11-28 cover the missing core UMSAF work; the examples below are suggestions, not completed capabilities.
 
 1. **Install Semgrep** for advanced pattern matching
    ```bash
@@ -259,6 +265,7 @@ This is now a **production-ready security pipeline** for ML program auditing.
 
 ---
 
-**Status:** ✅ Complete and Production-Ready  
+**Status:** Preliminary six-step run recorded; integrated UMSAF evaluation incomplete
+
 **Date:** April 20, 2026  
 **All Artifacts:** Stored in `artifacts/` + documented in `PIPELINE_SESSION_SUMMARY.md`

@@ -3,6 +3,8 @@ University of Nebraska\
 Advisor: Dr. Witawas Srisa-an\
 Date: April, 2026
 
+**Planning alignment (October 31, 2026):** This supporting proposal retains its original document date. [writing/Dissertation_Research.md](writing/Dissertation_Research.md) is the authoritative research scope/methodology, including the current RQ1-RQ7/H1-H7 and conditional ML evaluation; earlier formulations elsewhere in this proposal are retained context, not competing commitments. [writing/Dissertation_Completion_Schedule.md](writing/Dissertation_Completion_Schedule.md) owns the working calendar; [RESEARCH_TODO.md](../RESEARCH_TODO.md) defines dependencies; [Work-Progress-Status.md](Work-Progress-Status.md) records verified progress. Preliminary model/runtime/reverse-engineering discussions here do not establish implemented capabilities; use the status report's evidence boundaries.
+
 ## **Abstract**
 
 Modern machine learning applications are predominantly developed using
@@ -132,77 +134,85 @@ learning applications.
 
 ## **5. Research Timeline** 
 
-This research will follow a revised timeline, with the first research paper
-targeted for submission by **February 2027** and dissertation completion,
-defense, and submission targeted for **May 2027**, in time for graduation.
+The working deadline is **March 31, 2027** for the dissertation, two review
+rounds and revisions, defense, final deposit, and **two paper submissions**,
+with graduation planned for **May 2027**. At a maximum **10 hours/week**,
+the full retained scope is high-risk. Official deadlines, venue dates, and
+review/defense availability remain to be confirmed; earlier official
+deadlines take precedence. See the detailed
+[completion schedule](writing/Dissertation_Completion_Schedule.md).
 
-### **Phase 1 — Scope Finalization & Literature Review**
+### **Phase 1 — Research Contract and Baseline Refresh**
 
-**October – November 2026**
+**November 2-22, 2026**
 
-- Refine research scope
+- Confirm scope, claims, metrics, ground truth, and experiment protocol
 
-- Expand literature review
+- Rebuild/verify the selected Windows environment and add baseline tests
 
-- Finalize experimental design
+- Refresh the existing six-step pipeline; reconcile April evidence and skipped checks
 
-### **Phase 2 — Prototype Development**
+- Confirm two distinct paper contributions, deadlines, and feasibility
 
-**November – December 2026**
+### **Phase 2 — Missing Evidence Producers**
 
-- Implement dependency analysis
+**November 23-December 27, 2026**
 
-- Generate SBOMs
+- Implement/test model inspection and controlled artifact scenarios
 
-- Integrate CVE/OSV scanning
+- Capture reproducible Windows runtime evidence
 
-- Implement package integrity verification
+- Perform targeted PE/Ghidra analysis and confidence-labeled API/native mappings
 
-- Extract wheel binaries
+### **Phase 3 — Integrated UMSAF Artifact**
 
-### **Phase 3 — Binary Analysis**
+**December 28, 2026-January 17, 2027**
 
-**December 2026 – January 2027**
+- Validate the common schema, cross-layer graph, and propagation analysis
 
-- Analyze TensorFlow, Keras, NumPy binaries
+- Implement rule-based scoring and severity-only comparison; assess ML data adequacy
 
-- Use Ghidra for reverse engineering
+- Produce evidence-indexed integrated reports and passing new-module tests
 
-- Identify native-level vulnerabilities
+### **Phase 4 — Empirical Evaluation and Results**
 
-### **Phase 4 — Paper Preparation**
+**January 18-31, 2027**
 
-**January – February 2027**
+- Run controlled cases, repeated workloads, and isolated baselines
 
-- Evaluate findings
+- Complete metrics, scalability, hypotheses, and validity audit
 
-- Write and submit first research paper
+- Freeze results without assuming every hypothesis succeeds
 
-### **Phase 5 — Framework Expansion**
+### **Phase 5 — Complete Draft, Archive, and First Review**
 
-**February – March 2027**
+**February 1-28, 2027**
 
-- Develop cross-layer interaction modeling
+- Complete the incrementally written dissertation/archive by **February 7**
 
-- Implement automated risk scoring
+- Review 1: **February 8-21**; revisions: **February 22-28**
 
-### **Phase 6 — Full System Evaluation**
+- Submit Paper 1 by **February 19**; send Review 2 draft by **February 28**
 
-**March – April 2027**
+### **Phase 6 — Second Review, Second Paper, and Defense Readiness**
 
-- Test across multiple ML applications
+**March 1-21, 2027**
 
-- Validate against known vulnerabilities
+- Review 2: **March 1-14**; revisions: **March 15-21**
 
-### **Phase 7 — Dissertation Completion**
+- Complete Paper 2 draft by **March 7**; submit by **March 19**
 
-**April – May 2027**
+- Obtain approvals, finalize slides, and rehearse
 
-- Final writing
+### **Phase 7 — Defense, Corrections, and Final Deposit**
 
-- Defense preparation
+**March 22-31, 2027**
 
-- Submission
+- Target defense **March 22-26**, subject to official approval
+
+- Address corrections; aim for deposit by **March 26**, with minor contingency through **March 31**
+
+- April-May are graduation follow-through, not planned research time
 
 # **6. Related Work**
 
