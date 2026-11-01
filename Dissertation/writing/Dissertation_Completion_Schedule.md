@@ -12,6 +12,49 @@ This plan uses the actual progress described in [Work-Progress-Status.md](../Wor
 
 This document owns the working calendar; the research manuscript owns scope/methodology, the task list owns execution dependencies, and the progress report owns verified status. Historical drafts and April pipeline reports are not competing schedules or final evaluation evidence.
 
+### How to use the documents together
+
+Use this schedule as your daily starting point, with the other documents as supporting references. You do not need to reread every document daily.
+
+| Document | Purpose | When to use |
+|---|---|---|
+| [Completion Schedule](Dissertation_Completion_Schedule.md) | **When** to work and which weekly deliverable to finish | Start of each week; consult as needed during daily work |
+| [Research To-Do List](../../RESEARCH_TODO.md) | **What to do**, prerequisites, required evidence, and validation | Before starting each task |
+| [Research Manuscript](Dissertation_Research.md) | **Why the work matters**: research questions, hypotheses, and methodology | When designing experiments, interpreting results, or writing |
+| [Progress Status](../Work-Progress-Status.md) | **What is actually completed** and what remains | Update during Friday reviews |
+
+**Simple routine:** On Monday, select this schedule's deliverable and read its referenced tasks. During the week, implement, validate, save evidence, and write. On Friday, update progress and assess whether milestone dates remain achievable.
+
+A scheduled task is not complete until its required evidence is saved and its validation passes. The schedule does not override task prerequisites or the research methodology.
+
+### Daily assistant check-in
+
+Each day, ask:
+
+- What is my current or next task?
+- What steps should I take to complete it?
+
+For each check-in, the assistant should consult this schedule, the task list's prerequisites, and recorded progress, then provide:
+
+1. **Current or next task**, based on actual completion and readiness, not just the calendar date.
+2. **Concrete steps** sized for a one-hour weekday session or the available weekend block, within the 10-hour weekly maximum.
+3. **Required evidence and validation** to confirm completion.
+4. **Next action** if the task needs another session.
+
+Include what you completed since the previous check-in, where the evidence is saved, any validation results, and any blockers. If progress is unclear, clarify it before treating a prerequisite as complete. Scheduled work must never be mistaken for finished work.
+
+### Working ahead
+
+The schedule is a target calendar, not a restriction on starting ready work early. During each check-in, the assistant should identify opportunities to work ahead:
+
+- Once the current deliverable's evidence is saved and validation passes, start the next required task whose prerequisites are complete, even if its scheduled week has not arrived.
+- If the current task is blocked, select an independent ready task or permitted preparatory writing/logistics; do not skip prerequisites or label blocked work complete.
+- Stay within the 10-hour weekly maximum and available session time. Do not routinely consume recovery reserve to accelerate work.
+- Prioritize existing research commitments rather than add features or expand scope. Use time gained to increase buffer before reviews, submissions, and defense.
+- Record early completion in the progress status. Move dependent targets earlier only when prerequisites and required advisor/committee approvals permit; do not shorten review or revision allowances without agreement.
+
+### Current constraints
+
 The six-step preliminary pipeline exists, but its evidence needs refreshing. Model inspection, runtime observation, targeted reverse engineering, cross-layer integration, propagation analysis, risk scoring, and empirical evaluation remain unfinished. The existing dissertation text is a substantial starting draft, not a final evidence-backed dissertation.
 
 **Keeping all current commitments at 10 hours/week is high-risk. This is a capacity-constrained target schedule, not evidence that the full scope is achievable.** The first three weeks must establish actual implementation speed and an advisor-approved feasibility assessment. A calendar cannot resolve a mismatch between workload and available hours.
