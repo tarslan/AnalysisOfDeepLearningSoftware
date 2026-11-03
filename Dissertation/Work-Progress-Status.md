@@ -1,6 +1,6 @@
 # Work Progress Status — UMSAF Dissertation Research
 
-**Status date:** 2026-10-31
+**Status date:** 2026-11-02
 **Repository:** InventoryDependencyTree
 **Primary sources reviewed:** [Dissertation_Research.md](writing/Dissertation_Research.md), [RESEARCH_TODO.md](../RESEARCH_TODO.md), [Dissertation_Completion_Schedule.md](writing/Dissertation_Completion_Schedule.md), [PIPELINE_SESSION_SUMMARY.md](../PIPELINE_SESSION_SUMMARY.md), [src/](../src), [artifacts/](../artifacts), git history
 
@@ -13,7 +13,7 @@
 **UMSAF — Unified Multilayer Security Analysis Framework** for ML/DL software ecosystems: planned cross-layer security analysis spanning seven layers (Application → Dependency/Supply Chain → ML/DL Framework → Serialization/Computational Graph → Native Binary → Runtime/Hardware → OS/Infrastructure), to be evaluated against a TensorFlow/Keras CIFAR-10 CNN workload ([image_recognition_basic.py](../image_recognition_basic.py)).
 
 - **Selected baseline:** Windows x86_64, CPython 3.12.10, TensorFlow 2.21.0, Keras 3.x, NumPy 2.x, PE-format (`.pyd`/`.dll`) analysis. Exact installed versions and hashes still need a fresh verified manifest; the April installation is not automatically the final frozen environment. Linux/ELF is future comparative work only.
-- **Timeline:** **May 2027 graduation**, with dissertation, both review rounds/revisions, defense, final deposit, and **two paper submissions by March 31, 2027**. Complete draft: **February 7**; Paper 1: **February 19**; Paper 2: **March 19**; defense target: **March 22-26**. Review 1: **February 8-21**, revisions **February 22-28**; Review 2: **March 1-14**, revisions **March 15-21**. Official deadlines/reviewer availability remain unconfirmed.
+- **Timeline:** **August 2027 graduation goal**, conditional on the pending comprehensive exam and candidacy eligibility. May is not the active target; its candidacy application deadline (**November 1**) has passed. August snapshot dates: candidacy application **February 1**, graduation application **June 11**, Final Oral application/Near Final rough draft **July 16**, latest defense **July 29**, and final dissertation actions **July 30**. The exact seven-month exam cutoff, department deadlines, and advisor/committee availability still require confirmation. Provisional internal targets remain: complete draft **February 7**; Paper 1 **February 19**; Paper 2 **March 19**; Review 1 **February 8-21** with revisions **February 22-28**; Review 2 **March 1-14** with revisions **March 15-21**; submit the advisor-approved dissertation to the Reading Committee by **March 22**; research/manuscript stretch completion by **March 31**. Because the committee must receive the dissertation at least four weeks before the defense, an early defense cannot be before **April 19-22** if it is sent by March 22. Deposit follows the defense.
 - **Capacity:** maximum **10 hours/week**; approximately **203 available hours** including reserve under the schedule's two lighter-week allowances. The full retained scope is high-risk; no task has been completed or removed to make the calendar fit.
 
 ---
@@ -73,9 +73,9 @@ The recorded preliminary run is from **2026-04-20 (~6 months stale)**. Not every
 
 ### Phase 0 — Research contract (Tasks 1–4)
 
-- [ ] Scope and claims register mapping objectives/RQs/hypotheses to experiments and metrics
-- [ ] Environment manifest (`environment_manifest_<id>.json`)
-- [ ] Experiment protocol (`docs/experiment_protocol.md`), run-directory/evidence rules, evidence-strength labels
+- [ ] Scope and claims register mapping objectives/RQs/hypotheses to experiments and metrics. Draft at [Scope-and-Claims-Register.md](Scope-and-Claims-Register.md); open decisions remain for review.
+- [ ] Environment target manifest at [environment_manifest_target_2026-11-01.json](environment_manifest_target_2026-11-01.json) records the selected configuration, lock hash, current tools, and hardware observation. Source timestamps/required NVD scope remain unresolved; fresh installation verification belongs to Task 5.
+- [ ] Experiment protocol at [docs/experiment_protocol.md](../docs/experiment_protocol.md), manifest template, and checksum dry run at [run manifest](experiments/20261102T034930Z_protocol-dryrun-validated_cnn-model_win-x64_target-v1/manifest.json) are drafted/validated. Formal Task 3 completion remains pending Task 2 prerequisite review and official schedule confirmations.
 - [ ] Ground-truth dataset: known-vulnerable package versions, manipulated model artifacts, modified binaries, runtime anomalies, with TP/FP/FN criteria
 
 ### Phase 1 — Baseline corrections (Tasks 5–10)
@@ -133,4 +133,4 @@ The **writing and planning are mature**, and a solid **preliminary six-step pipe
 4. By January 17: validated integrated UMSAF artifact and Task 7b tests
 5. By January 31: final evaluation, scalability, hypotheses, and validity audit
 6. By February 7: complete evidence-backed dissertation draft and review archive; two review/revision rounds through March 21
-7. February 19 / March 19: Paper 1 / Paper 2 submissions; March 22-26 defense target; March 31 final completion
+7. February 19 / March 19: provisional Paper 1 / Paper 2 submissions; March 22: send advisor-approved dissertation to the Reading Committee; March 31: research/manuscript stretch completion; April 19-22 or later: earliest early-defense window under the four-week committee-review rule; final deposit after defense, no later than the August-term July 30 deadline

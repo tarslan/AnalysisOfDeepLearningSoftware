@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "protocol_version": "0.1-draft",
+  "run_id": "YYYYMMDDThhmmssZ_study-case-platform-config",
+  "run_status": "planned",
+  "experiment": {
+    "name": "TODO",
+    "case_id": "TODO",
+    "research_questions": [],
+    "hypotheses": [],
+    "claims": []
+  },
+  "operator": "TODO",
+  "timestamps": {
+    "started_utc": null,
+    "ended_utc": null,
+    "local_timezone": "TODO",
+    "local_offset": "TODO"
+  },
+  "source_state": {
+    "repository": "tarslan/InventoryDependencyTree",
+    "commit": "TODO",
+    "worktree_dirty": null,
+    "patch_sha256": null
+  },
+  "environment": {
+    "role": "observed_run_environment",
+    "operating_system": "TODO",
+    "os_version": "TODO",
+    "architecture": "TODO",
+    "python_implementation": "CPython",
+    "python_version": "TODO",
+    "python_executable": "TODO",
+    "packaging_tag": "TODO",
+    "lockfile_path": "TODO",
+    "lockfile_sha256": "TODO",
+    "package_inventory_path": "TODO",
+    "package_inventory_sha256": "TODO",
+    "hardware": [],
+    "accelerator_visibility": "TODO",
+    "tools": [],
+    "allowlisted_environment_variables": {}
+  },
+  "data_sources": [
+    {
+      "name": "TODO",
+      "endpoint_or_database": "TODO",
+      "tool_version": "TODO",
+      "queried_at_utc": null,
+      "source_updated_at": null,
+      "raw_response_path": null,
+      "notes": "TODO"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "TODO",
+      "role": "TODO",
+      "size_bytes": null,
+      "sha256": "TODO",
+      "version_or_provenance": "TODO",
+      "snapshot_archived": false,
+      "evidence_strength": "unconfirmed"
+    }
+  ],
+  "execution": {
+    "working_directory": "TODO",
+    "command": [],
+    "isolation_and_resource_limits": "TODO",
+    "network_policy": "TODO",
+    "started_at_utc": null,
+    "ended_at_utc": null,
+    "exit_code": null,
+    "stdout_path": null,
+    "stderr_path": null,
+    "deviations": []
+  },
+  "outputs": [
+    {
+      "path": "TODO",
+      "kind": "raw",
+      "size_bytes": null,
+      "sha256": "TODO",
+      "producer": "TODO",
+      "validation": "not_collected"
+    }
+  ],
+  "evidence_interpretation": [
+    {
+      "claim_or_relationship": "TODO",
+      "evidence_strength": "unconfirmed",
+      "supporting_artifacts": [],
+      "rationale": "TODO",
+      "limitations": []
+    }
+  ],
+  "validation": {
+    "commands": [],
+    "results": [],
+    "summary_reconciled_with_raw_evidence": false,
+    "reviewed_by": null,
+    "review_date": null
+  },
+  "notes": []
+}

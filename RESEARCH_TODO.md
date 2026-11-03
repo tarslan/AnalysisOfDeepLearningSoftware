@@ -1,16 +1,16 @@
 # UMSAF Dissertation Research Execution To-Do List
 
-**Refreshed:** 2026-10-31
+**Refreshed:** 2026-11-02
 
 This document converts the dissertation objectives, methodology, hypotheses, and current repository state into a dependency-aware execution plan. Start work only when its prerequisites pass; independent tasks and incremental writing may overlap. Do not mark a task complete until its evidence has been saved and its validation check has passed.
 
 ## Planning Authority and Milestones
 
 - [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md) is the authoritative research source for the seven layers, RQ1-RQ7, H1-H7, and methodology. Older dated/Old manuscripts and DOCX/TXT copies are historical or exports, not competing plans.
-- [Dissertation_Completion_Schedule.md](Dissertation/writing/Dissertation_Completion_Schedule.md) owns the weekly calendar and capacity: at most 10 hours/week, two dissertation review rounds, two paper submissions, and completion by **March 31, 2027** for **May 2027** graduation.
+- [Dissertation_Completion_Schedule.md](Dissertation/writing/Dissertation_Completion_Schedule.md) owns the weekly calendar and capacity: at most 10 hours/week, two dissertation review rounds, two paper submissions, and an **August 2027** graduation goal conditional on exam/candidacy eligibility.
 - [Work-Progress-Status.md](Dissertation/Work-Progress-Status.md) records verified progress, not scheduled completion. None of the unfinished implementation/evaluation tasks becomes complete through this documentation reconciliation.
-- Targets: evaluation by **January 31**; complete dissertation draft by **February 7**; Review 1 **February 8-21**, revisions **February 22-28**; Review 2 **March 1-14**, revisions **March 15-21**; Paper 1 submission **February 19**; Paper 2 submission **March 19**; defense **March 22-26**; final deposit by **March 31**. All dates are in 2027.
-- Review turnaround, venue deadlines, defense availability, and official institutional deadlines remain to be confirmed. Earlier official deadlines prevail. The full retained scope is high-risk within the schedule's approximately 203 available hours; use its feasibility gates rather than silently dropping requirements.
+- Provisional internal targets: evaluation by **January 31**; complete dissertation draft by **February 7**; Review 1 **February 8-21**, revisions **February 22-28**; Review 2 **March 1-14**, revisions **March 15-21**; Paper 1 submission **February 19**; Paper 2 submission **March 19**; advisor-approved dissertation to the Reading Committee by **March 22**; research/manuscript and paper stretch completion by **March 31**. The four-week committee-review rule makes **April 19-22** the earliest early-defense window if the dissertation is sent by March 22. Final deposit follows the defense and must meet the August-term deadline of **July 30**. All dates are in 2027 and remain subject to eligibility, approvals, and availability.
+- Term-specific Graduate Studies snapshots have been reviewed, but the exact August seven-month comprehensive-exam cutoff, candidacy path/status, department deadlines, venue dates, and advisor/committee availability remain to be confirmed. The May candidacy deadline of November 1 has passed. The full retained scope is high-risk within the schedule's approximately 203 available hours; use its feasibility gates rather than silently dropping requirements.
 
 ## How to Use This Plan
 
@@ -304,7 +304,7 @@ This task has two validation milestones, not a dependency on modules that do not
 - **Use:** [Dissertation_Completion_Schedule.md](Dissertation/writing/Dissertation_Completion_Schedule.md), final dissertation/archive, [README.md](README.md), and the claims-to-evidence matrix.
 - **Prerequisite:** Task 1 for paper outlines/venue decisions; Tasks 8-15 and validated paper-specific results for Paper 1; Tasks 21-28 for Paper 2; Tasks 29-31 for the complete dissertation's formal review rounds. Defense/deposit require both review rounds, revisions, and institutional approvals. Preparatory writing and logistics may start earlier.
 - **Expected evidence:** Two submitted manuscripts and submission receipts, two dated dissertation review records and response matrices, submission-ready dissertation, defense deck, anticipated-question log, defense/correction record, and final-deposit confirmation.
-- **Validate:** Confirm matching document/archive/artifact versions, evidence-grounded answers to every RQ, and completion by March 31, 2027 subject to official deadlines. Paper submission is required; acceptance/publication is not guaranteed by this schedule.
+- **Validate:** Confirm matching document/archive/artifact versions and evidence-grounded answers to every RQ. March 31 is the provisional research/manuscript and paper-submission stretch target, not a defense/deposit deadline; complete the defense and deposit after the required committee review and by the August-term official deadlines. Paper submission is required; acceptance/publication is not guaranteed by this schedule.
 
 ## Completion Definition
 
@@ -317,4 +317,4 @@ The dissertation experiment program is complete only when:
 - H1-H7 and RQ1-RQ7 have evidence-based conclusions, including negative results.
 - Threats to validity, platform boundaries, and data-source timestamps are documented.
 - The dissertation and reproducibility archive can be rebuilt and checked from a clean environment.
-- Two paper submission receipts, two dissertation review/revision records, defense completion/corrections, and final-deposit confirmation are saved by the working March 31, 2027 deadline, with official requirements verified.
+- Two paper submission receipts and two dissertation review/revision records are saved by the March 31, 2027 internal stretch target. Defense completion/corrections and final-deposit confirmation follow the four-week Reading Committee review requirement and the August-term deadlines (latest defense July 29; final dissertation actions July 30), with eligibility and department requirements verified.

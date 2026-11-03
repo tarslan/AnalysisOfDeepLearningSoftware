@@ -1,6 +1,6 @@
 # What We Built: ML Security Pipeline – Plain Language Summary
 
-**Historical run:** April 20, 2026. **Interpretation reconciled:** October 31, 2026. This describes the preliminary six-step prototype, not a production-ready system or completed UMSAF evaluation. [Work-Progress-Status.md](Dissertation/Work-Progress-Status.md) owns current evidence status, [RESEARCH_TODO.md](RESEARCH_TODO.md) owns dependencies, and [Dissertation_Completion_Schedule.md](Dissertation/writing/Dissertation_Completion_Schedule.md) owns the March 31, 2027 completion target for May graduation and two paper submissions.
+**Historical run:** April 20, 2026. **Interpretation reconciled:** October 31, 2026. This describes the preliminary six-step prototype, not a production-ready system or completed UMSAF evaluation. [Work-Progress-Status.md](Dissertation/Work-Progress-Status.md) owns current evidence status, [RESEARCH_TODO.md](RESEARCH_TODO.md) owns dependencies, and [Dissertation_Completion_Schedule.md](Dissertation/writing/Dissertation_Completion_Schedule.md) owns the conditional August 2027 graduation goal, March 31 internal research/manuscript stretch target, and official term deadlines.
 
 ## The Goal
 

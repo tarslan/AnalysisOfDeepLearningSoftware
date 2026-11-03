@@ -1,0 +1,194 @@
+{
+  "schema_version": "1.0",
+  "protocol_version": "0.1-draft",
+  "run_id": "20261102T034746Z_protocol-dryrun-capture_cnn-model_win-x64_target-v1",
+  "run_status": "completed_dry_run",
+  "manifest_type": "protocol_workflow_validation_not_research_result",
+  "experiment": {
+    "name": "Experiment and evidence protocol checksum dry run",
+    "case_id": "existing-cnn-model-hash-only",
+    "research_questions": [],
+    "hypotheses": [],
+    "claims": [
+      "Validate evidence identity, integrity, captured command output, and run traceability only."
+    ]
+  },
+  "operator": "Researcher; identity not recorded",
+  "timestamps": {
+    "started_utc": "2026-11-02T03:47:46.792Z",
+    "ended_utc": "2026-11-02T03:47:46.955Z",
+    "local_timezone": "Windows local time",
+    "local_offset": "-06:00"
+  },
+  "source_state": {
+    "repository": "tarslan/InventoryDependencyTree",
+    "commit": "254fe3c7783deea166c094ba9de53b0013068ff7",
+    "worktree_dirty": true,
+    "patch_sha256": null,
+    "notes": "Local worktree had uncommitted changes."
+  },
+  "related_runs": [
+    {
+      "run_id": "20261102T034621Z_protocol-dryrun_cnn-model_win-x64_target-v1",
+      "relation": "Corrective repeat; original dry-run evidence is preserved and not modified."
+    }
+  ],
+  "environment": {
+    "role": "host observation; PowerShell hash operation",
+    "operating_system": "Microsoft Windows 11 Pro",
+    "os_version": "10.0.26300",
+    "architecture": "x86_64",
+    "python_implementation": "CPython",
+    "python_version": "3.12.10 (existing repository .venv; not used by this operation)",
+    "python_executable": ".venv/Scripts/python.exe",
+    "packaging_tag": "cp312-cp312-win_amd64",
+    "lockfile_path": "requirements-lock.txt",
+    "lockfile_sha256": "1f0ec7143991d62b39f27c2ee751e374d0a2becdf32fff93589a5d6c056ec330",
+    "target_manifest_path": "Dissertation/environment_manifest_target_2026-11-01.json",
+    "target_manifest_sha256": "b10b9ac49898263a534d65b6245644f0bf270ed87d1d3df7a69ea6ea71c01700",
+    "hardware": "See target manifest; unused for checksum operation.",
+    "accelerator_visibility": "Not queried; irrelevant to this hash-only operation.",
+    "tools": [
+      {
+        "name": "PowerShell",
+        "version": "7.6.9"
+      },
+      {
+        "name": "Get-FileHash",
+        "version": "Windows/.NET built-in"
+      }
+    ],
+    "allowlisted_environment_variables": {}
+  },
+  "data_sources": [],
+  "inputs": [
+    {
+      "path": "basic_cifar10_cnn.keras",
+      "role": "Existing model artifact; metadata and hash only; not deserialized or executed.",
+      "size_bytes": 2048191,
+      "sha256": "f2a86a64203a59f26cb030e00aa6c0b3829af0a1feeedf852ac5d4a2b10f1dce",
+      "observed_last_write_utc": "2026-04-20T13:44:13.158Z",
+      "snapshot_archived": false
+    },
+    {
+      "path": "requirements-lock.txt",
+      "role": "Selected environment lockfile.",
+      "size_bytes": 77310,
+      "sha256": "1f0ec7143991d62b39f27c2ee751e374d0a2becdf32fff93589a5d6c056ec330",
+      "observed_last_write_utc": "2026-09-14T21:45:06.993Z",
+      "snapshot_archived": false
+    },
+    {
+      "path": "Dissertation/environment_manifest_target_2026-11-01.json",
+      "role": "Target and existing-environment observation.",
+      "size_bytes": 6571,
+      "sha256": "b10b9ac49898263a534d65b6245644f0bf270ed87d1d3df7a69ea6ea71c01700",
+      "observed_last_write_utc": "2026-11-02T03:38:26.374Z",
+      "snapshot_archived": false
+    },
+    {
+      "path": "docs/experiment_protocol.md",
+      "role": "Protocol with explicit stdout-capture rule.",
+      "size_bytes": 10669,
+      "sha256": "c300047829fb36236105835eff7fbc401d9eacf1396b6fa4ddad7c74fce53482",
+      "observed_last_write_utc": "2026-11-02T03:47:23.857Z",
+      "snapshot_archived": false
+    },
+    {
+      "path": "docs/experiment_manifest.template.json",
+      "role": "Reusable run-manifest template.",
+      "size_bytes": 2592,
+      "sha256": "c7f3e02b98cf3f1648757384bd4e2faf634ea9b14d9c26c02023fff0c1c84e09",
+      "observed_last_write_utc": "2026-11-02T03:45:36.021Z",
+      "snapshot_archived": false
+    },
+    {
+      "path": "Dissertation/experiments/20261102T034621Z_protocol-dryrun_cnn-model_win-x64_target-v1/manifest.json",
+      "role": "Preserved first dry-run manifest; included to document the corrected stdout classification.",
+      "size_bytes": 7469,
+      "sha256": "0fb80095e2b9e0f73b8ff2b7d6e53eb78ddf5332032eb2226b896a1f8f7880e7",
+      "observed_last_write_utc": "2026-11-02T03:46:22.217Z",
+      "snapshot_archived": false
+    }
+  ],
+  "execution": {
+    "working_directory": "Repository root",
+    "command": [
+      "For each listed input, run Get-FileHash -Algorithm SHA256; format and save hash result table to raw/stdout.txt; emit same text; generate derived checksum summary; re-hash all inputs and fail if any changed; create checksums.sha256."
+    ],
+    "isolation_and_resource_limits": "Read-only hashing only; model not parsed, loaded, or executed.",
+    "network_policy": "No network requests.",
+    "started_at_utc": "2026-11-02T03:47:46.792Z",
+    "ended_at_utc": "2026-11-02T03:47:46.955Z",
+    "exit_code": 0,
+    "stdout_path": "raw/stdout.txt",
+    "stderr_path": null,
+    "deviations": [
+      "This protocol-only dry run does not satisfy Task 5 baseline verification."
+    ]
+  },
+  "outputs": [
+    {
+      "size_bytes": 980,
+      "path": "raw/stdout.txt",
+      "kind": "raw-command-output",
+      "sha256": "78bb1da7005cfd4cacb2b1790932e84dad190a8c0c6226cd082ff93b715ac8ae",
+      "producer": "Formatted Get-FileHash results emitted as stdout and saved unchanged.",
+      "validation": "Hash recorded; inputs rechecked unchanged."
+    },
+    {
+      "size_bytes": 1702,
+      "path": "derived/checksum_summary.md",
+      "kind": "derived",
+      "sha256": "c7bc574e6a98131e77ce5731b99f367fb766cf4ea532e37b560e4e563da08bf2",
+      "producer": "PowerShell checksum dry-run operation",
+      "validation": "Created; hash recorded."
+    },
+    {
+      "size_bytes": 1029,
+      "path": "checksums.sha256",
+      "kind": "control-index",
+      "sha256": "20baf5b7e7fc440df48dfd5c27548c4d372ff5b17b78983456047751d9a8d5e6",
+      "producer": "PowerShell checksum dry-run operation",
+      "validation": "All six inputs and two payload outputs indexed."
+    }
+  ],
+  "evidence_interpretation": [
+    {
+      "rationale": "The file was hashed directly before/after the operation, and its digest did not change.",
+      "claim_or_relationship": "The referenced model file had the specified size and SHA-256 at run time.",
+      "evidence_strength": "directly_observed",
+      "limitations": [
+        "No archive structure inspection, loading, or execution.",
+        "File hash does not establish authenticity or safety."
+      ],
+      "supporting_artifacts": [
+        "checksums.sha256",
+        "raw/stdout.txt",
+        "derived/checksum_summary.md"
+      ]
+    }
+  ],
+  "validation": {
+    "commands": [
+      "Get-FileHash -Algorithm SHA256 on all inputs before and after the operation.",
+      "Compare pre/post digests.",
+      "Validate indexed output hashes and manifest sidecar."
+    ],
+    "results": [
+      "Six inputs existed and were readable.",
+      "All six input hashes remained unchanged.",
+      "Captured stdout and derived summary were hashed and indexed."
+    ],
+    "summary_reconciled_with_raw_evidence": true,
+    "reviewed_by": null,
+    "review_date": null
+  },
+  "checksum_index_sha256": "20baf5b7e7fc440df48dfd5c27548c4d372ff5b17b78983456047751d9a8d5e6",
+  "notes": [
+    "Protocol workflow dry run only; not a UMSAF experiment result.",
+    "The model was not loaded or executed.",
+    "Existing environment observation is not the clean Task 5 rebuild.",
+    "The earlier dry-run directory is preserved as a separate attempt."
+  ]
+}

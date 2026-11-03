@@ -65,3 +65,12 @@ artifacts/
 *.bak
 *.backup
 *.log
+
+# Preserve protocol and compact experiment records; generated artifacts stay ignored.
+!docs/experiment_manifest.template.json
+!Dissertation/experiments/
+!Dissertation/experiments/**/manifest.json
+!Dissertation/experiments/**/manifest.sha256
+!Dissertation/experiments/**/checksums.sha256
+!Dissertation/experiments/**/derived/
+!Dissertation/experiments/**/derived/*.md

@@ -11,7 +11,7 @@ The six scripts in [src/](src/) were run as a preliminary pipeline in April 2026
 - [Dissertation_Completion_Schedule.md](Dissertation/writing/Dissertation_Completion_Schedule.md): weekly calendar and **10 hours/week** maximum.
 - [Work-Progress-Status.md](Dissertation/Work-Progress-Status.md): verified progress and missing evidence.
 
-Working targets are two paper submissions (**February 19 and March 19, 2027**) and dissertation reviews, defense, and final deposit by **March 31, 2027**, for **May 2027 graduation**. Official deadlines and reviewer/venue availability remain to be confirmed. The full retained scope is high-risk within approximately 203 available hours. Historical manuscripts/exports are not alternative active plans.
+The graduation goal is **August 2027**, conditional on comprehensive-exam and candidacy eligibility. Provisional internal stretch targets are two paper submissions (**February 19 and March 19, 2027**) and research/manuscript completion by **March 31**. The advisor-approved dissertation must reach the Reading Committee at least four weeks before the defense; with the current review plan, an early defense cannot occur before **April 19-22**. August-term outside deadlines are **July 29** for the defense and **July 30** for final dissertation actions. The exact exam cutoff, department deadlines, and advisor/committee availability remain to be confirmed. The full retained scope is high-risk within approximately 203 available hours. Historical manuscripts/exports are not alternative active plans.
 
 ## Project Overview
 

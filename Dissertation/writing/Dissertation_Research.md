@@ -581,7 +581,7 @@ This layered conceptual model therefore provides the foundation for UMSAF by ena
 
 ## 7. Research Timeline
 
-This research targets **May 2027 graduation**, with the dissertation, two review rounds and revisions, defense, final deposit, and **two paper submissions completed by March 31, 2027**. The working calendar below follows [Dissertation_Completion_Schedule.md](Dissertation_Completion_Schedule.md); official institutional deadlines, reviewer availability, and venue dates remain to be confirmed. Earlier official deadlines take precedence.
+This research targets **August 2027 graduation**, conditional on completing the comprehensive exam by the applicable seven-month cutoff and meeting candidacy requirements. The provisional internal stretch target is **March 31, 2027** for research/manuscript completion and two paper submissions, not defense or final deposit. Review 2 revisions are scheduled through March 21; the advisor-approved dissertation must reach the Reading Committee by March 22 to allow the required four weeks before an earliest early-defense window of April 19-22. Official August-term deadlines are July 29 for the defense and July 30 for final dissertation actions; the exact exam cutoff, department deadlines, advisor/committee availability, and venue dates remain to be confirmed. The working calendar follows [Dissertation_Completion_Schedule.md](Dissertation_Completion_Schedule.md).
 
 The maximum commitment is **10 hours/week** (one hour each weekday and five weekend hours). With the schedule's two provisional lighter weeks, approximately **203 hours** are available through March 31, including reserve. Retaining the full research scope is high-risk within that capacity; feasibility must be reassessed at the schedule's evidence-based checkpoints rather than assuming success or silently dropping requirements. Paper targets are submissions, not guaranteed acceptance or publication.
 
@@ -642,15 +642,15 @@ The maximum commitment is **10 hours/week** (one hour each weekday and five week
 * Complete Paper 2 draft by **March 7** and submit by **March 19**
 * Obtain required approvals, finalize slides, and rehearse within the weekly limit
 
-### Phase 7 — Defense, Corrections, and Final Deposit
+### Phase 7 — Reading Committee Review, Defense, Corrections, and Final Deposit
 
-**March 22-31, 2027**
+**March 22-July 30, 2027**
 
-* Target defense **March 22-26**, subject to official scheduling/approval
-* Address defense corrections and aim for final deposit by **March 26**
-* Reserve **March 29-31** for minor corrections and confirmation, not unfinished research
-* Confirm final deposit, two submission receipts, and graduation requirements by **March 31**
-* April-May are graduation follow-through, not planned research or dissertation-completion time
+* By **March 22**, send the advisor-approved dissertation to the Reading Committee; the required four-week review period means an early defense cannot occur before **April 19**.
+* March 31 remains the provisional research/manuscript and paper-submission stretch target, not a defense or deposit deadline.
+* Target an early defense during **April 19-22 or later**, subject to eligibility, committee availability, application/format-review lead times, and approval.
+* Complete corrections and final deposit after the defense, no later than the August-term deadlines of **July 29** (latest defense) and **July 30** (final dissertation actions); confirm earlier department requirements.
+* April-July is protected committee-review, defense, deposit, and contingency time—not permission to delay required research or expand scope.
 
 # 8. Related Work
 

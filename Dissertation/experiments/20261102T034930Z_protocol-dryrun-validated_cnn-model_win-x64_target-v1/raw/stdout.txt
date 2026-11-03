@@ -1,0 +1,12 @@
+
+Path
+----                                                                                                                    
+basic_cifar10_cnn.keras                                                                                                 
+requirements-lock.txt                                                                                                   
+Dissertation/environment_manifest_target_2026-11-01.json                                                                
+Dissertation/experiments/20261102T034930Z_protocol-dryrun-validated_cnn-model_win-x64_target-v1/raw/inputs/environment_…
+docs/experiment_protocol.md                                                                                             
+Dissertation/experiments/20261102T034930Z_protocol-dryrun-validated_cnn-model_win-x64_target-v1/raw/inputs/experiment_p…
+docs/experiment_manifest.template.json                                                                                  
+Dissertation/experiments/20261102T034930Z_protocol-dryrun-validated_cnn-model_win-x64_target-v1/raw/inputs/experiment_m…
+

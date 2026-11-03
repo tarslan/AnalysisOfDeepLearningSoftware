@@ -1,0 +1,10 @@
+Protocol dry-run command record
+run_id=20261102T034621Z_protocol-dryrun_cnn-model_win-x64_target-v1
+powershell_version=7.6.9
+started_local=2026-11-01T21:46:21.954-06:00
+started_utc=2026-11-02T03:46:21.954Z
+ended_local=2026-11-01T21:46:22.057-06:00
+ended_utc=2026-11-02T03:46:22.057Z
+operation=Get-FileHash -Algorithm SHA256 on each declared input; write checksum_summary.md; recompute input hashes; fail if any input changed.
+model_execution=none; model loading=none
+summary_sha256=f59eb986a18d4d3cc925fd457119449946227a403be4c58b49f78631c533e7f8

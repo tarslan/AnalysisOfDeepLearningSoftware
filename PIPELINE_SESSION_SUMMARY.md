@@ -4,7 +4,7 @@
 **Project:** InventoryDependencyTree  
 **Target Program:** `image_recognition_basic.py` (CIFAR-10 CNN using TensorFlow/Keras/NumPy)
 
-**Historical evidence notice (reconciled October 31, 2026):** The date above is the recorded preliminary run, not a current evaluation timestamp. The authoritative research source is [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md); current progress is in [Work-Progress-Status.md](Dissertation/Work-Progress-Status.md). The [completion schedule](Dissertation/writing/Dissertation_Completion_Schedule.md) targets two submissions and reviewed/defended/deposited dissertation completion by March 31, 2027 for May graduation. Model inspection, runtime tracing, Ghidra analysis, cross-layer integration, and final evaluation remain unimplemented. This report does not assert production readiness.
+**Historical evidence notice (reconciled October 31, 2026):** The date above is the recorded preliminary run, not a current evaluation timestamp. The authoritative research source is [Dissertation_Research.md](Dissertation/writing/Dissertation_Research.md); current progress is in [Work-Progress-Status.md](Dissertation/Work-Progress-Status.md). The [completion schedule](Dissertation/writing/Dissertation_Completion_Schedule.md) targets August 2027 graduation, conditional on eligibility; March 31, 2027 is an internal research/manuscript and paper-submission stretch target, not a defense/deposit deadline. The current review plan requires the dissertation to reach the Reading Committee at least four weeks before an early defense. Model inspection, runtime tracing, Ghidra analysis, cross-layer integration, and final evaluation remain unimplemented. This report does not assert production readiness.
 
 ---
 

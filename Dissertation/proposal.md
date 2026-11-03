@@ -134,12 +134,17 @@ learning applications.
 
 ## **5. Research Timeline** 
 
-The working deadline is **March 31, 2027** for the dissertation, two review
-rounds and revisions, defense, final deposit, and **two paper submissions**,
-with graduation planned for **May 2027**. At a maximum **10 hours/week**,
-the full retained scope is high-risk. Official deadlines, venue dates, and
-review/defense availability remain to be confirmed; earlier official
-deadlines take precedence. See the detailed
+The graduation goal is **August 2027**, conditional on comprehensive-exam and
+candidacy eligibility. **March 31, 2027** is a provisional internal stretch
+target for research/manuscript completion and two paper submissions, not the
+defense or final-deposit deadline. With Review 2 revisions ending March 21,
+the advisor-approved dissertation should reach the Reading Committee by
+March 22; its required four-week review makes April 19-22 the earliest
+compatible early-defense window. August-term outside deadlines are July 29
+for the defense and July 30 for final dissertation actions; the exact exam
+cutoff, department deadlines, venue dates, and review/defense availability
+remain to be confirmed. At a maximum **10 hours/week**, the full retained
+scope is high-risk. See the detailed
 [completion schedule](writing/Dissertation_Completion_Schedule.md).
 
 ### **Phase 1 — Research Contract and Baseline Refresh**
@@ -204,15 +209,19 @@ deadlines take precedence. See the detailed
 
 - Obtain approvals, finalize slides, and rehearse
 
-### **Phase 7 — Defense, Corrections, and Final Deposit**
+### **Phase 7 — Reading Committee Review, Defense, Corrections, and Final Deposit**
 
-**March 22-31, 2027**
+**March 22-July 30, 2027**
 
-- Target defense **March 22-26**, subject to official approval
+- By **March 22**, send the advisor-approved dissertation to the Reading Committee; its required four-week review means an early defense cannot occur before **April 19**.
 
-- Address corrections; aim for deposit by **March 26**, with minor contingency through **March 31**
+- March 31 remains the provisional research/manuscript and paper-submission stretch target, not a defense or deposit deadline.
 
-- April-May are graduation follow-through, not planned research time
+- Target an early defense during **April 19-22 or later**, subject to eligibility, committee availability, required application/format-review lead times, and approval.
+
+- Complete corrections and final deposit after the defense and by the August-term deadlines: **July 29** for the latest defense and **July 30** for final dissertation actions.
+
+- April-July is protected committee-review, defense, deposit, and contingency time, not permission to delay required research or add scope.
 
 # **6. Related Work**
 

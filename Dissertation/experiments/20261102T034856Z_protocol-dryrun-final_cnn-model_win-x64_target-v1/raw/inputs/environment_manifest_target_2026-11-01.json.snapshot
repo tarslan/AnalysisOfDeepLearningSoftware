@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0",
+  "manifest_id": "target-win-x64-cpython31210-20261101",
+  "manifest_type": "selected_target_with_current_environment_observation",
+  "captured_date": "2026-11-01",
+  "status": "Target selected; clean-environment verification remains pending.",
+  "research_scope": {
+    "primary_workload": "TensorFlow/Keras CIFAR-10 CNN",
+    "primary_platform": "Windows x86_64",
+    "binary_format": "PE (.pyd and .dll)",
+    "layers": [
+      "Application",
+      "Dependency/Supply Chain",
+      "ML/DL Framework",
+      "Serialization/Computational Graph",
+      "Native Binary",
+      "Runtime/Hardware",
+      "Operating System/Infrastructure"
+    ],
+    "scope_note": "Primary findings are Windows- and PE-specific. Linux/ELF is comparative future work, not part of this target configuration."
+  },
+  "target_configuration": {
+    "operating_system": "Windows 11 x86_64",
+    "python": {
+      "implementation": "CPython",
+      "version": "3.12.10",
+      "expected_packaging_tag": "cp312-cp312-win_amd64"
+    },
+    "packages": {
+      "tensorflow": "2.21.0",
+      "keras": "3.x",
+      "numpy": "2.x"
+    },
+    "binary_analysis": {
+      "format": "PE",
+      "extensions": [
+        ".pyd",
+        ".dll"
+      ],
+      "parser": "pefile"
+    }
+  },
+  "lockfile": {
+    "path": "../requirements-lock.txt",
+    "sha256": "1F0EC7143991D62B39F27C2EE751E374D0A2BECDF32FFF93589A5D6C056EC330",
+    "hash_measured": true,
+    "hash_checked_against_fresh_install": false
+  },
+  "current_workspace_observation": {
+    "observed_date": "2026-11-01",
+    "environment_role": "Existing repository .venv; observation only, not a clean Task 5 rebuild.",
+    "interpreter": {
+      "path": "C:\\Arslan\\UNL\\PhD\\PythonRelated\\InventoryDependencyTree\\.venv\\Scripts\\python.exe",
+      "version": "3.12.10",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "machine": "AMD64",
+      "packaging_tag": "cp312-cp312-win_amd64"
+    },
+    "host": {
+      "operating_system": "Microsoft Windows 11 Pro",
+      "version": "10.0.26300",
+      "architecture": "64-bit",
+      "default_python_outside_repository_venv": {
+        "version": "3.14.3",
+        "path": "C:\\Users\\tonya\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "used_for_target": false
+      }
+    },
+    "hardware_and_acceleration": {
+      "gpu_hardware": [
+        {
+          "name": "NVIDIA GeForce MX350",
+          "driver_version": "581.83",
+          "reported_memory_bytes": 2147483648
+        },
+        {
+          "name": "Intel(R) Iris(R) Xe Graphics",
+          "driver_version": "31.0.101.4502",
+          "reported_memory_bytes": 1073741824
+        }
+      ],
+      "tensorflow_version_observed": "2.21.0",
+      "tensorflow_cuda_build": false,
+      "tensorflow_visible_gpus": [],
+      "interpretation": "GPU hardware is present, but the observed native-Windows TensorFlow installation is CPU-only and reports no visible GPU. Record this as a CPU execution baseline unless the approved configuration changes."
+    },
+    "observed_package_versions": {
+      "tensorflow": "2.21.0",
+      "keras": "3.14.0",
+      "numpy": "2.4.4",
+      "pip": "26.2.1",
+      "pip-tools": "7.5.3",
+      "pip-audit": "2.10.0",
+      "pipdeptree": "2.35.1",
+      "cyclonedx-python-lib": "11.12.0",
+      "bandit": "1.9.4",
+      "ruff": "0.15.11",
+      "pefile": "2024.8.26"
+    },
+    "optional_tools": {
+      "semgrep": "Not found on PATH; not installed in the observed .venv.",
+      "osv-scanner": "Not found on PATH; the existing scanner script uses its OSV API fallback.",
+      "ghidra": "Not found on PATH; availability through another installation path has not been checked."
+    },
+    "environment_variables": {
+      "capture_policy": "Record only allowlisted experiment-relevant variables; do not serialize credentials, tokens, or unrestricted environment dumps.",
+      "observed_allowlisted_values": {
+        "CUDA_VISIBLE_DEVICES": null,
+        "TF_ENABLE_ONEDNN_OPTS": null,
+        "TF_DETERMINISTIC_OPS": null,
+        "PYTHONHASHSEED": null
+      }
+    }
+  },
+  "vulnerability_data_sources": [
+    {
+      "name": "pip-audit",
+      "observed_tool_version": "2.10.0",
+      "configured_mode": "Default vulnerability service; the repository script does not explicitly set a service endpoint.",
+      "source_timestamp": null,
+      "timestamp_policy": "Capture scan start/end time and tool-reported service details for every run."
+    },
+    {
+      "name": "OSV",
+      "observed_method": "The repository script POSTs package name, PyPI ecosystem, and pinned version to https://api.osv.dev/v1/query when osv-scanner is unavailable.",
+      "source_timestamp": null,
+      "timestamp_policy": "Capture query/run time and preserve raw responses for every run."
+    },
+    {
+      "name": "NVD",
+      "status": "Not currently implemented in the six-step scanner; whether NVD enrichment is required remains an explicit Task 9 decision.",
+      "source_timestamp": null
+    }
+  ],
+  "validation_state": {
+    "target_versions_match_observed_primary_packages": true,
+    "lockfile_sha256_recorded": true,
+    "fresh_hash_verified_installation_completed": false,
+    "pip_check_completed_for_fresh_install": false,
+    "full_installed_package_inventory_compared_with_lockfile": false,
+    "data_source_timestamps_captured": false,
+    "notes": [
+      "The existing .venv reports the selected CPython, TensorFlow, Keras, and NumPy versions, but it has not been freshly rebuilt for this experiment.",
+      "The host-wide default Python is 3.14.3; use the repository .venv or explicitly selected CPython 3.12.10 for the Windows target.",
+      "Task 5 must create/rebuild the environment, install with --require-hashes, run python -m pip check, compare the complete package inventory, and update the observed-environment fields."
+    ]
+  },
+  "open_decisions": [
+    "Task 1 scope-and-claims register remains a draft pending resolution of its listed open decisions.",
+    "Confirm whether NVD enrichment is required; do not report the missing NVD stage as a clean scan.",
+    "Confirm whether GPU execution is outside the primary experiment; current native-Windows TensorFlow build is CPU-only despite installed GPU hardware.",
+    "Capture source timestamps and actual vulnerability-data service details during each scan rather than treating this target manifest date as a feed timestamp."
+  ]
+}
