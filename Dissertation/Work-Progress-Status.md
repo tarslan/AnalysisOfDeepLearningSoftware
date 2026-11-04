@@ -1,6 +1,6 @@
 # Work Progress Status — UMSAF Dissertation Research
 
-**Status date:** 2026-11-02
+**Status date:** 2026-11-03
 **Repository:** InventoryDependencyTree
 **Primary sources reviewed:** [Dissertation_Research.md](writing/Dissertation_Research.md), [RESEARCH_TODO.md](../RESEARCH_TODO.md), [Dissertation_Completion_Schedule.md](writing/Dissertation_Completion_Schedule.md), [PIPELINE_SESSION_SUMMARY.md](../PIPELINE_SESSION_SUMMARY.md), [src/](../src), [artifacts/](../artifacts), git history
 
@@ -10,7 +10,7 @@
 
 ## 1. Research Overview
 
-**UMSAF — Unified Multilayer Security Analysis Framework** for ML/DL software ecosystems: planned cross-layer security analysis spanning seven layers (Application → Dependency/Supply Chain → ML/DL Framework → Serialization/Computational Graph → Native Binary → Runtime/Hardware → OS/Infrastructure), to be evaluated against a TensorFlow/Keras CIFAR-10 CNN workload ([image_recognition_basic.py](../image_recognition_basic.py)).
+**UMSAF — Unified Multilayer Security Analysis Framework** for cross-layer software-ecosystem security: its primary empirical focus is a deep-learning workload, the TensorFlow/Keras CIFAR-10 CNN ([image_recognition_basic.py](../image_recognition_basic.py)). The broader ML/DL ecosystem is research context, not a claim of general validation. Planned analysis spans seven layers (Application → Dependency/Supply Chain → ML/DL Framework → Serialization/Computational Graph → Native Binary → Runtime/Hardware → OS/Infrastructure).
 
 - **Selected baseline:** Windows x86_64, CPython 3.12.10, TensorFlow 2.21.0, Keras 3.x, NumPy 2.x, PE-format (`.pyd`/`.dll`) analysis. Exact installed versions and hashes still need a fresh verified manifest; the April installation is not automatically the final frozen environment. Linux/ELF is future comparative work only.
 - **Timeline:** **August 2027 graduation goal**, conditional on the pending comprehensive exam and candidacy eligibility. May is not the active target; its candidacy application deadline (**November 1**) has passed. August snapshot dates: candidacy application **February 1**, graduation application **June 11**, Final Oral application/Near Final rough draft **July 16**, latest defense **July 29**, and final dissertation actions **July 30**. The exact seven-month exam cutoff, department deadlines, and advisor/committee availability still require confirmation. Provisional internal targets remain: complete draft **February 7**; Paper 1 **February 19**; Paper 2 **March 19**; Review 1 **February 8-21** with revisions **February 22-28**; Review 2 **March 1-14** with revisions **March 15-21**; submit the advisor-approved dissertation to the Reading Committee by **March 22**; research/manuscript stretch completion by **March 31**. Because the committee must receive the dissertation at least four weeks before the defense, an early defense cannot be before **April 19-22** if it is sent by March 22. Deposit follows the defense.

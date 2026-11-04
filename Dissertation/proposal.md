@@ -7,18 +7,18 @@ Date: April, 2026
 
 ## **Abstract**
 
-Modern machine learning applications are predominantly developed using
-high-level programming languages such as Python; however, they rely
-extensively on native C and C++ libraries for computational efficiency.
-Frameworks such as TensorFlow, Keras, and NumPy utilize compiled
-binaries, shared libraries, and hardware acceleration components that
-operate outside the visibility of traditional source-code analysis
-tools. As a result, vulnerabilities residing in native
-components—including memory corruption, unsafe APIs, outdated
-dependencies, and supply-chain risks—may remain undetected.
+Deep-learning applications are commonly developed through high-level
+Python APIs, while relying on native C and C++ libraries for
+computational efficiency. Frameworks such as TensorFlow and Keras and
+supporting libraries such as NumPy use compiled binaries, shared
+libraries, and runtime components that may be outside the visibility of
+source-code analysis tools. Vulnerabilities in native components,
+outdated dependencies, and supply-chain risks may therefore remain
+undetected.
 
-This research proposes a comprehensive cyber system analysis and
-modeling framework for multilayer machine learning systems that
+This research proposes a cross-layer security analysis framework for
+deep-learning software ecosystems, evaluated primarily through a
+controlled TensorFlow/Keras CIFAR-10 CNN case, that
 integrates software composition analysis, software bill of materials
 (SBOM) generation, vulnerability intelligence, and binary reverse
 engineering. The framework will analyze interactions between Python
@@ -29,13 +29,14 @@ as Ghidra will be used to analyze TensorFlow, Keras, and NumPy native
 components, enabling cross-layer visibility into potential security
 weaknesses.
 
-The proposed system will further incorporate machine learning techniques
-to classify high-risk components and prioritize vulnerabilities. The
-ultimate objective is to develop a scalable and automated framework
-capable of improving the security posture of modern artificial
-intelligence software systems.
+The framework will use rule-based risk prioritization and assess a
+separate machine-learning-based prioritization technique only if
+defensible labeled data is adequate. The CNN is the deep-learning system
+being analyzed; it is not evidence that an ML prioritizer is required or
+validated. The study does not claim general effectiveness across all
+machine-learning or deep-learning systems.
 
-**Keywords:** Machine Learning Security, Reverse Engineering, Binary
+**Keywords:** Deep-Learning Software Security, Cross-Layer Analysis, Reverse Engineering, Binary
 Analysis, TensorFlow, SBOM, Software Supply Chain, Vulnerability
 Detection
 
@@ -71,20 +72,23 @@ prior work, multilayer systems are often analyzed in isolation rather
 than holistically, leading to incomplete assessments of system security.
 
 This dissertation addresses this gap by proposing a unified framework
-that integrates software composition analysis, binary reverse
-engineering, and machine learning techniques to analyze Python-based
-machine learning systems across multiple layers. Focusing on the
-interactions between Python applications and native libraries, this
-research aims to uncover vulnerabilities that traditional approaches may
-overlook.
+for cross-layer security analysis of deep-learning software ecosystems,
+evaluated primarily through the controlled TensorFlow/Keras CIFAR-10 CNN
+case. The framework integrates software composition analysis, binary
+reverse engineering, and other evidence sources to analyze Python
+applications and their native libraries. Machine-learning-based risk
+prioritization is a separate, conditional analysis technique, not the
+deep-learning workload being studied.
 
 ## **2. Problem Statement**
 
-Modern machine learning software systems operate across multiple layers,
+Deep-learning software systems operate across multiple layers,
 including Python application code, third-party libraries, native
-binaries, and hardware acceleration modules. Existing security analysis
-approaches are fragmented and fail to provide a comprehensive view of
-vulnerabilities across these layers.
+binaries, and hardware-acceleration modules. Existing security-analysis
+approaches are fragmented and may fail to provide a comprehensive view
+of vulnerabilities across these layers. This study evaluates the issue
+primarily in one controlled TensorFlow/Keras CNN ecosystem and does not
+claim broad validation across all ML/DL systems.
 
 Specifically:
 
@@ -242,7 +246,7 @@ security-critical operations occur. Existing research has not
 sufficiently integrated reverse engineering with higher-level software
 analysis, particularly in the context of Python-based ML systems.
 
-## **6.2 Static Analysis Limitations in Machine Learning Libraries**
+## **6.2 Static-Analysis Limitations in ML/DL Libraries**
 
 Static analysis tools have been widely adopted for detecting software
 bugs and vulnerabilities. However, recent empirical studies demonstrate
@@ -346,7 +350,7 @@ face several limitations:
 These limitations suggest that fuzzing alone is insufficient and must be
 complemented by structural analysis techniques.
 
-## **6.6 Multilayer Architecture of Machine Learning Systems**
+## **6.6 Multilayer Architecture of Deep-Learning Software Systems**
 
 Modern ML systems exhibit a multilayer architecture consisting of:
 

@@ -27,3 +27,10 @@ November 1, 2026 — Task 3 protocol kickoff:
 - Retained February 19 and March 19 paper submissions and March 31 as provisional internal stretch targets for research/manuscript completion and papers, not for defense or final deposit.
 - The snapshots require the advisor-approved dissertation to reach the Reading Committee at least four weeks before the defense. Since the current Review 2 revisions end March 21, plan to send the approved manuscript by March 22 and treat April 19-22 as the earliest possible early-defense window, subject to eligibility, committee availability, required forms/format review, and approval.
 - Preserve April-July for committee review, defense, corrections, deposit, and contingency; do not treat it as permission to defer required research or expand scope.
+
+## November 3, 2026 — Deep-learning empirical focus clarified
+
+- Reviewed [image_recognition_basic.py](../image_recognition_basic.py): it builds a TensorFlow/Keras CNN with convolutional and dense layers, trains it on CIFAR-10, evaluates/predicts, and saves a `.keras` model. This supports describing the primary workload as deep learning.
+- Clarified the authoritative manuscript, proposal summary, scope/claims register, progress status, advisor notes, and Paper 1 schedule description: deep-learning software-ecosystem security is the primary empirical focus; ML/DL terminology remains for broader conceptual context and unvalidated applicability.
+- Kept machine-learning-based risk prioritization as a distinct analysis technique, not the workload under study; it remains conditional on defensible labeled data, with rule-based scoring as the required approach.
+- No source-code or experiment changes were made; conclusions are bounded by the workload(s) actually evaluated.

@@ -12,7 +12,7 @@
 
 ## 2. Research overview — brief spoken version
 
-Modern ML/DL applications are not just Python source code. A TensorFlow/Keras application also relies on third-party packages, native C/C++ libraries, serialized models, runtime components, and operating-system infrastructure. Security tools often inspect these parts separately, so a vulnerability or behavior that crosses layers may be hard to contextualize or trace.
+My empirical focus is a deep-learning application, not the whole field of machine learning: the TensorFlow/Keras CIFAR-10 CNN relies on Python packages, native C/C++ libraries, a serialized model, runtime components, and operating-system infrastructure. Security tools often inspect these parts separately, so a vulnerability or behavior that crosses layers may be hard to contextualize or trace. ML/DL systems provide the broader motivation, but this case study alone will not validate UMSAF across them.
 
 My proposed dissertation is to design and empirically evaluate the **Unified Multilayer Security Analysis Framework (UMSAF)**. Its contribution is not a new dependency scanner, binary-analysis tool, or model-accuracy technique. The proposed contribution is a common method and research prototype for collecting and correlating evidence from existing techniques across seven layers:
 
@@ -26,7 +26,7 @@ My proposed dissertation is to design and empirically evaluate the **Unified Mul
 
 The central question is whether this cross-layer correlation adds validated security visibility, characterization, traceability, or risk context compared with selected isolated analyses. I do not assume that every vulnerability propagates, that all layers add value in every case, or that UMSAF will outperform every baseline.
 
-The primary controlled case is a TensorFlow/Keras CIFAR-10 CNN on Windows x86_64, using CPython 3.12.10 and PE-format `.pyd`/`.dll` analysis. The dissertation is about software-ecosystem security, not improving CNN accuracy or adversarial robustness.
+The primary controlled case is a deep-learning TensorFlow/Keras CIFAR-10 CNN on Windows x86_64, using CPython 3.12.10 and PE-format `.pyd`/`.dll` analysis. The empirical conclusions will be bounded by that case and any additional workloads actually evaluated. The dissertation is about deep-learning software-ecosystem security, not improving CNN accuracy or adversarial robustness. “Machine-learning-based risk prioritization” refers separately to a possible analysis technique, conditional on adequate labeled data and advisor guidance.
 
 ## 3. Research design at a glance
 

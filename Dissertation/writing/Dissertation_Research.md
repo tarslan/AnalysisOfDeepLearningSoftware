@@ -1,4 +1,4 @@
-# **A Unified Framework for Cross-Layer Security Analysis of Machine Learning Software Ecosystems**
+# **A Unified Framework for Cross-Layer Security Analysis of Deep-Learning Software Ecosystems**
 
 Tony Arslan  
 University of Nebraska  
@@ -9,23 +9,23 @@ Date: October 2026
 
 ## Abstract
 
-Modern **machine learning (ML) and deep learning (DL) software ecosystems** extend far beyond high-level application source code and encompass serialized model artifacts, computational graphs, third-party dependencies, native binaries, runtime environments, hardware acceleration layers, and complex software supply chains. Frameworks and libraries such as TensorFlow, Keras, and NumPy rely extensively on native C/C++ components that execute beneath high-level Python abstractions. Consequently, vulnerabilities and security-relevant behaviors originating within native binaries, serialized models, dependency chains, and runtime execution layers may remain undetected when security analysis is limited to individual layers of the software stack.
+Deep-learning applications depend on software ecosystems extending far beyond high-level application source code, including serialized model artifacts, computational graphs, third-party dependencies, native binaries, runtime environments, hardware-acceleration layers, and complex software supply chains. Frameworks and libraries such as TensorFlow, Keras, and NumPy rely extensively on native C/C++ components beneath high-level Python abstractions. Consequently, vulnerabilities and security-relevant behaviors originating within native binaries, serialized models, dependency chains, and runtime layers may remain undetected when analysis is limited to individual parts of the stack.
 
-Prior research has identified limitations in existing security analysis techniques when applied to ML/DL software ecosystems and has demonstrated risks involving vulnerable dependencies, silent computational failures, malicious or manipulated model artifacts, hidden or undocumented execution paths, software supply-chain weaknesses, and runtime vulnerabilities. These findings highlight the limitations of fragmented security approaches that analyze application source code, dependencies, serialized models, native binaries, and runtime behaviors independently rather than examining their interactions across the complete software stack.
+Prior research has identified limitations in existing security analysis techniques for ML/DL software ecosystems and risks involving vulnerable dependencies, silent computational failures, malicious or manipulated model artifacts, hidden execution paths, software supply-chain weaknesses, and runtime vulnerabilities. This dissertation's empirical focus is a controlled deep-learning workload; broader ML/DL ecosystems provide research context, not a claim that the proposed framework has been validated across them.
 
-This research proposes a **Unified Multilayer Security Analysis Framework (UMSAF)** for ML/DL software ecosystems that integrates software composition analysis, Software Bill of Materials (SBOM) generation, vulnerability intelligence, binary reverse engineering, serialized model inspection, runtime behavior analysis, cross-layer interaction modeling, and integrated risk assessment. UMSAF is designed to provide **end-to-end visibility from high-level Python application code through third-party dependencies, serialized model artifacts, native C/C++ components, and runtime execution**. By correlating security evidence across these layers, the framework aims to identify vulnerabilities, hidden execution paths, malicious model behaviors, software supply-chain risks, and cross-layer security interactions that may remain undetected when individual layers are analyzed in isolation.
+This research proposes a **Unified Multilayer Security Analysis Framework (UMSAF)** for cross-layer security analysis of deep-learning software ecosystems. It integrates software composition analysis, Software Bill of Materials (SBOM) generation, vulnerability intelligence, binary reverse engineering, serialized-model inspection, runtime behavior analysis, cross-layer interaction modeling, and risk assessment. UMSAF is designed to correlate evidence from high-level Python application code through dependencies, model artifacts, native components, and runtime execution. Its methods may inform broader ML/DL ecosystem analysis, but the primary evaluation is bounded to the selected deep-learning case study.
 
-The proposed framework will incorporate interpretable rule-based risk scoring and assess whether defensible labeled data supports **machine learning–based risk classification and prioritization techniques**, using features derived from dependency graphs, vulnerability metadata, binary structures, API interactions, and runtime behaviors. ML experiments are conditional on data adequacy, not assumed improvements or a substitute for the required rule-based/severity comparison. Binary reverse engineering tools such as Ghidra will be used to inspect selected native components associated with TensorFlow, Keras, NumPy, and related dependencies.
+The framework will use interpretable rule-based risk scoring and assess whether defensible labeled data supports a separate **machine-learning-based risk-prioritization method**, using features from dependency graphs, vulnerability metadata, binary structures, API interactions, and runtime behaviors. This possible analysis technique is distinct from the deep-learning workload being analyzed. Its evaluation is conditional on data adequacy and does not replace the rule-based and severity-only comparison. Binary reverse-engineering tools such as Ghidra will be used to inspect selected native components associated with TensorFlow, Keras, NumPy, and related dependencies.
 
-The framework will be developed and evaluated using a **design science and empirical evaluation methodology** involving representative ML/DL applications, controlled experimental workloads, and known vulnerability datasets. The preliminary experimental workload includes a **deep learning–based image classification application implemented as a Convolutional Neural Network (CNN) with TensorFlow/Keras using the CIFAR-10 dataset**. This controlled workload provides a reproducible environment for examining dependencies, native components, serialized model artifacts, runtime behavior, and cross-layer interactions within a representative deep learning software stack.
+The framework will be developed and evaluated using a **design science and empirical evaluation methodology** centered on a controlled **deep-learning image-classification application implemented as a Convolutional Neural Network (CNN) with TensorFlow/Keras and CIFAR-10**. This workload provides a reproducible case for examining dependencies, native components, serialized model artifacts, runtime behavior, and cross-layer interactions. Additional workloads may be included when needed to evaluate a specific capability, but one CNN case cannot establish general effectiveness across ML/DL systems.
 
-The ultimate objective of this research is to develop and empirically evaluate a **scalable, automated, and holistic cross-layer security analysis framework** that improves the visibility, security assurance, transparency, and trustworthiness of modern ML/DL software ecosystems.
+The objective is to develop and empirically evaluate a **scalable, automated, and holistic cross-layer security analysis framework** for deep-learning software ecosystems, with conclusions bounded by the workloads and evidence actually evaluated.
 
-**Keywords:** Machine Learning, Deep Learning, Machine Learning Security, Deep Learning Security, AI Software Assurance, Software Composition Analysis, Reverse Engineering, Binary Analysis, TensorFlow, Keras, NumPy, Software Bill of Materials (SBOM), Software Supply Chain Security, Cross-Layer Security Analysis, Vulnerability Detection, Serialized Model Security, Runtime Analysis
+**Keywords:** Deep Learning, Deep-Learning Software Security, Machine-Learning-Based Risk Prioritization, AI Software Assurance, Software Composition Analysis, Reverse Engineering, Binary Analysis, TensorFlow, Keras, NumPy, Software Bill of Materials (SBOM), Software Supply Chain Security, Cross-Layer Security Analysis, Vulnerability Detection, Serialized Model Security, Runtime Analysis
 
 ## 1. Introduction
 
-The rapid adoption of **machine learning (ML) and deep learning (DL)** technologies has transformed modern software systems across domains such as healthcare, finance, energy, and cybersecurity. Developers increasingly rely on high-level languages such as Python to develop ML/DL applications because of their flexibility, accessibility, and extensive ecosystems of frameworks and libraries. However, the computational demands of many ML/DL workloads require optimized native implementations written in C and C++. Consequently, frameworks and libraries such as TensorFlow, Keras, and NumPy operate within multilayer software ecosystems in which high-level Python interfaces interact with complex underlying native components, computational frameworks, serialized model artifacts, and runtime environments.
+The rapid adoption of **machine learning (ML), particularly deep learning (DL),** has transformed modern software systems across domains such as healthcare, finance, energy, and cybersecurity. This dissertation focuses empirically on a Python-based deep-learning application and its supporting ecosystem. Such applications depend on frameworks and libraries including TensorFlow, Keras, and NumPy, where high-level Python interfaces interact with native C/C++ components, serialized model artifacts, and runtime environments. The broader ML/DL context motivates the work, but is not itself the scope of empirical validation.
 
 Although Python provides memory-safety characteristics that reduce certain classes of low-level vulnerabilities, the underlying native C/C++ components do not provide the same protections. These components may introduce security risks such as buffer overflows, memory corruption, improper memory management, unsafe system interactions, and vulnerabilities inherited from outdated or compromised dependencies. In addition, the growing complexity of ML/DL software supply chains introduces risks involving vulnerable third-party packages, dependency confusion, malicious package insertion, compromised build artifacts, and tampering with binary or serialized model artifacts.
 
@@ -53,7 +53,7 @@ Therefore, there is a need for a **unified, cross-layer security analysis framew
 
 ## 3. Research Objectives
 
-The primary objective of this research is to design, implement, and empirically evaluate the **Unified Multilayer Security Analysis Framework (UMSAF)** for analyzing security risks across interconnected layers of machine learning (ML) and deep learning (DL) software ecosystems.
+The primary objective of this research is to design, implement, and empirically evaluate the **Unified Multilayer Security Analysis Framework (UMSAF)** for cross-layer security analysis, with its primary empirical evaluation conducted on a controlled TensorFlow/Keras deep-learning software ecosystem.
 
 The specific research objectives are to:
 
@@ -80,7 +80,7 @@ The specific research objectives are to:
 
 ## 4. Scope of Research
 
-This research focuses on the security analysis of modern **machine learning (ML) and deep learning (DL) software ecosystems**, with particular emphasis on Python-based frameworks and applications that rely on native C/C++ computational components. The primary objective is to investigate how vulnerabilities, security-relevant behaviors, and attack surfaces originate, propagate, interact, and manifest across multiple interconnected software layers, including:
+This research focuses empirically on a Python-based **deep-learning software ecosystem** using frameworks and applications that rely on native C/C++ computational components. The broader ML/DL ecosystem is the conceptual context for UMSAF; this study does not claim that its single primary workload validates general effectiveness across all ML/DL systems. Within the selected case, the research investigates how vulnerabilities, security-relevant behaviors, and attack surfaces originate, propagate, interact, and manifest across:
 
 * application code
 * third-party libraries and dependencies
@@ -90,7 +90,7 @@ This research focuses on the security analysis of modern **machine learning (ML)
 * runtime environments
 * hardware acceleration and supporting infrastructure components
 
-The scope of this dissertation primarily encompasses ML/DL software ecosystems utilizing:
+The primary case study encompasses a deep-learning software ecosystem utilizing:
 
 * TensorFlow
 * Keras
@@ -99,7 +99,7 @@ The scope of this dissertation primarily encompasses ML/DL software ecosystems u
 
 The experimental analysis emphasizes software environments in which high-level Python APIs interact with lower-level native C/C++ implementations through compiled libraries, framework execution engines, runtime components, and hardware acceleration interfaces.
 
-The proposed research specifically investigates:
+The proposed research specifically investigates in that case study:
 
 * software composition and dependency analysis
 * Software Bill of Materials (SBOM) generation and analysis
@@ -113,7 +113,7 @@ The proposed research specifically investigates:
 * vulnerability propagation across software layers
 * and integrated risk classification and vulnerability prioritization.
 
-The research emphasizes the correlation of security evidence across interconnected ML/DL software layers rather than analyzing individual software components in isolation. This cross-layer perspective is intended to provide greater visibility into relationships among application code, dependencies, serialized model artifacts, native binaries, and runtime execution environments.
+The research emphasizes correlation of security evidence across interconnected layers of the selected deep-learning software ecosystem rather than analyzing individual software components in isolation. The framework is designed with broader ML/DL applicability in mind, but conclusions will be limited to the cases and evidence actually evaluated.
 
 The dissertation does not attempt to address all aspects of ML/DL security. In particular, the following topics are outside the primary scope of this research:
 
@@ -126,7 +126,7 @@ The dissertation does not attempt to address all aspects of ML/DL security. In p
 
 Although adversarial machine learning literature is considered where relevant to the broader security context, the primary emphasis of this research is **software ecosystem security, cross-layer security analysis, and multilayer software assurance**, rather than adversarial perturbation generation or defense techniques.
 
-The experimental implementation is limited to **controlled research environments and representative ML/DL workloads** used to develop and empirically evaluate the proposed **Unified Multilayer Security Analysis Framework (UMSAF)**. The preliminary experimental workload includes a **deep learning–based image classification application implemented as a Convolutional Neural Network (CNN) with TensorFlow/Keras using the CIFAR-10 dataset**. Additional representative applications, framework components, and known vulnerability datasets may be incorporated where necessary to evaluate specific UMSAF capabilities. The research does not attempt to provide exhaustive vulnerability coverage across all ML/DL frameworks, application types, hardware platforms, or deployment environments.
+The experimental implementation is limited to **controlled research environments**, centered on a **deep-learning image-classification application implemented as a CNN with TensorFlow/Keras using CIFAR-10**, to develop and empirically evaluate UMSAF. Additional workloads or framework components may be incorporated when necessary to test a specific capability. The research does not claim exhaustive coverage or general effectiveness across ML/DL frameworks, application types, hardware platforms, or deployment environments.
 
 Despite these defined boundaries, the proposed research aims to establish a **scalable and extensible foundation for holistic, cross-layer security assurance** within modern ML/DL software ecosystems.
 
@@ -137,19 +137,19 @@ The following research questions guide the design, implementation, and empirical
 
 #### RQ1 — Dependency and Supply-Chain Analysis
 
-How can dependencies, native binary components, and associated software supply-chain risks within Python-based machine learning (ML) and deep learning (DL) software ecosystems be systematically identified, analyzed, and correlated?
+How can dependencies, native binary components, and associated software supply-chain risks within the selected Python-based deep-learning software ecosystem be systematically identified, analyzed, and correlated?
 
 #### RQ2 — Effectiveness of Existing Security Analysis Approaches
 
-How effective are existing software security analysis techniques when applied to ML/DL applications, frameworks, dependencies, and native components, and what security visibility gaps remain when these techniques are applied independently?
+How effective are existing software security analysis techniques when applied to the selected deep-learning application, its framework, dependencies, and native components, and what security visibility gaps remain when these techniques are applied independently?
 
 #### RQ3 — Native Binary Analysis and Reverse Engineering
 
-To what extent can binary analysis and reverse engineering techniques recover security-relevant structural and behavioral information from native C/C++ components underlying Python-based ML/DL frameworks and applications?
+To what extent can binary analysis and reverse engineering techniques recover security-relevant structural and behavioral information from native C/C++ components underlying the selected Python-based deep-learning framework and application?
 
 #### RQ4 — Serialized Model and Computational Graph Security
 
-How can serialized ML/DL model artifacts and computational graphs be systematically inspected to identify security-relevant characteristics, potentially malicious functionality, unsafe operations, and interactions with underlying framework components?
+How can the selected deep-learning model artifact and computational graph be systematically inspected to identify security-relevant characteristics, potentially malicious functionality, unsafe operations, and interactions with underlying framework components?
 
 #### RQ5 — Runtime Security Analysis
 
@@ -161,14 +161,14 @@ To what extent can cross-layer interaction modeling and correlation of security 
 
 #### RQ7 — Integrated Framework Effectiveness
 
-To what extent does UMSAF provide more comprehensive security visibility and risk identification across ML/DL software ecosystems than isolated security analysis approaches?
+To what extent does UMSAF provide more comprehensive security visibility and risk identification in the evaluated deep-learning software ecosystem than selected isolated security-analysis approaches?
 
 
-# 6. Threat Model for Machine Learning and Deep Learning Software Ecosystems
+# 6. Threat Model for Deep-Learning Software Ecosystems
 
 ## 6.1 Overview
 
-Modern **machine learning (ML) and deep learning (DL) software ecosystems** consist of multiple interconnected software and execution layers, including application code, third-party dependencies, ML/DL frameworks, serialized model artifacts and computational graphs, native C/C++ components, runtime environments, hardware acceleration components, and operating system or infrastructure layers. These multilayer architectures introduce complex attack surfaces and trust boundaries that extend beyond those visible at the high-level application layer.
+The threat model draws on the broader **machine learning (ML) and deep learning (DL) software ecosystem** literature. The dissertation's primary empirical focus is a deep-learning workload and its supporting ecosystem; the seven-layer model is a conceptual analysis framework, not evidence that every layer or threat has been validated across all ML/DL systems. Such ecosystems may include application code, third-party dependencies, ML/DL frameworks, serialized model artifacts and computational graphs, native C/C++ components, runtime environments, hardware acceleration, and operating-system or infrastructure layers.
 
 ML/DL systems frequently rely on:
 
@@ -902,7 +902,7 @@ To analyze security across these layers, UMSAF integrates:
 * serialized model and computational graph inspection
 * runtime behavior and execution analysis
 * cross-layer interaction and vulnerability propagation modeling
-* and machine learning–based risk classification and vulnerability prioritization.
+* and risk prioritization, using rule-based scoring as the required approach and machine-learning-based prioritization only if data adequacy supports it.
 
 UMSAF is distinguished by its emphasis on **correlating security evidence across software layers rather than analyzing individual components independently**. The framework is designed to establish relationships among application code, dependencies, framework components, serialized model artifacts, native binaries, runtime behavior, and underlying execution environments.
 
@@ -912,7 +912,7 @@ The proposed research will empirically evaluate whether this integrated approach
 
 Through this integration, UMSAF aims to provide a scalable and extensible foundation for holistic security assurance within modern ML/DL software ecosystems.
 
-## 8.11 Evolution of Machine Learning and Deep Learning Security
+## 8.11 Evolution of ML/DL Software Security
 
 Early ML/DL security research focused substantially on adversarial attacks against trained models. Initial studies demonstrated that carefully crafted input perturbations could manipulate neural-network predictions, establishing adversarial robustness as an important area of ML/DL security research.
 
@@ -1104,7 +1104,7 @@ A controlled experimental environment was developed using a simplified **deep le
 
 The CNN architecture contains two convolutional feature-extraction blocks followed by fully connected classification layers. This architecture makes the application a deep learning workload rather than a conventional non-neural machine learning model.
 
-The purpose of the experimental application is not to optimize image-classification performance. Instead, it provides a controlled and reproducible workload through which multiple components and execution layers of a representative ML/DL software ecosystem can be examined.
+The purpose of the experimental application is not to optimize image-classification performance. Instead, it provides a controlled and reproducible deep-learning workload through which multiple components and execution layers of the selected software ecosystem can be examined.
 
 The experimental workload supports investigation of:
 
@@ -1550,11 +1550,11 @@ Accordingly, the preliminary study provides the experimental foundation for tran
 
 ## 10.1 Overview
 
-This research proposes a **Unified Multilayer Security Analysis Framework (UMSAF)** designed to analyze Python-based **machine learning (ML) and deep learning (DL) software ecosystems** that rely on interconnected dependencies, serialized model artifacts, native C/C++ components, runtime environments, hardware acceleration mechanisms, and supporting operating system and infrastructure components.
+This research proposes a **Unified Multilayer Security Analysis Framework (UMSAF)** for cross-layer analysis of Python-based ML/DL software ecosystems and their interconnected dependencies, serialized model artifacts, native C/C++ components, runtime environments, hardware acceleration, and supporting infrastructure. The primary design and empirical evaluation are centered on the selected TensorFlow/Keras deep-learning case; the study does not claim that this case validates UMSAF across the broader ML/DL domain.
 
-UMSAF integrates software composition and dependency analysis, Software Bill of Materials (SBOM) generation, vulnerability intelligence, package and artifact integrity analysis, native binary extraction, binary reverse engineering, serialized model and computational graph inspection, runtime behavior analysis, cross-layer interaction modeling, vulnerability propagation analysis, and machine learning–based risk classification and vulnerability prioritization.
+UMSAF integrates software composition and dependency analysis, Software Bill of Materials (SBOM) generation, vulnerability intelligence, package and artifact integrity analysis, native binary extraction, binary reverse engineering, serialized model and computational graph inspection, runtime behavior analysis, cross-layer interaction modeling, vulnerability propagation analysis, and risk prioritization. Interpretable rule-based prioritization is the required approach; machine-learning-based classification or prioritization remains a separate, conditional extension if defensible labeled data is adequate.
 
-The primary goal of UMSAF is to overcome the limitations of isolated security-analysis approaches by providing **end-to-end security visibility across multiple interconnected layers of the ML/DL software ecosystem**.
+The primary goal of UMSAF is to overcome the limitations of isolated security-analysis approaches by providing **end-to-end security visibility across multiple interconnected layers of the software ecosystem**.
 
 Consistent with the threat model and conceptual architecture defined in Section 6, UMSAF analyzes the following seven layers:
 
@@ -1578,7 +1578,7 @@ Unlike approaches that analyze source code, dependencies, serialized models, nat
 
 Through this correlation, UMSAF aims to provide a more comprehensive understanding of how vulnerabilities and security-relevant behaviors originate, propagate, interact, and manifest throughout ML/DL software ecosystems.
 
-The framework will be developed and empirically evaluated using controlled and representative ML/DL workloads. The preliminary experimental workload is a **deep learning–based image classification application implemented as a Convolutional Neural Network (CNN) with TensorFlow/Keras using the CIFAR-10 dataset**.
+The framework will be developed and empirically evaluated primarily using a controlled deep-learning workload: a **deep learning–based image classification application implemented as a Convolutional Neural Network (CNN) with TensorFlow/Keras using the CIFAR-10 dataset**. Additional workloads are optional and should be added only when needed to evaluate a specific capability and approved as feasible.
 
 ## 10.2 Architectural Design
 
@@ -2099,9 +2099,9 @@ I have preserved the original methodological intent while revising the terminolo
 
 ## 11.1 Overview
 
-This research adopts a **design science and empirical evaluation methodology** to design, implement, and evaluate the proposed **Unified Multilayer Security Analysis Framework (UMSAF)**.
+This research adopts a **design science and empirical evaluation methodology** to design, implement, and evaluate the proposed **Unified Multilayer Security Analysis Framework (UMSAF)**, with the primary empirical evaluation centered on one controlled TensorFlow/Keras deep-learning workload.
 
-The study combines framework design, prototype implementation, controlled experimentation, comparative analysis, and empirical evaluation using representative **machine learning (ML) and deep learning (DL) software environments**, controlled experimental workloads, selected vulnerable framework or library versions, known vulnerability information, and security-relevant software artifacts.
+The study combines framework design, prototype implementation, controlled experimentation, comparative analysis, and empirical evaluation using that deep-learning software ecosystem, controlled security scenarios, selected vulnerable framework or library versions, known vulnerability information, and security-relevant software artifacts. Additional workloads may be considered only when needed for a specific capability and feasible within the approved scope.
 
 The preliminary experimental workload consists of a **deep learning–based image classification application implemented as a Convolutional Neural Network (CNN) with TensorFlow/Keras using the CIFAR-10 dataset**. This workload provides a controlled and reproducible environment for examining security evidence across multiple interconnected layers of an ML/DL software ecosystem.
 
@@ -2129,7 +2129,7 @@ The **Design** phase defines the UMSAF conceptual architecture, threat model, an
 
 The **Implementation** phase develops the UMSAF prototype and integrates the analytical capabilities required to collect and correlate security evidence.
 
-The **Experimentation** phase applies UMSAF to controlled and representative ML/DL software environments.
+The **Experimentation** phase applies UMSAF to the primary controlled deep-learning software environment and its security scenarios.
 
 The **Evaluation** phase assesses the effectiveness, coverage, traceability, scalability, and analytical value of the integrated framework relative to isolated security-analysis approaches.
 
@@ -2147,7 +2147,7 @@ The research process includes:
 * definition of research objectives
 * UMSAF architecture and artifact design
 * prototype implementation
-* demonstration using controlled ML/DL workloads
+* demonstration using the primary controlled deep-learning workload and its security scenarios
 * empirical evaluation
 * comparative analysis
 * and refinement based on experimental findings.
@@ -2182,8 +2182,8 @@ UMSAF consists of analytical components supporting:
 * runtime behavior analysis
 * cross-layer interaction modeling
 * vulnerability propagation analysis
-* integrated risk assessment
-* and machine learning–based risk classification and vulnerability prioritization.
+* integrated, interpretable rule-based risk assessment
+* and, if data adequacy supports it, machine-learning-based risk classification or vulnerability prioritization as a separately evaluated extension.
 
 The artifact will be evaluated not only by whether its individual components function correctly, but also by whether the integration and correlation of their outputs provides measurable analytical value.
 
@@ -2193,7 +2193,7 @@ The artifact will be evaluated not only by whether its individual components fun
 
 ### 11.3.1 Experimental Subjects
 
-The empirical evaluation will use controlled and representative ML/DL software environments selected to exercise the analytical capabilities of UMSAF.
+The empirical evaluation will use the primary controlled TensorFlow/Keras deep-learning software environment and security scenarios selected to exercise UMSAF. Additional workloads are not assumed and require a specific evaluation need.
 
 The experimental subjects may include the following categories.
 
@@ -2456,7 +2456,7 @@ The empirical evaluation will follow a structured and reproducible experimental 
 
 ### Step 1 — Experimental Subject Selection
 
-Select controlled ML/DL workloads, software configurations, and known vulnerable components relevant to the evaluation objectives.
+Select the primary deep-learning workload, its software configurations, and known vulnerable components relevant to the evaluation objectives. Add another workload only if it is necessary for a specific capability and feasible within the approved scope.
 
 Record:
 
@@ -2893,11 +2893,11 @@ contribute meaningful information to risk assessment.
 
 Where machine learning–based classification or prioritization is used, its performance will be compared with simpler rule-based or severity-based approaches.
 
-### H7 — Holistic Ecosystem Analysis Provides Broader ML/DL Software Assurance
+### H7 — Holistic Analysis Provides Broader Security Assurance for the Evaluated Deep-Learning Ecosystem
 
 **Hypothesis:**
 
-Analyzing ML/DL applications as interconnected software ecosystems provides broader security assurance than evaluating individual software components or layers independently.
+Analyzing the evaluated deep-learning application and its supporting software ecosystem as an interconnected system provides broader security assurance than evaluating its individual components or layers independently.
 
 This hypothesis represents the overarching proposition of the dissertation and integrates the findings associated with H1 through H6.
 
@@ -3249,7 +3249,7 @@ UMSAF is designed as a modular analytical framework integrating:
 * cross-layer interaction mapping
 * vulnerability propagation analysis
 * integrated risk assessment
-* and machine learning–based risk classification and vulnerability prioritization.
+* and, if data adequacy supports it, machine-learning-based risk classification or vulnerability prioritization as an optional extension.
 
 UMSAF is not intended to replace specialized security-analysis tools. Instead, it provides an integration and correlation methodology through which evidence generated by different analytical techniques can be associated with components and relationships across the seven-layer ML/DL software ecosystem model.
 
@@ -3358,9 +3358,9 @@ The effectiveness of machine learning–based classification or prioritization w
 
 ## 12.3 Empirical Contributions
 
-### 12.3.1 Reproducible ML/DL Security Evidence Collection
+### 12.3.1 Reproducible Deep-Learning Ecosystem Security Evidence Collection
 
-The research is expected to produce a structured collection of experimental security evidence derived from controlled and representative ML/DL software environments.
+The research is expected to produce a structured collection of experimental security evidence derived primarily from the controlled TensorFlow/Keras deep-learning environment and its security scenarios.
 
 The collected evidence may include mappings among:
 
@@ -3436,7 +3436,7 @@ Rather than treating TensorFlow, Keras, and NumPy as necessarily independent cas
 
 Selected historical framework or dependency versions associated with known vulnerabilities may also be incorporated to provide controlled security-evaluation cases where appropriate.
 
-Additional representative ML/DL workloads may be incorporated if required to evaluate specific UMSAF capabilities or improve the external validity of the empirical evaluation.
+An additional workload may be incorporated only if required to evaluate a specific UMSAF capability, approved within the project scope, and feasible. Such a workload would not by itself establish broad external validity.
 
 ### 12.3.4 Empirical Evidence of Cross-Layer Security Relationships
 
@@ -3500,7 +3500,7 @@ The prototype will primarily serve as an experimental research artifact for eval
 
 Where feasible and appropriate, the implementation may be structured so that it can be shared or extended for future research. Public open-source release may be considered separately based on implementation maturity, licensing restrictions, security considerations, and dissertation requirements.
 
-### 12.4.2 ML/DL Software Security Guidelines
+### 12.4.2 Deep-Learning Software Security Guidelines
 
 The research is expected to produce practical security guidance derived from the UMSAF design and empirical findings.
 
@@ -3638,7 +3638,7 @@ The contribution is the **integration and correlation** of these methods within 
 
 ## 12.6 Overall Research Contribution
 
-The overarching contribution of this dissertation is the development and empirical evaluation of a **holistic, cross-layer security-assurance approach for modern ML/DL software ecosystems**.
+The overarching contribution of this dissertation is the development of a **holistic, cross-layer security-assurance approach intended for ML/DL software ecosystems**, with its primary empirical evaluation bounded to the controlled TensorFlow/Keras deep-learning case and any additional workloads actually evaluated.
 
 UMSAF shifts the unit of security analysis from isolated software artifacts toward the security relationships among the seven formal layers:
 
@@ -3962,9 +3962,9 @@ These boundaries are consistent with the defined research scope and allow the di
 
 The research is conducted under several assumptions necessary to support the design, implementation, and empirical evaluation of UMSAF.
 
-### 13.2.1 Python-Based ML/DL Software Ecosystems
+### 13.2.1 Python-Based Deep-Learning Workload
 
-The experimental scope assumes that the primary ML/DL workloads analyzed in this research are **Python-based** and use commonly available Python packaging and framework mechanisms.
+The experimental scope assumes that the primary deep-learning workload analyzed in this research is **Python-based** and uses commonly available Python packaging and framework mechanisms.
 
 This assumption reflects the selected experimental environment involving TensorFlow/Keras, NumPy, and related dependencies.
 
@@ -4128,7 +4128,7 @@ This dissertation proposes the **Unified Multilayer Security Analysis Framework 
 ↓
 **Operating System / Infrastructure Layer**
 
-Within this architecture, UMSAF integrates **software composition and dependency analysis, Software Bill of Materials (SBOM) generation and analysis, vulnerability intelligence, software supply-chain analysis, package and artifact integrity analysis, native binary extraction and characterization, binary reverse engineering, serialized-model and computational-graph inspection, runtime behavior analysis, cross-layer interaction modeling, vulnerability-propagation analysis, integrated risk assessment, and machine learning–based risk classification and vulnerability prioritization**.
+Within this architecture, UMSAF integrates **software composition and dependency analysis, Software Bill of Materials (SBOM) generation and analysis, vulnerability intelligence, software supply-chain analysis, package and artifact integrity analysis, native binary extraction and characterization, binary reverse engineering, serialized-model and computational-graph inspection, runtime behavior analysis, cross-layer interaction modeling, vulnerability-propagation analysis, and risk assessment**. Rule-based risk scoring is required; machine-learning-based prioritization remains an optional extension subject to the data-adequacy decision.
 
 The central premise of UMSAF is that the security significance of an individual finding may depend not only on the presence of a vulnerability or security-relevant condition but also on its relationship to other components within the software ecosystem. A vulnerable dependency, for example, may have different security implications depending on whether the affected component is associated with a relevant native binary, reachable through framework functionality, loaded during runtime, observed in execution, or connected to a broader cross-layer propagation path. Similarly, serialized model artifacts may interact with framework, native, and runtime components in ways that cannot be fully characterized through application-source or dependency analysis alone.
 
@@ -4140,15 +4140,15 @@ The dissertation adopts a **design science and empirical evaluation methodology*
 
 **Design → Implementation → Experimentation → Evaluation**
 
-Through this methodology, UMSAF will be implemented as a research artifact and evaluated using controlled and representative ML/DL workloads, selected framework and dependency configurations, known vulnerability information, serialized model artifacts, native components, and runtime evidence. The evaluation will compare UMSAF with selected isolated security-analysis approaches and examine dimensions including **security visibility, vulnerability identification and characterization, cross-layer traceability, vulnerability-propagation analysis, risk prioritization, scalability, and reproducibility**.
+Through this methodology, UMSAF will be implemented as a research artifact and evaluated primarily using the controlled TensorFlow/Keras deep-learning workload, selected framework and dependency configurations, known vulnerability information, serialized model artifacts, native components, and runtime evidence. The evaluation will compare UMSAF with selected isolated security-analysis approaches and examine dimensions including **security visibility, vulnerability identification and characterization, cross-layer traceability, vulnerability-propagation analysis, risk prioritization, scalability, and reproducibility**. Conclusions will be bounded by the workloads and evidence actually evaluated.
 
 The empirical evaluation does not assume that UMSAF will outperform every individual security-analysis technique or that every vulnerability will propagate across multiple software layers. Instead, the research will determine **whether, where, and to what extent integrated cross-layer security analysis provides additional security evidence, context, and traceability beyond isolated analysis approaches**. Cases in which cross-layer correlation provides limited or no additional analytical benefit will also contribute to understanding the capabilities and boundaries of the proposed framework.
 
 A further objective of the research is to investigate whether integrated evidence from dependencies, vulnerability intelligence, native binaries, serialized artifacts, runtime execution, and cross-layer relationships can support more contextually informed **risk classification and vulnerability prioritization**. Machine learning–based prioritization will be evaluated alongside rule-based and vulnerability-severity-based approaches only when the documented data-adequacy decision supports defensible ML experiments; no superior result is assumed.
 
-Ultimately, this dissertation positions ML/DL security as a **holistic software ecosystem assurance problem** rather than solely as a problem of adversarial robustness, source-code security, vulnerable dependencies, model security, native binary analysis, or runtime monitoring. Each of these areas provides an important but partial perspective. UMSAF seeks to integrate these perspectives into a common analytical framework capable of examining the relationships among application code, software supply chains, ML/DL frameworks, serialized models, native binaries, runtime environments, hardware acceleration, and supporting infrastructure.
+This dissertation is situated within the broader field of ML/DL software ecosystem security, but its primary empirical contribution is focused on a controlled deep-learning software ecosystem. It treats security as a **holistic software ecosystem assurance problem** rather than solely as a problem of adversarial robustness, source-code security, vulnerable dependencies, model security, native binary analysis, or runtime monitoring. UMSAF is designed to integrate these perspectives; conclusions about its effectiveness will be limited to the workloads and evidence evaluated.
 
-The overarching contribution of this research is therefore the development and empirical evaluation of a **scalable, extensible, reproducible, and holistic cross-layer security-assurance framework for modern ML/DL software ecosystems**. By integrating and correlating security evidence across multiple layers, the research aims to improve the **visibility, traceability, characterization, and prioritization of security risks** within increasingly complex ML/DL software systems and to provide an empirically grounded foundation for future research and practice in ML/DL software assurance.
+The overarching contribution of this research is the development and empirical evaluation of a **scalable, extensible, reproducible, and holistic cross-layer security-assurance framework**, with its primary evaluation conducted on the TensorFlow/Keras deep-learning case. By integrating and correlating evidence across multiple layers, the research will assess the **visibility, traceability, characterization, and prioritization of security risks** in that case and provide a bounded foundation for future research into broader ML/DL software assurance.
 
 
 # **15. References**

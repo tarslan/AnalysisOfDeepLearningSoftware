@@ -129,7 +129,7 @@ Discuss both contributions and venue fit with the advisor by November 15.
 
 | Paper | Proposed distinct contribution | Required evidence | Provisional internal stretch submission |
 |---|---|---|---|
-| Paper 1 | Reproducible Windows ML/DL ecosystem characterization: dependency/SBOM/integrity evidence linked to native binary structure and runtime reachability. | Refreshed baseline, justified PE sample, runtime/API mappings, validated quantitative results, and limitations. | February 19, 2027 |
+| Paper 1 | Reproducible Windows deep-learning ecosystem characterization: dependency/SBOM/integrity evidence linked to native binary structure and runtime reachability in the TensorFlow/Keras case. | Refreshed baseline, justified PE sample, runtime/API mappings, validated quantitative results, and limitations; do not generalize beyond evaluated workloads. | February 19, 2027 |
 | Paper 2 | Integrated UMSAF evidence correlation, confidence-aware propagation, and risk prioritization compared with isolated-analysis baselines. | Validated integrated artifact, controlled cases, baseline comparisons, hypothesis analysis, and scalability results. | March 19, 2027 |
 
 These are candidate paper boundaries, not guaranteed publishable contributions. Novelty must be checked against related work. Using the same environment is acceptable only when the contributions and analyses are genuinely distinct; disclose overlap, cite related submissions as venue policy permits, and avoid duplicate text or presenting the same result as two independent contributions.
