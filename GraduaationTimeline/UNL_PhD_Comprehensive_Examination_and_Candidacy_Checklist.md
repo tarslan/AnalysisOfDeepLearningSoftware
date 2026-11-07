@@ -36,11 +36,11 @@
 
 ### A. Academic eligibility
 
-- [ ] Confirm that I have passed the PhD qualifying examination.
-- [ ] Verify that at least 54 applicable coursework hours have been completed.
-- [ ] Confirm that my supervisory committee is officially approved.
-- [ ] Verify that my Program of Studies has been filed and approved.
-- [ ] Confirm any additional departmental, residency, or research-tool requirements.
+- [x] Confirm that I have passed the PhD qualifying examination.
+- [x] Verify that at least 54 applicable coursework hours have been completed.
+- [x] Confirm that my supervisory committee is officially approved.
+- [x] Verify that my Program of Studies has been filed and approved.
+- [x] Confirm any additional departmental, residency, or research-tool requirements.
 
 ### B. Written dissertation proposal
 
