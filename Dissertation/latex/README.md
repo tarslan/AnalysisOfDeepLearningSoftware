@@ -14,22 +14,22 @@ The layout follows the example dissertation's chapter-based organization and num
 
 ## Build
 
-The configured tools are TeX Live 2026, PDFLaTeX, LaTeXmk 4.88, Pandoc 3.13, and Visual Studio Code. To compile this dissertation with its citations and cross-references, run these commands from this directory:
+The configured tools are TeX Live 2026, PDFLaTeX, XeLaTeX, LaTeXmk 4.88, Pandoc 3.13, and Visual Studio Code. This manuscript uses Unicode characters, so compile it with XeLaTeX and its citations and cross-references with:
 
 ```powershell
-latexmk -pdf Dissertation.tex
+latexmk -xelatex Dissertation.tex
 ```
 
-LaTeXmk runs the required compilation steps, including Biber for the bibliography. For a manual build, run:
+`Dissertation.tex` loads `references.bib` with `\addbibresource{references.bib}`. LaTeXmk detects the BibLaTeX configuration and runs Biber as needed. For a manual build, run:
 
 ```powershell
-pdflatex Dissertation.tex
+xelatex Dissertation.tex
 biber Dissertation
-pdflatex Dissertation.tex
-pdflatex Dissertation.tex
+xelatex Dissertation.tex
+xelatex Dissertation.tex
 ```
 
-The manuscript contains Unicode symbols, so use XeLaTeX instead if PDFLaTeX reports encoding errors. The LaTeX source and bibliography were checked for matching citation keys; a PDF build should be run after configuring the installed tools.
+The LaTeX source and bibliography were checked for matching citation keys.
 
 ## LaTeX to PDF and Word Conversion Guide
 
@@ -55,6 +55,18 @@ pandoc test.tex -o test.docx
 
 Replace `test.tex` with `Dissertation.tex` to convert this manuscript. This basic command may need extra options for bibliography processing or custom LaTeX features.
 
+To include the citations and bibliography in the dissertation's Word output, run:
+
+```powershell
+pandoc Dissertation.tex `
+    --from=latex `
+    --to=docx `
+    --standalone `
+    --bibliography=references.bib `
+    --citeproc `
+    --output=Dissertation.docx
+```
+
 ### 3. Convert LaTeX to PDF
 
 Use PDFLaTeX to compile the LaTeX source file:
@@ -71,15 +83,25 @@ For documents containing cross-references, citations, or multiple dependencies, 
 latexmk -pdf test.tex
 ```
 
-LaTeXmk is recommended for this dissertation because its bibliography uses Biber.
+For this dissertation, use XeLaTeX through LaTeXmk so Unicode text is supported and Biber is run for the bibliography:
+
+```powershell
+latexmk -xelatex Dissertation.tex
+```
 
 ### 4. Generate PDF and Word Documents
 
 Run the following commands to generate both formats from the same LaTeX source:
 
 ```powershell
-latexmk -pdf test.tex
-pandoc test.tex -o test.docx
+latexmk -xelatex test.tex
+pandoc test.tex `
+    --from=latex `
+    --to=docx `
+    --standalone `
+    --bibliography=references.bib `
+    --citeproc `
+    --output=test.docx
 ```
 
 **Generated files:**
@@ -121,8 +143,8 @@ The workspace task configuration is located at:
 
 This path is relative to the repository root opened in VS Code. The file defines three build tasks:
 
-1. **Build PDF:** Uses LaTeXmk to generate a PDF document.
-2. **Build Word:** Uses Pandoc to generate a DOCX document.
+1. **Build PDF:** Uses LaTeXmk with XeLaTeX to generate a PDF document and runs Biber for BibLaTeX bibliographies.
+2. **Build Word:** Uses Pandoc to generate a DOCX document with `references.bib` citations processed.
 3. **Build PDF and Word:** Executes both tasks sequentially.
 
 To generate both documents:
