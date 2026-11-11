@@ -87,17 +87,17 @@ This outline is recommended rather than a prescribed UNL chapter format.
 
 ## 5. Proposed timeline toward August 2027 graduation
 
+The **immediate priority is the comprehensive examination**. May 2027 is no longer the active graduation target because its candidacy application deadline (November 1, 2026) has passed. Treat the August 2027 term as the working target, conditional on confirming the required exam date, candidacy path, and all applicable deadlines with Graduate Studies and the advisor.
+
 | Period | Milestone | Actions |
 |---|---|---|
-| November 2026 | Confirm eligibility | Verify coursework, qualifying exam, committee, Program of Studies, and proposal scope |
-| November–December 2026 | Finalize proposal | Complete literature review, research gap, architecture, preliminary results, and evaluation plan |
-| December 2026 | Comprehensive examination | Distribute proposal at least two weeks before examination; defend and file candidacy paperwork |
-| January–April 2027 | Complete experiments | Implement/evaluate UMSAF, compare baselines, analyze results, and write remaining chapters |
-| May–June 2027 | Dissertation review | Complete full draft, obtain feedback, revise, and prepare committee review |
-| July 2027 | Target defense | Defend, revise, and prepare final submission |
-| August 2027 | Target graduation | Complete deposit and graduation requirements by published deadlines |
+| Immediately | Confirm August-term eligibility and exam timing | Ask Graduate Studies and the advisor for the exact seven-month comprehensive-exam cutoff, candidacy path, and any earlier departmental deadlines. Confirm committee availability and the earliest feasible exam date. |
+| Before the confirmed exam deadline | Prepare for and complete the comprehensive examination | Finalize the written proposal with the advisor and committee; schedule the oral exam; distribute the proposal at least two weeks beforehand; prepare and defend it. |
+| After passing; no later than the confirmed candidacy deadline | Apply for admission to candidacy | Submit required paperwork promptly and confirm Graduate Studies has processed it. The published August-term candidacy application deadline is February 1, 2027; verify whether an earlier deadline applies. |
+| After exam and candidacy requirements are confirmed | Continue dissertation research and writing | Follow the [Dissertation Completion Schedule](../Dissertation/writing/Dissertation_Completion_Schedule.md) for weekly research deliverables, evidence, reviews, and defense preparation. |
+| By August-term deadlines | Defend and complete final requirements | Confirm the latest defense and deposit deadlines and any department deadlines; complete the required committee review, defense, revisions, and deposit. |
 
-**Scheduling constraint:** Plan for at least seven months between the comprehensive examination/candidacy and the final defense. For example, a July 15, 2027 defense implies a December 15, 2026 latest date under a seven-calendar-month rule; confirm the precise official calculation and filing requirements. December 2026 is an aggressive target and depends on committee availability and eligibility.
+**Scheduling constraint:** The comprehensive examination must be completed at least seven months before graduation. The exact August 2027 cutoff and its calculation are not confirmed here; do not rely on an illustrative date or assume December 2026 is feasible until Graduate Studies, the advisor, and the committee confirm the requirements and availability.
 
 ## 6. Requirements after candidacy and before defense
 
@@ -114,15 +114,16 @@ This outline is recommended rather than a prescribed UNL chapter format.
 3. What preliminary experimental results are expected for UMSAF?
 4. Are submitted or published papers expected before the examination?
 5. Have I satisfied all coursework and other prerequisites for scheduling the examination?
-6. Can we schedule the examination in December 2026 to preserve the August 2027 graduation goal?
+6. What is the earliest feasible examination date, and what is the exact latest date for the August 2027 graduation path?
 
 ## 8. Immediate next steps
 
-1. Confirm whether the qualifying examination, 54 applicable coursework hours, and supervisory committee approval are complete.
-2. Ask the advisor to confirm the precise written-proposal expectations and the earliest possible examination date.
-3. Turn existing UMSAF research material into a committee-ready comprehensive examination proposal.
-4. Coordinate a date, circulate the proposal on time, and file candidacy paperwork promptly after passing.
-5. Work backward from the desired defense date using current UNL deadlines.
+1. Contact Graduate Studies and the advisor to confirm the exact August 2027 seven-month exam cutoff, candidacy path, and any earlier department deadlines; ask for written confirmation.
+2. Ask the advisor and supervisory committee to confirm proposal expectations, availability, and the earliest feasible examination date.
+3. Focus preparation on the committee-ready written proposal: research problem and questions, literature gap, UMSAF framework, preliminary work, methodology, evaluation plan, and remaining work.
+4. Schedule the examination and distribute the approved proposal at least 14 days beforehand; prepare and practice the 30–45-minute presentation and defense.
+5. After passing, submit candidacy paperwork promptly and confirm processing before the applicable deadline.
+6. Continue the research work in the [Dissertation Completion Schedule](../Dissertation/writing/Dissertation_Completion_Schedule.md), within its weekly time limit and evidence requirements.
 
 ## 9. Official references
 
