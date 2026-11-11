@@ -39,7 +39,7 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\setlength{\parindent}{0.5in}
+\setlength{\parindent}{1.5em}
 \setlength{\parskip}{0pt}
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -80,7 +80,13 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
+\usepackage{graphicx}
+\usepackage{placeins}
 \usepackage{setspace}
+\usepackage{enumitem}
+\setlist[itemize]{after=\addvspace{\baselineskip}}
+\setlist[enumerate]{after=\addvspace{\baselineskip}}
+\setlist[itemize,1]{leftmargin=2.5em,labelsep=0.5em,label=\(\bullet\)}
 \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
 \addbibresource{references.bib}
 \newcounter{none} % for unnumbered tables
@@ -1090,26 +1096,32 @@ Examples include:
 The framework identifies several critical trust boundaries:
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}>{\raggedright\arraybackslash}p{\dimexpr0.42\linewidth-\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr0.58\linewidth-\tabcolsep\relax}@{}}
 \toprule\noalign{}
 \textbf{Boundary} & \textbf{Description} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Application ↔ External Dependencies & Trust placed in third-party and
+Application \(\leftrightarrow\) External Dependencies & Trust placed in third-party and
 transitive software components \\
-Python/Application ↔ Native Binary & Transition from high-level
+\midrule
+Python/Application \(\leftrightarrow\) Native Binary & Transition from high-level
 application execution to memory-unsafe native C/C++ components \\
-Serialized Model ↔ Framework/Runtime & Loading and execution of imported
+\midrule
+Serialized Model \(\leftrightarrow\) Framework/Runtime & Loading and execution of imported
 or externally obtained model artifacts \\
-Framework ↔ Native Components & Transition from framework abstractions
+\midrule
+Framework \(\leftrightarrow\) Native Components & Transition from framework abstractions
 to compiled native implementations \\
-Framework/Runtime ↔ Hardware Layer & Interaction with GPU, accelerator,
+\midrule
+Framework/Runtime \(\leftrightarrow\) Hardware Layer & Interaction with GPU, accelerator,
 driver, and kernel components \\
-Runtime ↔ Operating System/Infrastructure & Interaction between ML/DL
+\midrule
+Runtime \(\leftrightarrow\) Operating System/Infrastructure & Interaction between ML/DL
 execution environments and underlying system resources \\
-Local Environment ↔ External/Cloud Infrastructure & Trust boundary
+\midrule
+Local Environment \(\leftrightarrow\) External/Cloud Infrastructure & Trust boundary
 associated with distributed or externally hosted execution
 environments \\
 \end{longtable}
@@ -1136,17 +1148,25 @@ A central premise of this research is that security risks within ML/DL
 software ecosystems may propagate across multiple software layers rather
 than remaining isolated within the component in which they originate.
 
-An example propagation path is:
+An example propagation path is illustrated in
+Figure~\ref{fig:malicious-package-propagation}.
 
-\textbf{Malicious Python Package} ↓ \textbf{Compromised Native Binary} ↓
-\textbf{Unsafe Runtime Execution} ↓ \textbf{Operating System /
-Infrastructure Impact}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/malicious-package-propagation.png}
+\caption{Example propagation path from a malicious Python package to infrastructure impact.}
+\label{fig:malicious-package-propagation}
+\end{figure}
 
-Another example is:
+Another example is illustrated in Figure~\ref{fig:serialized-model-propagation}.
 
-\textbf{Malicious or Tampered Serialized Model} ↓ \textbf{Framework /
-Computational Graph Execution} ↓ \textbf{Native or Runtime Component
-Invocation} ↓ \textbf{Unauthorized System Interaction}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/serialized-model-propagation.png}
+\caption{Example propagation path from a malicious or tampered serialized model to unauthorized system interaction.}
+\label{fig:serialized-model-propagation}
+\end{figure}
+\FloatBarrier
 
 These propagation paths illustrate why isolated security analysis may
 provide incomplete visibility into the security implications of
@@ -1159,7 +1179,7 @@ The proposed framework seeks to improve the following security
 properties:
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}>{\raggedright\arraybackslash}p{\dimexpr0.27\linewidth-\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr0.73\linewidth-\tabcolsep\relax}@{}}
 \toprule\noalign{}
 \textbf{Objective} & \textbf{Description} \\
 \midrule\noalign{}
@@ -1168,14 +1188,19 @@ properties:
 \endlastfoot
 Integrity & Identify tampered, compromised, or vulnerable dependencies,
 binaries, and model artifacts \\
+\midrule
 Confidentiality & Identify execution paths or behaviors that may expose
 protected information or system resources \\
+\midrule
 Availability & Identify vulnerabilities and behaviors capable of
 disrupting ML/DL services or runtime execution \\
+\midrule
 Transparency & Improve visibility into dependencies, model execution,
 native components, and runtime behavior \\
+\midrule
 Traceability & Correlate security findings and vulnerability propagation
 paths across software layers \\
+\midrule
 Trustworthiness & Improve confidence in the security posture of ML/DL
 software ecosystems \\
 \end{longtable}

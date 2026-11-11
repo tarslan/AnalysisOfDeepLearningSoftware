@@ -31,6 +31,21 @@ xelatex Dissertation.tex
 
 The LaTeX source and bibliography were checked for matching citation keys.
 
+### Propagation diagrams
+
+The propagation diagrams are maintained in `figures/malicious-package-propagation.tex`
+and `figures/serialized-model-propagation.tex`. The dissertation uses their PNG
+renderings so they can also appear in Word exports. After editing a diagram source,
+regenerate its PNG from the `figures` directory. For example:
+
+```powershell
+xelatex -interaction=nonstopmode -halt-on-error malicious-package-propagation.tex
+pdftoppm -png -r 300 -singlefile malicious-package-propagation.pdf malicious-package-propagation
+```
+
+Use `serialized-model-propagation` in place of `malicious-package-propagation`
+to regenerate the other diagram. Then rebuild the dissertation from this directory.
+
 ## LaTeX to PDF and Word Conversion Guide
 
 ### 1. Overview
