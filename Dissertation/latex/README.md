@@ -31,11 +31,17 @@ xelatex Dissertation.tex
 
 The LaTeX source and bibliography were checked for matching citation keys.
 
-### Propagation diagrams
+### Diagrams
 
-The propagation diagrams are maintained in `figures/malicious-package-propagation.tex`
-and `figures/serialized-model-propagation.tex`. The dissertation uses their PNG
-renderings so they can also appear in Word exports. After editing a diagram source,
+The diagram sources are `figures/malicious-package-propagation.tex`,
+`figures/serialized-model-propagation.tex`, `figures/ecosystem-layer-model.tex`,
+`figures/cnn-execution-path.tex`, `figures/serialized-model-execution-path.tex`,
+`figures/umsaf-analytical-architecture.tex`,
+`figures/vulnerability-oriented-path.tex`,
+`figures/native-component-propagation.tex`, and
+`figures/runtime-correlation-path.tex`.
+The dissertation uses their PNG renderings so they can also appear in Word exports.
+After editing a diagram source,
 regenerate its PNG from the `figures` directory. For example:
 
 ```powershell
@@ -43,8 +49,8 @@ xelatex -interaction=nonstopmode -halt-on-error malicious-package-propagation.te
 pdftoppm -png -r 300 -singlefile malicious-package-propagation.pdf malicious-package-propagation
 ```
 
-Use `serialized-model-propagation` in place of `malicious-package-propagation`
-to regenerate the other diagram. Then rebuild the dissertation from this directory.
+Use the corresponding source name in place of `malicious-package-propagation`
+to regenerate another diagram. Then rebuild the dissertation from this directory.
 
 ## LaTeX to PDF and Word Conversion Guide
 

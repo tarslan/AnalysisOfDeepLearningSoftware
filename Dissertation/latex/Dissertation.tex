@@ -1255,13 +1255,16 @@ for analyzing how vulnerabilities and security-relevant behaviors
 originate, propagate, interact, and manifest across multiple abstraction
 layers.
 
-The conceptual architecture consists of the following layers:
+The conceptual architecture consists of the layers shown in
+Figure~\ref{fig:ecosystem-layer-model}.
 
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/ecosystem-layer-model.png}
+\caption{Conceptual layers of the ML/DL software ecosystem.}
+\label{fig:ecosystem-layer-model}
+\end{figure}
+\FloatBarrier
 
 Each layer introduces distinct attack surfaces, trust boundaries,
 dependency relationships, and potential vulnerability propagation paths.
@@ -1724,16 +1727,19 @@ of structural, runtime, and cross-layer analysis.
 Modern ML/DL software ecosystems operate across multiple interconnected
 abstraction, software, and execution layers. Consistent with the
 conceptual layer model defined in Section 6.10, this dissertation
-represents the ML/DL software ecosystem using the following layers.
+represents the ML/DL software ecosystem using the layers shown in
+Figure~\ref{fig:ecosystem-layer-model-related-work}.
 The cited studies inform the dependency and supply-chain portions of this
 model; the seven-layer integration remains the subject of this
 dissertation's evaluation.\cite{zhou2025unraveling,tan2026securing,baird2026attackchains}
 
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/ecosystem-layer-model.png}
+\caption{Conceptual layers of the ML/DL software ecosystem, reproduced from Figure~\ref{fig:ecosystem-layer-model}.}
+\label{fig:ecosystem-layer-model-related-work}
+\end{figure}
+\FloatBarrier
 
 Recent TensorFlow supply-chain and SBOM-graph studies describe
 vulnerabilities and dependency relationships spanning software
@@ -1887,13 +1893,8 @@ These are important adjacent contributions, but do not by themselves
 establish evidence correlation across all seven layers in the UMSAF
 model.\cite{zhou2025unraveling,baird2026attackchains,tan2026securing}
 This dissertation will evaluate that broader integration rather than
-assume its benefit. The UMSAF ecosystem is represented as:
-
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+assume its benefit. The UMSAF ecosystem is represented by the seven-layer
+model shown in Figure~\ref{fig:ecosystem-layer-model-related-work}.
 
 A significant research opportunity therefore exists in systematically
 correlating security findings across these abstraction, dependency,
@@ -1992,13 +1993,8 @@ evaluating a broader evidence model spanning the seven specified layers.
 \cite{zhou2025unraveling,baird2026attackchains}
 
 Consistent with the threat model and conceptual architecture defined in
-Section 6, UMSAF examines security across the following layers:
-
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+Section 6, UMSAF examines security across the seven layers shown in
+Figure~\ref{fig:ecosystem-layer-model-related-work}.
 
 To analyze security across these layers, UMSAF integrates:
 
@@ -2431,13 +2427,7 @@ The purpose of the preliminary study is to establish the feasibility of
 examining security characteristics across the interconnected layers of
 an ML/DL software ecosystem. Consistent with the threat model and
 conceptual architecture defined in Section 6, the study considers the
-following layers:
-
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+seven layers shown in Figure~\ref{fig:ecosystem-layer-model}.
 
 The preliminary study focuses particularly on relationships among Python
 application code, third-party dependencies, TensorFlow/Keras framework
@@ -3068,26 +3058,29 @@ The CNN workload provides a controlled environment for investigating
 these interactions.
 
 Consistent with the UMSAF architecture defined in Section 6, the
-complete conceptual layer model is:
-
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+complete conceptual layer model is shown in
+Figure~\ref{fig:ecosystem-layer-model}.
 
 Within this architecture, a specific observed or investigated execution
 path may traverse a subset of these layers. For example:
 
-\textbf{Python CNN Application} ↓ \textbf{TensorFlow/Keras API} ↓
-\textbf{Framework / Wrapper Functionality} ↓ \textbf{Native C/C++
-Component} ↓ \textbf{Runtime / System Library / Hardware}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/cnn-execution-path.png}
+\caption{Illustrative CNN execution path; API-to-native mappings remain to be validated.}
+\label{fig:cnn-execution-path}
+\end{figure}
+\FloatBarrier
 
 Similarly, serialization introduces another interaction path:
 
-\textbf{Python CNN Application} ↓ \textbf{TensorFlow/Keras Framework} ↓
-\textbf{Serialized Model Artifact} ↓ \textbf{Model Loading / Framework
-Execution} ↓ \textbf{Native and Runtime Components}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/serialized-model-execution-path.png}
+\caption{Illustrative serialized-model execution path; specific execution mappings remain to be validated.}
+\label{fig:serialized-model-execution-path}
+\end{figure}
+\FloatBarrier
 
 These paths should not be interpreted as alternative UMSAF
 architectures. Instead, they represent specific interaction and
@@ -3250,13 +3243,8 @@ visibility across multiple interconnected layers of the software
 ecosystem}.
 
 Consistent with the threat model and conceptual architecture defined in
-Section 6, UMSAF analyzes the following seven layers:
-
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+Section 6, UMSAF analyzes the seven layers shown in
+Figure~\ref{fig:ecosystem-layer-model}.
 
 These layers represent the \textbf{security-analysis domain} of UMSAF.
 They should be distinguished from the analytical components of the
@@ -3288,18 +3276,16 @@ UMSAF is designed as a modular analytical architecture in which
 specialized components generate security evidence that is subsequently
 correlated across the ML/DL software ecosystem.
 
-The major analytical components are:
+The major analytical components and their illustrative information flow
+are shown in Figure~\ref{fig:umsaf-analytical-architecture}.
 
-\textbf{ML/DL Application and Software Ecosystem} ↓ \textbf{(1)
-Dependency and Software Supply-Chain Intelligence Engine} ↓ \textbf{(2)
-SBOM, Integrity, and Vulnerability Intelligence Analyzer} ↓ \textbf{(3)
-Native Binary Extraction and Characterization Module} ↓ \textbf{(4)
-Reverse Engineering and Binary Analysis Engine} ↓ \textbf{(5) Serialized
-Model and Computational Graph Inspection Engine} ↓ \textbf{(6) Runtime
-Behavior Analysis Module} ↓ \textbf{(7) Cross-Layer Interaction and
-Vulnerability Propagation Mapper} ↓ \textbf{(8) Integrated Risk Scoring
-and ML-Based Classification Engine} ↓ \textbf{Integrated Security Report
-and Recommendations}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\linewidth]{figures/umsaf-analytical-architecture.png}
+\caption{UMSAF analytical components and illustrative feedback. The diagram does not imply a mandatory linear execution order.}
+\label{fig:umsaf-analytical-architecture}
+\end{figure}
+\FloatBarrier
 
 Although represented sequentially for conceptual clarity, these
 components do not necessarily operate as a strictly linear pipeline.
@@ -3639,13 +3625,8 @@ analytical components and model relationships across the seven-layer
 ML/DL software ecosystem.
 
 Rather than limiting analysis to interactions between Python code and
-native binaries, this component examines relationships spanning:
-
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+native binaries, this component examines relationships spanning all
+seven layers shown in Figure~\ref{fig:ecosystem-layer-model}.
 
 \subsubsection{Functions}\label{functions-6}
 
@@ -3676,15 +3657,18 @@ System / Infrastructure Layer}
 \subsubsection{Example Execution
 Mapping}\label{example-execution-mapping}
 
-\textbf{Python CNN Application} ↓ \textbf{TensorFlow/Keras API} ↓
-\textbf{Framework / Wrapper Functionality} ↓ \textbf{Native C/C++
-Component} ↓ \textbf{Runtime / System Library / Hardware}
+The CNN execution path is illustrated in
+Figure~\ref{fig:cnn-execution-path}.
 
 A vulnerability-oriented mapping may additionally represent:
 
-\textbf{Vulnerable Dependency} ↓ \textbf{Affected Native Component} ↓
-\textbf{Framework Operation} ↓ \textbf{Runtime Invocation} ↓
-\textbf{Potential Application or Infrastructure Impact}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/vulnerability-oriented-path.png}
+\caption{Illustrative vulnerability-oriented path from an affected dependency to potential impact. This path does not by itself establish exploitability.}
+\label{fig:vulnerability-oriented-path}
+\end{figure}
+\FloatBarrier
 
 \subsubsection{Outputs}\label{outputs-6}
 
@@ -3887,11 +3871,8 @@ their findings across a common multilayer security model.
 
 \subsection{Cross-Layer Interaction and Vulnerability Propagation Modeling}\label{1052-cross-layer-interaction-and-vulnerability-propagation-modeling}
 
-UMSAF explicitly models security relationships across:
-
-\textbf{Application → Dependency / Supply Chain → ML/DL Framework →
-Serialization / Computational Graph → Native Binary → Runtime / Hardware
-→ Operating System / Infrastructure}
+UMSAF explicitly models security relationships across the seven layers
+shown in Figure~\ref{fig:ecosystem-layer-model}.
 
 This capability is intended to provide visibility into how security
 findings associated with one layer relate to components and behaviors
@@ -4194,32 +4175,27 @@ environment for examining security evidence across multiple
 interconnected layers of an ML/DL software ecosystem.
 
 Consistent with the conceptual architecture defined in Section 6, the
-methodology evaluates security across the following seven layers:
-
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+methodology evaluates security across the seven layers shown in
+Figure~\ref{fig:ecosystem-layer-model}.
 
 The methodology is structured into four major phases:
 
-\textbf{Design → Implementation → Experimentation → Evaluation}
-
-The \textbf{Design} phase defines the UMSAF conceptual architecture,
-threat model, analytical components, and cross-layer relationships.
-
-The \textbf{Implementation} phase develops the UMSAF prototype and
-integrates the analytical capabilities required to collect and correlate
-security evidence.
-
-The \textbf{Experimentation} phase applies UMSAF to the primary
-controlled deep-learning software environment and its security
-scenarios.
-
-The \textbf{Evaluation} phase assesses the effectiveness, coverage,
-traceability, scalability, and analytical value of the integrated
-framework relative to isolated security-analysis approaches.
+\begin{enumerate}
+\item
+  \textbf{Design.} Define the UMSAF conceptual architecture, threat
+  model, analytical components, and cross-layer relationships.
+\item
+  \textbf{Implementation.} Develop the UMSAF prototype and integrate
+  the analytical capabilities required to collect and correlate
+  security evidence.
+\item
+  \textbf{Experimentation.} Apply UMSAF to the primary controlled
+  deep-learning software environment and its security scenarios.
+\item
+  \textbf{Evaluation.} Assess the effectiveness, coverage, traceability,
+  scalability, and analytical value of the integrated framework
+  relative to isolated security-analysis approaches.
+\end{enumerate}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -4532,18 +4508,13 @@ Where suitable ground truth exists, the following metrics may be used:
 
 From these values, the following metrics may be calculated:
 
-\textbf{Precision}
-
-{[} Precision = \textbackslash frac\{TP\}\{TP + FP\} {]}
-
-\textbf{Recall}
-
-{[} Recall = \textbackslash frac\{TP\}\{TP + FN\} {]}
-
-\textbf{F1 Score}
-
-{[} F1 = 2 \textbackslash times \textbackslash frac\{Precision
-\textbackslash times Recall\}\{Precision + Recall\} {]}
+\begin{align*}
+\text{Precision} &= \frac{TP}{TP + FP}, \\
+\text{Recall} &= \frac{TP}{TP + FN}, \\
+F_1 &= 2 \cdot
+  \frac{\text{Precision} \cdot \text{Recall}}
+       {\text{Precision} + \text{Recall}}.
+\end{align*}
 
 These metrics will be used only where the available ground truth permits
 defensible classification of findings.
@@ -4978,13 +4949,8 @@ Correlation}\label{step-9--cross-layer-correlation}
 Normalize and correlate evidence obtained from the preceding analytical
 modules.
 
-Construct relationships across:
-
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+Construct relationships across the seven layers shown in
+Figure~\ref{fig:ecosystem-layer-model}.
 
 \subsection{Step 10 --- Vulnerability Propagation
 Analysis}\label{step-10--vulnerability-propagation-analysis}
@@ -4992,16 +4958,19 @@ Analysis}\label{step-10--vulnerability-propagation-analysis}
 Identify and evaluate potential security-relevant paths connecting
 findings across multiple layers.
 
-Examples may include:
+Examples include:
 
-\textbf{Vulnerable Dependency} ↓ \textbf{Affected Native Component} ↓
-\textbf{Framework Operation} ↓ \textbf{Runtime Execution}
-
-or:
-
-\textbf{Manipulated Serialized Artifact} ↓ \textbf{Framework /
-Computational Operation} ↓ \textbf{Native or Runtime Invocation} ↓
-\textbf{System Interaction}
+\begin{itemize}
+\item
+  A vulnerable-dependency path through an affected native component,
+  framework operation, and runtime execution, illustrated in
+  Figure~\ref{fig:vulnerability-oriented-path}.
+\item
+  A manipulated serialized-artifact path through framework or
+  computational operation, native or runtime invocation, and system
+  interaction, illustrated in
+  Figure~\ref{fig:serialized-model-propagation}.
+\end{itemize}
 
 \subsection{Step 11 --- Risk Assessment and
 Prioritization}\label{step-11--risk-assessment-and-prioritization}
@@ -5567,13 +5536,7 @@ remaining isolated within the component in which they originate}.
 
 UMSAF therefore incorporates cross-layer vulnerability propagation
 analysis to investigate relationships across the formal seven-layer
-architecture:
-
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+architecture shown in Figure~\ref{fig:ecosystem-layer-model}.
 
 The objective is not to assume that every vulnerability propagates
 across multiple layers.
@@ -5643,12 +5606,8 @@ sources into traceable relationships.
 One potential propagation scenario involves a vulnerable or compromised
 dependency.
 
-For example:
-
-\textbf{Vulnerable or Compromised Dependency} ↓ \textbf{Affected
-Framework or Native Component} ↓ \textbf{Framework Invocation} ↓
-\textbf{Runtime Execution} ↓ \textbf{Potential Application or System
-Impact}
+An illustrative dependency-to-runtime propagation path is shown in
+Figure~\ref{fig:vulnerability-oriented-path}.
 
 The analysis will investigate whether the affected dependency is:
 
@@ -5677,11 +5636,8 @@ impact.
 Another potential propagation scenario involves a manipulated or
 security-relevant serialized model artifact.
 
-For example:
-
-\textbf{Serialized Model Artifact} ↓ \textbf{Framework Loading or
-Interpretation} ↓ \textbf{Computational Operation} ↓ \textbf{Native /
-Runtime Invocation} ↓ \textbf{Potential System Interaction}
+An illustrative serialized-artifact propagation path is shown in
+Figure~\ref{fig:serialized-model-propagation}.
 
 UMSAF will investigate whether model structures or operations can be
 associated with:
@@ -5705,8 +5661,13 @@ framework behavior observed in the selected experimental environment.
 
 A vulnerability identified within a native binary may be mapped through:
 
-\textbf{Native Binary} ↓ \textbf{Framework Functionality} ↓
-\textbf{Application API Usage} ↓ \textbf{Runtime Reachability}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/native-component-propagation.png}
+\caption{Conceptual mapping from a native-binary finding to runtime reachability; the path does not by itself confirm execution.}
+\label{fig:native-component-propagation}
+\end{figure}
+\FloatBarrier
 
 This analysis can help distinguish between:
 
@@ -5727,9 +5688,13 @@ obtained from other UMSAF components.
 
 For example:
 
-\textbf{SBOM Vulnerability Record} ↓ \textbf{Affected Package} ↓
-\textbf{Native Binary} ↓ \textbf{Dynamically Loaded Component} ↓
-\textbf{Observed Runtime Execution}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/runtime-correlation-path.png}
+\caption{Illustrative correlation from an SBOM vulnerability record to observed runtime execution; each link requires evidence from the analyzed workload.}
+\label{fig:runtime-correlation-path}
+\end{figure}
+\FloatBarrier
 
 Such correlation can provide stronger evidence that a vulnerability is
 relevant to the analyzed workload than package-presence information
@@ -5762,25 +5727,20 @@ cross-layer relationships as verified execution paths.
 
 \subsection{Example Propagation Paths}\label{11127-example-propagation-paths}
 
-A representative dependency-oriented path is:
+Related examples are illustrated in:
 
-\textbf{Compromised Python Package} ↓ \textbf{Malicious or Vulnerable
-Native Component} ↓ \textbf{Framework / Runtime Invocation} ↓
-\textbf{Security-Relevant Runtime Behavior} ↓ \textbf{Potential System
-Impact}
-
-A representative serialized-artifact path is:
-
-\textbf{Manipulated Serialized Model Artifact} ↓ \textbf{Framework /
-Computational Structure Processing} ↓ \textbf{Native or Runtime
-Invocation} ↓ \textbf{Potential Unauthorized or Unexpected System
-Interaction}
-
-A known-vulnerability correlation path may be:
-
-\textbf{CVE / OSV Record} ↓ \textbf{Affected Dependency Version} ↓
-\textbf{Associated Native Binary} ↓ \textbf{Framework Execution Path} ↓
-\textbf{Observed Runtime Component}
+\begin{itemize}
+\item
+  Figure~\ref{fig:malicious-package-propagation} shows a dependency-
+  oriented path from a compromised package to potential system impact.
+\item
+  Figure~\ref{fig:serialized-model-propagation} shows propagation from a
+  manipulated serialized model to potential system interaction.
+\item
+  Figure~\ref{fig:runtime-correlation-path} illustrates correlating a
+  vulnerability record with affected package, native-binary, and runtime
+  evidence.
+\end{itemize}
 
 These examples represent analytical patterns to be investigated rather
 than assumed outcomes.
@@ -5872,13 +5832,8 @@ characterizes the interconnected software and execution layers
 comprising modern ML/DL software ecosystems.
 
 Consistent with the threat model and UMSAF architecture established in
-this dissertation, the model consists of seven layers:
-
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+this dissertation, the model consists of the seven layers shown in
+Figure~\ref{fig:ecosystem-layer-model}.
 
 The proposed model provides a conceptual foundation for examining how
 vulnerabilities and security-relevant behaviors may originate, interact,
@@ -6085,11 +6040,7 @@ software layers.
 The methodology extends beyond Python-to-native call mapping and
 considers relationships across the complete UMSAF architecture:
 
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+the seven layers shown in Figure~\ref{fig:ecosystem-layer-model}.
 
 The methodology is expected to correlate evidence involving:
 
@@ -6145,18 +6096,17 @@ impact, the methodology distinguishes among findings that are:
   or associated with a defensible cross-layer propagation path.
 \end{itemize}
 
-A dependency-oriented propagation pattern may be represented as:
+These patterns are illustrated by the existing propagation diagrams:
 
-\textbf{Vulnerable or Compromised Dependency} ↓ \textbf{Affected
-Framework or Native Component} ↓ \textbf{Framework Invocation} ↓
-\textbf{Runtime Execution} ↓ \textbf{Potential Application or System
-Impact}
-
-A serialized-artifact-oriented pattern may be represented as:
-
-\textbf{Manipulated Serialized Model Artifact} ↓ \textbf{Framework /
-Computational Structure Processing} ↓ \textbf{Native or Runtime
-Invocation} ↓ \textbf{Potential Security-Relevant System Interaction}
+\begin{itemize}
+\item
+  The dependency-oriented path is shown in
+  Figure~\ref{fig:vulnerability-oriented-path}; a compromised-package
+  variant is shown in Figure~\ref{fig:malicious-package-propagation}.
+\item
+  The serialized-artifact-oriented path is shown in
+  Figure~\ref{fig:serialized-model-propagation}.
+\end{itemize}
 
 The methodology further distinguishes among \textbf{directly observed,
 strongly correlated, potential, and unconfirmed relationships},
@@ -6762,13 +6712,7 @@ additional workloads actually evaluated.
 
 UMSAF shifts the unit of security analysis from isolated software
 artifacts toward the security relationships among the seven formal
-layers:
-
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+layers shown in Figure~\ref{fig:ecosystem-layer-model}.
 
 Through this perspective, the dissertation investigates whether
 dependency intelligence, SBOM information, vulnerability intelligence,
@@ -7653,13 +7597,8 @@ in isolation.
 This dissertation proposes the \textbf{Unified Multilayer Security
 Analysis Framework (UMSAF)} to address these security visibility and
 correlation challenges. UMSAF models the ML/DL software ecosystem across
-seven interconnected layers:
-
-\textbf{Application Layer} ↓ \textbf{Dependency / Software Supply-Chain
-Layer} ↓ \textbf{ML/DL Framework Layer} ↓ \textbf{Serialization /
-Computational Graph Layer} ↓ \textbf{Native Binary Layer} ↓
-\textbf{Runtime / Hardware Acceleration Layer} ↓ \textbf{Operating
-System / Infrastructure Layer}
+the seven interconnected layers shown in
+Figure~\ref{fig:ecosystem-layer-model}.
 
 Within this architecture, UMSAF integrates \textbf{software composition
 and dependency analysis, Software Bill of Materials (SBOM) generation
@@ -7707,7 +7646,16 @@ does not establish generalizability or integrated UMSAF effectiveness.
 The dissertation adopts a \textbf{design science and empirical
 evaluation methodology} structured around four major phases:
 
-\textbf{Design → Implementation → Experimentation → Evaluation}
+\begin{enumerate}
+\item
+  \textbf{Design}
+\item
+  \textbf{Implementation}
+\item
+  \textbf{Experimentation}
+\item
+  \textbf{Evaluation}
+\end{enumerate}
 
 Through this methodology, UMSAF will be implemented as a research
 artifact and evaluated primarily using the controlled TensorFlow/Keras
