@@ -78,3 +78,17 @@ artifacts/
 # Source articles and example dissertation files are kept outside version control.
 /Dissertation/Articles/
 /Dissertation/Example-Dissertation/
+
+# LaTeX build outputs; keep source files, bibliography, and diagram PNGs tracked.
+/Dissertation/latex/**/*.aux
+/Dissertation/latex/**/*.bbl
+/Dissertation/latex/**/*.bcf
+/Dissertation/latex/**/*.blg
+/Dissertation/latex/**/*.fdb_latexmk
+/Dissertation/latex/**/*.fls
+/Dissertation/latex/**/*.out
+/Dissertation/latex/**/*.pdf
+/Dissertation/latex/**/*.run.xml
+/Dissertation/latex/**/*.synctex.gz
+/Dissertation/latex/**/*.toc
+/Dissertation/latex/**/*.xdv
