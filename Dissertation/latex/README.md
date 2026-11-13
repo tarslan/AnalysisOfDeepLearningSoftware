@@ -6,7 +6,9 @@ The layout follows the example dissertation's chapter-based organization and num
 
 ## Formatting and citations
 
-- 12-point, letter-size report layout with a 1.5-inch left margin and 1-inch other margins.
+- 12-point, letter-size report layout with 1.5-inch left and top margins and 1-inch right and bottom margins.
+- Page numbers appear in the upper-right header, including chapter-opening pages.
+- Section, subsection, and subsubsection headings are left-aligned, with section headings larger than subsection headings.
 - Double-spaced body text; Roman-numbered front matter and Arabic-numbered chapters.
 - Numeric citations and bibliography using `biblatex` with Biber.
 - This is a focused initial bibliography of 20 sources, not the 50--70-source final bibliography envisioned in the Markdown snapshot. Publisher/Crossref metadata for scholarly references was checked on November 8, 2026. One preprint and two standards specifications are explicitly distinguished from peer-reviewed research.
