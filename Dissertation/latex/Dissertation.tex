@@ -57,8 +57,7 @@
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
 \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\footnotesize}
 \newenvironment{Shaded}{}{}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
@@ -108,6 +107,7 @@
 \makeatletter
 \patchcmd{\@makechapterhead}{\huge\bfseries}{\large\bfseries}{}{\PackageError{dissertation}{Unable to format chapter number}{}}
 \patchcmd{\@makechapterhead}{\Huge \bfseries}{\large\bfseries}{}{\PackageError{dissertation}{Unable to format chapter title}{}}
+\patchcmd{\@makeschapterhead}{\Huge \bfseries}{\large\bfseries}{}{\PackageError{dissertation}{Unable to format unnumbered chapter titles}{}}
 \patchcmd{\section}{\normalfont\Large\bfseries}{\normalfont\large\bfseries\raggedright}{}{\PackageError{dissertation}{Unable to format section headings}{}}
 \patchcmd{\subsection}{\normalfont\large\bfseries}{\normalfont\normalsize\bfseries\raggedright}{}{\PackageError{dissertation}{Unable to format subsection headings}{}}
 \patchcmd{\subsubsection}{\normalfont\normalsize\bfseries}{\normalfont\normalsize\bfseries\raggedright}{}{\PackageError{dissertation}{Unable to format subsubsection headings}{}}
@@ -130,23 +130,78 @@
   pdfcreator={LaTeX via pandoc}}
 
 \title{A Unified Framework for Cross-Layer Security Analysis of Deep-Learning Software Ecosystems}
-\author{Tony Arslan\\University of Nebraska--Lincoln\\Advisor: Dr.~Witawas Srisa-an}
+\author{Tony Arslan}
 \date{November 2026}
 
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+    \centering
+    \normalsize
+    \singlespacing
+    {\doublespacing\MakeUppercase{\@title}\par}
+    \vspace{0.5in}
+    by\par
+    \vspace{0.5in}
+    \@author\par
+    \vfill
+    A DISSERTATION\par
+    \vspace{0.25in}
+    WORKING MANUSCRIPT\par
+    \vfill
+    Graduate College\par
+    \vspace{0.25in}
+    University of Nebraska--Lincoln\par
+    \vfill
+    Under the Supervision of Dr.~Witawas Srisa-an\par
+    \vfill
+    Lincoln, Nebraska\par
+    \vspace{0.15in}
+    \@date\par
+  \end{titlepage}
+}
+\newcommand{\abstractheading}{
+  \clearpage
+  \phantomsection
+  \addcontentsline{toc}{chapter}{Abstract}
+  \begingroup
+    \centering
+    \normalsize
+    {\doublespacing\MakeUppercase{\@title}\par}
+    \vspace{12pt}
+    \@author\par
+    University of Nebraska--Lincoln, 2026\par
+  \endgroup
+  \vspace{12pt}
+  \noindent Adviser: Dr.~Witawas Srisa-an\par
+  \vspace{12pt}
+}
+\renewcommand*\l@figure{\@dottedtocline{1}{0em}{2.3em}}
+\makeatother
+\renewcommand{\contentsname}{Table of Contents}
+
 \begin{document}
+\hypersetup{pageanchor=false}
 \maketitle
 \doublespacing
 
 \pagenumbering{roman}
-\chapter*{Research Status}
+\hypersetup{pageanchor=true}
+\clearpage
+\phantomsection
 \addcontentsline{toc}{chapter}{Research Status}
-\begin{quote}
+\begingroup
+  \centering
+  \normalsize
+  RESEARCH STATUS\par
+\endgroup
+\vspace{12pt}
+\noindent
 \textbf{Working manuscript, not a completed-results dissertation.}
 The April 2026 preliminary pipeline is the only completed end-to-end research run described here; the later protocol dry run validates file and checksum procedures, not UMSAF. Model inspection, runtime tracing, targeted reverse engineering, cross-layer integration, and final evaluation remain planned. Interpret proposed methods and expected contributions accordingly.
-\end{quote}
-\chapter*{Abstract}
-\addcontentsline{toc}{chapter}{Abstract}
+\abstractheading
 
+\noindent
 Deep-learning applications depend on software ecosystems extending far
 beyond high-level application source code, including serialized model
 artifacts, computational graphs, third-party dependencies, native
@@ -216,6 +271,10 @@ Detection, Serialized Model Security, Runtime Analysis
 
 \clearpage
 \tableofcontents
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
 \clearpage
 \pagenumbering{arabic}
 

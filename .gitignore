@@ -86,6 +86,7 @@ artifacts/
 /Dissertation/latex/**/*.blg
 /Dissertation/latex/**/*.fdb_latexmk
 /Dissertation/latex/**/*.fls
+/Dissertation/latex/**/*.lof
 /Dissertation/latex/**/*.out
 /Dissertation/latex/**/*.pdf
 /Dissertation/latex/**/*.run.xml

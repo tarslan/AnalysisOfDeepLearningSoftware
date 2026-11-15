@@ -8,8 +8,13 @@ The layout follows the example dissertation's chapter-based organization and num
 
 - 12-point, letter-size report layout with 1.5-inch left and top margins and 1-inch right and bottom margins.
 - Page numbers appear in the upper-right header, including chapter-opening pages.
+- Centered 12-point title-page text and an abstract title/author/adviser block follow the example's front-matter layout without claiming degree completion.
+- Research Status remains a separate page with a centered 12-point heading and the working-manuscript notice.
+- Numbered chapters, Table of Contents, List of Figures, and Bibliography use 14.4-point bold headings.
 - Section, subsection, and subsubsection headings are left-aligned, with section headings larger than subsection headings.
 - Double-spaced body text; Roman-numbered front matter and Arabic-numbered chapters.
+- The List of Figures is generated from figure captions. No empty List of Tables is added because the current tables have no captions.
+- Code listings use a smaller monospaced font to fit within the text margins.
 - Numeric citations and bibliography using `biblatex` with Biber.
 - This is a focused initial bibliography of 20 sources, not the 50--70-source final bibliography envisioned in the Markdown snapshot. Publisher/Crossref metadata for scholarly references was checked on November 8, 2026. One preprint and two standards specifications are explicitly distinguished from peer-reviewed research.
 - Off-topic and duplicate PDFs remain untouched in the Articles folders; they were not carried into the core bibliography. Add further sources as the identified SBOM-quality, runtime-tracing, and native TensorFlow/XLA binary-analysis gaps are researched.
@@ -177,7 +182,17 @@ To generate both documents:
 3. Select **Build PDF and Word**, if prompted.
 4. Verify that both output files were generated in the same directory as the source file.
 
-The `Ctrl+Alt+B` shortcut may invoke LaTeX Workshop's PDF build operation instead of the custom VS Code task.
+The `Ctrl+Alt+B` shortcut may invoke LaTeX Workshop's PDF build operation
+instead of the custom VS Code task. For this manuscript, set
+`latex-workshop.latex.recipe.default` to `latexmk (xelatex)` in workspace
+settings, or select that recipe with LaTeX Workshop's **Build with recipe**
+command. The workspace's `.vscode` files are ignored by Git and must be
+configured on each machine.
+
+If a failed or interrupted build reports a corrupt `.aux` file, close any
+running LaTeX builds, delete `Dissertation.aux`, and rebuild with XeLaTeX.
+Do not run the VS Code task and LaTeX Workshop build simultaneously against
+the same output directory.
 
 ### 8. Recommended Document Formats for a PhD Dissertation
 
