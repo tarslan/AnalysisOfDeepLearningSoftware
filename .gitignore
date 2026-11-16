@@ -87,9 +87,12 @@ artifacts/
 /Dissertation/latex/**/*.fdb_latexmk
 /Dissertation/latex/**/*.fls
 /Dissertation/latex/**/*.lof
+/Dissertation/latex/**/*.lua
 /Dissertation/latex/**/*.out
 /Dissertation/latex/**/*.pdf
 /Dissertation/latex/**/*.run.xml
 /Dissertation/latex/**/*.synctex.gz
 /Dissertation/latex/**/*.toc
 /Dissertation/latex/**/*.xdv
+/Dissertation/latex/Dissertation-visual.docx
+!/Dissertation/latex/word-review.lua

@@ -38,6 +38,60 @@ xelatex Dissertation.tex
 
 The LaTeX source and bibliography were checked for matching citation keys.
 
+### Word draft for advisor and committee review
+
+#### Editable document (recommended for review)
+
+Run this command from `Dissertation\latex` to generate `Dissertation.docx`
+with editable text, headings, tables, and Word equations. Advisors can add
+comments, revise text, change formatting, and use Word's Track Changes:
+
+```powershell
+pandoc Dissertation.tex `
+    --from=latex `
+    --to=docx `
+    --standalone `
+    --bibliography=references.bib `
+    --citeproc `
+    --metadata=reference-section-title:Bibliography `
+    --lua-filter=word-review.lua `
+    --number-sections `
+    --toc `
+    --output=Dissertation.docx
+```
+
+The Word-export filter removes unsupported LaTeX title-page boilerplate,
+restores the Research Status and Abstract headings, and labels figure captions
+with the chapter/figure numbers used by the manuscript's cross-references.
+The editable Word draft retains embedded diagrams, tables, equations, and a
+processed bibliography. It uses Pandoc's default Word and author-date citation
+styles, not the PDF's exact layout or numeric citation style.
+Diagrams remain embedded images; their captions and surrounding text are editable.
+
+Open the document in Word and update the table of contents (right-click it and
+choose **Update Field**) before sharing. Treat the LaTeX source as authoritative;
+Word edits and comments must be incorporated back into the source separately.
+
+#### PDF-matched visual copy (not editable text)
+
+For an optional page-image copy, run:
+
+```powershell
+python build-word-visual.py
+```
+
+This generates `Dissertation-visual.docx` directly from `Dissertation.pdf`,
+embedding one full-page 300-DPI PNG per PDF page at its original letter-size
+dimensions. It does not overwrite the editable `Dissertation.docx`.
+The script uses Python's standard library and TeX Live's `pdfinfo` and
+`pdftoppm`; it replaces the output only after all pages have been rendered and
+packaged successfully. Rebuild the PDF first whenever the LaTeX source changes.
+
+The visual copy preserves the PDF's appearance but has no editable/searchable
+text, live table of contents, or clickable citations. Do not use it for text
+revisions or accessible text review. Its table of contents is part of the page
+images and must not be updated in Word.
+
 ### Diagrams
 
 The diagram sources are `figures/malicious-package-propagation.tex`,
@@ -83,17 +137,9 @@ pandoc test.tex -o test.docx
 
 Replace `test.tex` with `Dissertation.tex` to convert this manuscript. This basic command may need extra options for bibliography processing or custom LaTeX features.
 
-To include the citations and bibliography in the dissertation's Word output, run:
-
-```powershell
-pandoc Dissertation.tex `
-    --from=latex `
-    --to=docx `
-    --standalone `
-    --bibliography=references.bib `
-    --citeproc `
-    --output=Dissertation.docx
-```
+For this manuscript, use the editable review command above. It includes
+bibliography processing and the manuscript-specific front-matter and
+figure-caption fixes.
 
 ### 3. Convert LaTeX to PDF
 
@@ -174,6 +220,10 @@ This path is relative to the repository root opened in VS Code. The file defines
 1. **Build PDF:** Uses LaTeXmk with XeLaTeX to generate a PDF document and runs Biber for BibLaTeX bibliographies.
 2. **Build Word:** Uses Pandoc to generate a DOCX document with `references.bib` citations processed.
 3. **Build PDF and Word:** Executes both tasks sequentially.
+
+These are generic conversion tasks. For the dissertation review draft, use
+the editable command above to apply the manuscript-specific front-matter and
+caption fixes. The optional visual-copy script writes a separate file.
 
 To generate both documents:
 
