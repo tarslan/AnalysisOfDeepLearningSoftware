@@ -239,7 +239,7 @@ latexmk -xelatex Dissertation.tex
 
 **Generated files:**
 
-- `Dissertation.pdf` — LaTeX-built document.
+- `Dissertation.pdf` — LaTeX-built document, tracked so it can be read on GitHub.
 - `Dissertation.docx` — Editable Word review document.
 
 ### 5. Convert to Word with Formatting Options

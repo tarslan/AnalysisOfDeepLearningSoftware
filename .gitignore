@@ -90,6 +90,7 @@ artifacts/
 /Dissertation/latex/**/*.lua
 /Dissertation/latex/**/*.out
 /Dissertation/latex/**/*.pdf
+!/Dissertation/latex/Dissertation.pdf
 /Dissertation/latex/**/*.run.xml
 /Dissertation/latex/**/*.synctex.gz
 /Dissertation/latex/**/*.toc
