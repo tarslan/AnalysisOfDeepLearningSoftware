@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0",
+  "protocol_version": "0.1-draft",
+  "run_id": "20261117T001001Z_task5-baseline_clean_win-x64_target-v1",
+  "run_status": "completed",
+  "experiment": {
+    "name": "Task 5 fresh Windows baseline rebuild",
+    "case_id": "clean-locked-environment",
+    "research_questions": [],
+    "hypotheses": [],
+    "claims": [
+      "Rebuild the selected Windows/CPython baseline from the hash-verified lockfile and verify package consistency."
+    ]
+  },
+  "operator": "Local research run; identity omitted",
+  "timestamps": {
+    "started_utc": "2026-11-17T00:10:01Z",
+    "ended_utc": "2026-11-17T00:30:39.755171Z",
+    "local_timezone": "America/Chicago",
+    "local_offset": "-06:00"
+  },
+  "source_state": {
+    "repository": "tarslan/AnalysisOfDeepLearningSoftware",
+    "commit": "44c6d90d884dfbedf33a3317e236fef07e783040",
+    "worktree_dirty": true,
+    "patch_sha256": null,
+    "notes": "Worktree included uncommitted LaTeX-to-Word workflow changes before this run."
+  },
+  "environment": {
+    "role": "fresh_locked_environment",
+    "manifest_path": "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/derived/environment_manifest.json",
+    "python_version": "3.12.10",
+    "python_executable": "C:\\Arslan\\UNL\\PhD\\PythonRelated\\AnalysisOfDeepLearningSoftware\\Dissertation\\experiments\\20261117T001001Z_task5-baseline_clean_win-x64_target-v1\\.venv\\Scripts\\python.exe",
+    "packaging_tag": "cp312-cp312-win_amd64",
+    "lockfile_path": "requirements-lock.txt",
+    "lockfile_sha256": "1f0ec7143991d62b39f27c2ee751e374d0a2becdf32fff93589a5d6c056ec330",
+    "package_inventory_path": "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/raw/package-inventory.json",
+    "package_inventory_sha256": "7293993529d3e858e6acd89de55d717191be2c4c3e73aef931784ceb6090060f",
+    "hardware": {
+      "gpus": [
+        {
+          "Name": "NVIDIA GeForce MX350",
+          "DriverVersion": "32.0.15.8183"
+        },
+        {
+          "Name": "Intel(R) Iris(R) Xe Graphics",
+          "DriverVersion": "31.0.101.4502"
+        }
+      ],
+      "cpu": {
+        "Name": "11th Gen Intel(R) Core(TM) i7-1195G7 @ 2.90GHz",
+        "NumberOfCores": 4,
+        "NumberOfLogicalProcessors": 8
+      }
+    },
+    "tensorflow_visible_gpus": [],
+    "pip_check_passed": true
+  },
+  "data_sources": [],
+  "inputs": [
+    {
+      "path": "requirements.in",
+      "role": "Direct dependencies",
+      "size_bytes": 425,
+      "sha256": "9fcfea7c5320915bbce1a615a8692effd4e18302ad0a3ea2956683038817e679",
+      "version_or_provenance": "Current worktree source",
+      "snapshot_archived": false,
+      "evidence_strength": "directly_observed"
+    },
+    {
+      "path": "requirements-lock.txt",
+      "role": "Hash-pinned dependency lock",
+      "size_bytes": 77310,
+      "sha256": "1f0ec7143991d62b39f27c2ee751e374d0a2becdf32fff93589a5d6c056ec330",
+      "version_or_provenance": "Current worktree source",
+      "snapshot_archived": false,
+      "evidence_strength": "directly_observed"
+    },
+    {
+      "path": "pyproject.toml",
+      "role": "Project/runtime constraints",
+      "size_bytes": 2429,
+      "sha256": "f50e3b650b0c4c1363b5c047652a2818352c3f4a6b255245410d7622ca110522",
+      "version_or_provenance": "Current worktree source",
+      "snapshot_archived": false,
+      "evidence_strength": "directly_observed"
+    },
+    {
+      "path": "image_recognition_basic.py",
+      "role": "Primary CNN control workload",
+      "size_bytes": 2280,
+      "sha256": "2bcc1e14290d9650ba4e8ec91eec99b8f08fe3dc2a281285304714cbb93561f4",
+      "version_or_provenance": "Current worktree source",
+      "snapshot_archived": false,
+      "evidence_strength": "directly_observed"
+    },
+    {
+      "path": "Dissertation/environment_manifest_target_2026-11-01.json",
+      "role": "Selected target configuration",
+      "size_bytes": 6571,
+      "sha256": "b10b9ac49898263a534d65b6245644f0bf270ed87d1d3df7a69ea6ea71c01700",
+      "version_or_provenance": "Current worktree source",
+      "snapshot_archived": false,
+      "evidence_strength": "directly_observed"
+    }
+  ],
+  "execution": {
+    "working_directory": ".",
+    "command": [
+      "py -3.12 -m venv <run>/.venv",
+      "<run>/.venv/Scripts/python.exe -m pip install --require-hashes -r requirements-lock.txt",
+      "<run>/.venv/Scripts/python.exe -m pip check",
+      "<run>/.venv/Scripts/python.exe -m pip list --format=json",
+      "<run>/.venv/Scripts/python.exe -c <TensorFlow/Keras/NumPy/device observation>"
+    ],
+    "isolation_and_resource_limits": "Fresh local virtual environment; no model training or untrusted artifact loading.",
+    "network_policy": "Package installation used configured PyPI; no other network requests were made.",
+    "started_at_utc": "2026-11-17T00:10:01Z",
+    "ended_at_utc": "2026-11-17T00:30:39.755171Z",
+    "exit_code": 0,
+    "stdout_path": null,
+    "stderr_path": null,
+    "deviations": [
+      "PowerShell captured pip-install stdout and stderr together in raw/pip-install.log."
+    ]
+  },
+  "outputs": [
+    {
+      "path": "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/raw/pip-install.log",
+      "kind": "raw",
+      "size_bytes": 9647,
+      "sha256": "230007ed88652e9e47caa023da6a8487d3f54610aac9bfad15b9541a7764948c",
+      "producer": "pip install --require-hashes -r requirements-lock.txt",
+      "validation": "Exit code 0; locked wheels installed"
+    },
+    {
+      "path": "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/raw/pip-check.txt",
+      "kind": "raw",
+      "size_bytes": 31,
+      "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+      "producer": "python -m pip check",
+      "validation": "No broken requirements found"
+    },
+    {
+      "path": "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/raw/pip-check-exit.txt",
+      "kind": "raw",
+      "size_bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "producer": "Captured pip check status",
+      "validation": "0"
+    },
+    {
+      "path": "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/raw/package-inventory.json",
+      "kind": "raw",
+      "size_bytes": 3513,
+      "sha256": "7293993529d3e858e6acd89de55d717191be2c4c3e73aef931784ceb6090060f",
+      "producer": "python -m pip list --format=json",
+      "validation": "Parsed and matched active lock entries"
+    },
+    {
+      "path": "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/raw/framework-observation.log",
+      "kind": "raw",
+      "size_bytes": 1489,
+      "sha256": "172ff0a36038be50992bdf0519bc2c46682843fddeabf53335145aea3cfa5982",
+      "producer": "TensorFlow/Keras/NumPy import and device query",
+      "validation": "Imports pass; CPU visible; no GPU"
+    },
+    {
+      "path": "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/derived/lock-comparison.json",
+      "kind": "derived",
+      "size_bytes": 158,
+      "sha256": "a212a261066d450b8bdd3470e9b82e8a950baf9a51e270b1af1d7f5c83a5c01c",
+      "producer": "Compare installed inventory with active lock",
+      "validation": "Exact package/version match"
+    },
+    {
+      "path": "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/derived/environment_manifest.json",
+      "kind": "derived",
+      "size_bytes": 3267,
+      "sha256": "2c123008c0a13a02f83eb17db22742de1d1440b81f1a10402162f708c757465c",
+      "producer": "Task 5 environment capture",
+      "validation": "Observed OS, interpreter, lock, inventory, tools, hardware, and GPU visibility"
+    },
+    {
+      "path": "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/derived/task5-validation.md",
+      "kind": "derived",
+      "size_bytes": 769,
+      "sha256": "f007941acc20de7ebb77d86f21b0a4d8d449bb5047e1f02e2e63f6ad809bcbc3",
+      "producer": "Task 5 validation summary",
+      "validation": "Reconciles fresh environment results; no workload or pipeline result claimed."
+    }
+  ],
+  "evidence_interpretation": [
+    {
+      "claim_or_relationship": "The fresh environment matches the selected lockfile for active Windows/CPython requirements, and pip reports no broken dependencies.",
+      "evidence_strength": "directly_observed",
+      "supporting_artifacts": [
+        "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/raw/package-inventory.json",
+        "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/derived/lock-comparison.json",
+        "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/raw/pip-check.txt",
+        "Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/raw/pip-install.log"
+      ],
+      "rationale": "pip installation with --require-hashes succeeded; 57 active lock packages match all 57 installed packages; pip check passed.",
+      "limitations": [
+        "Environment construction does not validate workload repeatability or refresh pipeline results."
+      ]
+    }
+  ],
+  "validation": {
+    "commands": [
+      "python -m pip install --require-hashes -r requirements-lock.txt",
+      "python -m pip check",
+      "python -m pip list --format=json",
+      "TensorFlow/Keras/NumPy import and physical-device query"
+    ],
+    "results": [
+      "Lockfile SHA-256 matches target manifest: 1f0ec7143991d62b39f27c2ee751e374d0a2becdf32fff93589a5d6c056ec330",
+      "57 active locked versions match the 57 installed packages.",
+      "pip check: No broken requirements found.",
+      "TensorFlow 2.21.0, Keras 3.14.0, NumPy 2.4.4 import; CPU visible; no TensorFlow GPU visible.",
+      "Human-readable Task 5 summary saved as Dissertation/experiments/20261117T001001Z_task5-baseline_clean_win-x64_target-v1/derived/task5-validation.md"
+    ],
+    "summary_reconciled_with_raw_evidence": true,
+    "reviewed_by": null,
+    "review_date": null
+  },
+  "notes": [
+    "Task 5 environment evidence only; Tasks 6-10 require their own prerequisites, implementation, and validation.",
+    "The isolated .venv is retained under the run directory and ignored by Git."
+  ]
+}

@@ -21,6 +21,7 @@
 }
 \usepackage{amsmath,amssymb}
 \setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -177,6 +178,10 @@
   \vspace{12pt}
 }
 \renewcommand*\l@figure{\@dottedtocline{1}{0em}{2.3em}}
+% Number offsets and title-column widths, in points from the text margin.
+\renewcommand*\l@section{\@dottedtocline{1}{18pt}{27pt}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{45.5pt}{38.5pt}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{63pt}{42pt}}
 \makeatother
 \renewcommand{\contentsname}{Table of Contents}
 
@@ -582,7 +587,7 @@ The following research questions guide the design, implementation, and
 empirical evaluation of the proposed Unified Multilayer Security
 Analysis Framework (UMSAF):
 
-\subsubsection{RQ1 --- Dependency and Supply-Chain
+\section{RQ1 --- Dependency and Supply-Chain
 Analysis}\label{rq1--dependency-and-supply-chain-analysis}
 
 How can dependencies, native binary components, and associated software
@@ -590,7 +595,7 @@ supply-chain risks within the selected Python-based deep-learning
 software ecosystem be systematically identified, analyzed, and
 correlated?
 
-\subsubsection{RQ2 --- Effectiveness of Existing Security Analysis
+\section{RQ2 --- Effectiveness of Existing Security Analysis
 Approaches}\label{rq2--effectiveness-of-existing-security-analysis-approaches}
 
 How effective are existing software security analysis techniques when
@@ -598,7 +603,7 @@ applied to the selected deep-learning application, its framework,
 dependencies, and native components, and what security visibility gaps
 remain when these techniques are applied independently?
 
-\subsubsection{RQ3 --- Native Binary Analysis and Reverse
+\section{RQ3 --- Native Binary Analysis and Reverse
 Engineering}\label{rq3--native-binary-analysis-and-reverse-engineering}
 
 To what extent can binary analysis and reverse engineering techniques
@@ -606,7 +611,7 @@ recover security-relevant structural and behavioral information from
 native C/C++ components underlying the selected Python-based
 deep-learning framework and application?
 
-\subsubsection{RQ4 --- Serialized Model and Computational Graph
+\section{RQ4 --- Serialized Model and Computational Graph
 Security}\label{rq4--serialized-model-and-computational-graph-security}
 
 How can the selected deep-learning model artifact and computational
@@ -614,14 +619,14 @@ graph be systematically inspected to identify security-relevant
 characteristics, potentially malicious functionality, unsafe operations,
 and interactions with underlying framework components?
 
-\subsubsection{RQ5 --- Runtime Security
+\section{RQ5 --- Runtime Security
 Analysis}\label{rq5--runtime-security-analysis}
 
 What security-relevant behaviors and execution characteristics can be
 identified through runtime analysis that may not be observable through
 source-level, dependency, serialized model, or binary analysis alone?
 
-\subsubsection{RQ6 --- Cross-Layer Security
+\section{RQ6 --- Cross-Layer Security
 Analysis}\label{rq6--cross-layer-security-analysis}
 
 To what extent can cross-layer interaction modeling and correlation of
@@ -630,7 +635,7 @@ characterization, and prioritization across application code,
 dependencies, serialized model artifacts, native binaries, and runtime
 environments?
 
-\subsubsection{RQ7 --- Integrated Framework
+\section{RQ7 --- Integrated Framework
 Effectiveness}\label{rq7--integrated-framework-effectiveness}
 
 To what extent does UMSAF provide more comprehensive security visibility
@@ -1451,7 +1456,7 @@ reassessed at the schedule\textquotesingle s evidence-based checkpoints
 rather than assuming success or silently dropping requirements. Paper
 targets are submissions, not guaranteed acceptance or publication.
 
-\subsection{Phase 1 --- Research Contract and Baseline
+\section{Phase 1 --- Research Contract and Baseline
 Refresh}\label{phase-1--research-contract-and-baseline-refresh}
 
 \textbf{November 2-22, 2026}
@@ -1474,7 +1479,7 @@ Refresh}\label{phase-1--research-contract-and-baseline-refresh}
   Reassess remaining effort using actual hours by November 22
 \end{itemize}
 
-\subsection{Phase 2 --- Missing Evidence
+\section{Phase 2 --- Missing Evidence
 Producers}\label{phase-2--missing-evidence-producers}
 
 \textbf{November 23-December 27, 2026}
@@ -1497,7 +1502,7 @@ Producers}\label{phase-2--missing-evidence-producers}
   before integration
 \end{itemize}
 
-\subsection{Phase 3 --- Integrated UMSAF
+\section{Phase 3 --- Integrated UMSAF
 Artifact}\label{phase-3--integrated-umsaf-artifact}
 
 \textbf{December 28, 2026-January 17, 2027}
@@ -1520,7 +1525,7 @@ Artifact}\label{phase-3--integrated-umsaf-artifact}
   tests
 \end{itemize}
 
-\subsection{Phase 4 --- Empirical Evaluation and
+\section{Phase 4 --- Empirical Evaluation and
 Results}\label{phase-4--empirical-evaluation-and-results}
 
 \textbf{January 18-31, 2027}
@@ -1543,7 +1548,7 @@ Results}\label{phase-4--empirical-evaluation-and-results}
   January 31
 \end{itemize}
 
-\subsection{Phase 5 --- Complete Draft, Archive, and First
+\section{Phase 5 --- Complete Draft, Archive, and First
 Review}\label{phase-5--complete-draft-archive-and-first-review}
 
 \textbf{February 1-28, 2027}
@@ -1564,7 +1569,7 @@ Review}\label{phase-5--complete-draft-archive-and-first-review}
   \textbf{February 28}
 \end{itemize}
 
-\subsection{Phase 6 --- Second Review, Second Paper, and Defense
+\section{Phase 6 --- Second Review, Second Paper, and Defense
 Readiness}\label{phase-6--second-review-second-paper-and-defense-readiness}
 
 \textbf{March 1-21, 2027}
@@ -1581,7 +1586,7 @@ Readiness}\label{phase-6--second-review-second-paper-and-defense-readiness}
   weekly limit
 \end{itemize}
 
-\subsection{Phase 7 --- Reading Committee Review, Defense, Corrections,
+\section{Phase 7 --- Reading Committee Review, Defense, Corrections,
 and Final
 Deposit}\label{phase-7--reading-committee-review-defense-corrections-and-final-deposit}
 
@@ -7785,6 +7790,7 @@ provide a bounded foundation for future research into broader ML/DL
 software assurance.
 
 \clearpage
+\phantomsection
 \addcontentsline{toc}{chapter}{Bibliography}
 \printbibliography[title={Bibliography}]
 
